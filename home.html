@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page Title -->
+    <title>Home | Mulham Portfolio</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Mulham Portfolio - Creative Designer & Web Developer. I help businesses achieve their goals through stunning design and cutting-edge web development.">
+    <meta name="keywords"
+        content="Mulham, Portfolio, Web Design, Graphic Design, UI/UX, Branding, Web Development, Creative Designer">
+    <meta name="author" content="Mulham">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Mulham Portfolio | Creative Designer & Web Developer">
+    <meta property="og:description"
+        content="I help businesses achieve their goals through stunning design and cutting-edge web development.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mulham.design">
+    <meta property="og:image" content="img/mulham_icon.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Mulham Ibrahim Portfolio">
+    <meta property="og:site_name" content="Mulham Ibrahim">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mulham Ibrahim — Creative Designer & Web Developer">
+    <meta name="twitter:description" content="Founder of Plasma Agency. Branding, web development, and digital marketing.">
+    <meta name="twitter:image" content="img/mulham_icon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mulham.design/">
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#000000">
+
+    <!-- Preconnect for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <!-- Config -->
+    <link type="text/css" rel="stylesheet" href="css\config.css">
+    <!-- Libraries -->
+    <link type="text/css" rel="stylesheet" href="css\libs.css">
+    <!-- Template Styles -->
+    <link type="text/css" rel="stylesheet" href="css\style.css">
+    <!-- Responsive -->
+    <link type="text/css" rel="stylesheet" href="css\responsive.css">
+    <!-- Accessibility -->
+    <link type="text/css" rel="stylesheet" href="css/a11y.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img\favicon.png" sizes="32x32">
+
+    <!-- CV Preview Libraries: loaded dynamically when needed -->
+
+    <!-- CV Preview Styles -->
+    <style>
+        /* CV Preview Section */
+        .cv-preview-section {
+            padding: 40px 0 !important;
+            background: transparent;
+            margin-top: 40px !important;
+            scroll-margin-top: 100px;
+            /* Account for sticky header */
+            position: relative;
+        }
+
+        .cv-preview-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse 70% 50% at 50% 50%, rgba(13, 17, 23, 0.6) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 30% at 30% 30%, rgba(127, 90, 240, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .cv-preview-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cv-preview-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .code-editor {
+            background: rgba(14, 8, 20, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 16px;
+            border: 1px solid rgba(140, 45, 246, 0.2);
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), inset 0 0 40px rgba(140, 45, 246, 0.05);
+            overflow: hidden;
+        }
+
+        .editor-header {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .window-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .window-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .btn-close {
+            background: #f85149;
+        }
+
+        .btn-minimize {
+            background: #f0883e;
+        }
+
+        .btn-maximize {
+            background: #3fb950;
+        }
+
+        .file-tabs {
+            display: flex;
+            gap: 4px;
+            margin-left: 16px;
+        }
+
+        .file-tab {
+            background: #161b22;
+            padding: 6px 16px;
+            border-radius: 6px 6px 0 0;
+            color: #c9d1d9;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #30363d;
+            border-bottom: none;
+        }
+
+        .file-tab-icon {
+            color: #f0883e;
+        }
+
+        .editor-body {
+            display: flex;
+            overflow: visible;
+        }
+
+        .line-numbers {
+            background: #161b22;
+            padding: 20px 0;
+            text-align: right;
+            color: #484f58;
+            font-size: 14px;
+            line-height: 1.6;
+            user-select: none;
+            min-width: 50px;
+            border-right: 1px solid #21262d;
+            position: relative;
+        }
+
+        .line-number {
+            padding: 0 12px;
+        }
+
+        .code-content {
+            flex: 1;
+            padding: 20px;
+            overflow-x: auto;
+            overflow-y: visible;
+            max-height: none;
+            height: auto;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #c9d1d9;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        /* Custom scrollbar for code content only */
+        .code-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .code-content::-webkit-scrollbar-track {
+            background: #161b22;
+        }
+
+        .code-content::-webkit-scrollbar-thumb {
+            background: #8C2DF6;
+            border-radius: 4px;
+        }
+
+        .code-content::-webkit-scrollbar-thumb:hover {
+            background: #6d4cdb;
+        }
+
+        /* Syntax highlighting */
+        .keyword {
+            color: #ff7b72;
+        }
+
+        .string {
+            color: #a5d6ff;
+        }
+
+        .comment {
+            color: #8b949e;
+            font-style: italic;
+        }
+
+        .function {
+            color: #d2a8ff;
+        }
+
+        .variable {
+            color: #ffa657;
+        }
+
+        .property {
+            color: #79c0ff;
+        }
+
+        .number {
+            color: #79c0ff;
+        }
+
+        .operator {
+            color: #ff7b72;
+        }
+
+        .bracket {
+            color: #c9d1d9;
+        }
+
+        .class-name {
+            color: #8C2DF6;
+        }
+
+        .punctuation {
+            color: #c9d1d9;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #8b949e;
+        }
+
+        /* CV View Toggle Buttons */
+        .cv-toggle-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(200, 200, 200, 0.6);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-family: inherit;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+        }
+
+        .cv-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+        }
+
+        .cv-toggle-btn.active {
+            background: linear-gradient(135deg, rgba(127, 90, 240, 0.3) 0%, rgba(44, 182, 125, 0.2) 100%);
+            border-color: rgba(127, 90, 240, 0.4);
+            color: #e0e0e0;
+        }
+
+        /* CV Text View */
+        .cv-text-view {
+            padding: 0 !important;
+        }
+
+        .cv-text-content {
+            padding: 32px 40px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #c9d1d9;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .cv-text-content h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 4px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .cv-text-content .cv-subtitle {
+            font-size: 14px;
+            color: rgba(127, 90, 240, 0.9);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .cv-text-content .cv-contact {
+            font-size: 13px;
+            color: #8b949e;
+            margin-bottom: 20px;
+        }
+
+        .cv-text-content hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin: 20px 0;
+        }
+
+        .cv-text-content h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #8C2DF6;
+            margin: 24px 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cv-text-content h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin: 16px 0 8px 0;
+        }
+
+        .cv-text-content p {
+            margin: 0 0 8px 0;
+            color: #b0b8c4;
+        }
+
+        .cv-text-content ul {
+            margin: 8px 0 16px 20px;
+            padding: 0;
+        }
+
+        .cv-text-content ul li {
+            margin-bottom: 4px;
+            color: #b0b8c4;
+            position: relative;
+        }
+
+        .cv-text-content ul li::marker {
+            color: rgba(127, 90, 240, 0.6);
+        }
+
+        .cv-text-content strong {
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+
+        .run-section {
+            margin: 24px 0 0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .run-btn {
+            background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .run-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(46, 160, 67, 0.4);
+        }
+
+        .run-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .run-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+    </style>
+    <!-- Structured Data: Person + WebSite + WebPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://mulham.design/#website",
+                "name": "Mulham Ibrahim Portfolio",
+                "url": "https://mulham.design/",
+                "description": "Creative designer, web developer, and founder of Plasma Agency.",
+                "publisher": { "@id": "https://mulham.design/#person" }
+            },
+            {
+                "@type": "Person",
+                "@id": "https://mulham.design/#person",
+                "name": "Mulham Ibrahim",
+                "givenName": "Mulham",
+                "familyName": "Ibrahim",
+                "jobTitle": "Creative Designer & Web Developer",
+                "description": "Digital Marketing Strategist, Front-End Developer, and Founder of Plasma Agency in Damascus, Syria.",
+                "url": "https://mulham.design/",
+                "image": "https://mulham.design/img/mulham_ph.jpg",
+                "email": "mulhamlol790@gmail.com",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Damascus",
+                    "addressCountry": "SY"
+                },
+                "alumniOf": {
+                    "@type": "EducationalOrganization",
+                    "name": "Higher Institute of Business Administration"
+                },
+                "knowsLanguage": ["en", "ar"],
+                "sameAs": [
+                    "https://www.linkedin.com/in/mulham-ibrahim-2021643ab",
+                    "https://www.instagram.com/creative_mulham/",
+                    "https://www.pinterest.com/normal_person_as_trippy/"
+                ],
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Plasma Agency",
+                    "url": "https://mulham.design/",
+                    "description": "Digital agency delivering branding, website development, and social media management."
+                },
+                "knowsAbout": ["Web Development", "Branding", "UI/UX Design", "Digital Marketing", "Graphic Design", "SEO"]
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://mulham.design/#webpage",
+                "url": "https://mulham.design/",
+                "name": "Mulham Ibrahim — Creative Designer & Web Developer",
+                "isPartOf": { "@id": "https://mulham.design/#website" },
+                "about": { "@id": "https://mulham.design/#person" },
+                "description": "Portfolio of Mulham Ibrahim, founder of Plasma Agency. Branding, web development, and digital marketing.",
+                "inLanguage": "en",
+                "dateModified": "2026-08-19"
+            }
+        ]
+    }
+    </script>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body { overflow-x: hidden !important; }
+    </style>
+</head>
+
+<body>
+    <!-- Skip to Content (Accessibility) -->
+    <a href="#bringer-main" class="skip-to-content" style="position:absolute;top:-100%;left:16px;z-index:99999;padding:12px 24px;background:#8C2DF6;color:#fff;border-radius:0 0 8px 8px;font-weight:600;text-decoration:none;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Skip to main content</a>
+        <!-- Ultra-Premium Monolithic Preloader -->
+    <div id="loader-wrapper">
+        <div id="loader-content">
+            <h2 class="loader-logo">Mulham<span class="loader-dot">.</span></h2>
+            <div class="loader-progress-wrap">
+                <div class="loader-progress-bar"></div>
+            </div>
+        </div>
+        <div class="loader-bg"></div>
+    </div>
+    <style>
+        #loader-wrapper {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader-bg {
+            position: absolute;
+            inset: 0;
+            background: #050505; /* Deep luxury monolithic black */
+            z-index: 100000;
+            transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+            transform-origin: top;
+        }
+
+        #loader-content {
+            position: relative;
+            z-index: 100001;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+
+        .loader-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            font-style: italic;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            animation: loaderFadeIn 0.5s ease forwards;
+        }
+
+        .loader-dot {
+            color: #8C2DF6;
+            display: inline-block;
+            animation: pulseDot 1.5s infinite ease-in-out;
+        }
+
+        .loader-progress-wrap {
+            width: 140px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            overflow: hidden;
+            opacity: 0;
+            animation: loaderFadeIn 0.5s 0.2s ease forwards;
+        }
+
+        .loader-progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #8C2DF6, #b066ff);
+            box-shadow: 0 0 10px rgba(140, 45, 246, 0.5);
+            animation: loaderProgress 1.6s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+        }
+
+        @keyframes loaderFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; text-shadow: 0 0 15px rgba(140, 45, 246, 0.8); }
+            50% { opacity: 0.8; text-shadow: 0 0 5px rgba(140, 45, 246, 0.3); }
+        }
+
+        @keyframes loaderProgress {
+            0% { width: 0%; }
+            40% { width: 60%; }
+            100% { width: 100%; }
+        }
+
+        .loaded #loader-content {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .loaded .loader-bg {
+            transform: scaleY(0);
+        }
+
+        .loaded #loader-wrapper {
+            pointer-events: none;
+            visibility: hidden;
+            transition: visibility 0s 0.8s; 
+        }
+    </style>
+    <script>
+        function hidePreloader() { 
+            if (!document.body.classList.contains('loaded')) {
+                document.body.classList.add('loaded'); 
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function () { 
+            setTimeout(hidePreloader, 1600); 
+        });
+        window.addEventListener('load', function() {
+            setTimeout(hidePreloader, 1600);
+        });
+        setTimeout(hidePreloader, 4000);
+    </script>
+
+    <!-- Premium Glassmorphism Navbar -->
+    <style>
+        /* Elegant Glass Navbar */
+        #bringer-header {
+            position: fixed !important;
+            z-index: 9999 !important;
+            background: rgba(255, 255, 255, 0.02) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            border-radius: 100px !important;
+            padding: 0 30px !important;
+            width: auto !important;
+            min-width: 600px;
+            max-width: 90vw !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            top: 30px !important;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+            display: flex;
+            justify-content: center;
+        }
+
+        #bringer-header.is-sticky {
+            top: 20px !important;
+            background: rgba(10, 10, 10, 0.65) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8) !important;
+        }
+
+        .bringer-header-inner {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            width: 100% !important;
+            padding: 12px 0 !important;
+            min-height: 40px;
+        }
+
+        /* Logo inside header */
+        .bringer-header-lp {
+            display: flex !important;
+            align-items: center !important;
+            position: relative !important;
+            left: auto !important;
+            top: auto !important;
+            z-index: 1 !important;
+        }
+
+        .bringer-header-mp {
+            display: flex !important;
+            justify-content: flex-end !important;
+            flex-grow: 1 !important;
+        }
+
+        ul.main-menu {
+            display: flex;
+            align-items: center;
+            gap: 32px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        ul.main-menu li a {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 0.85rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.15em !important;
+            font-weight: 500 !important;
+            color: #fff !important;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        ul.main-menu li a:hover,
+        ul.main-menu li.current-menu-item a {
+            opacity: 1;
+            color: var(--bringer-s-accent) !important;
+        }
+
+        /* Hide the misaligned JS active menu indicator */
+        .bringer-active-menu-ind {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            #bringer-header {
+                min-width: 0;
+                width: calc(100% - 40px) !important;
+                padding: 0 20px !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                background: rgba(14, 8, 20, 0.95) !important;
+            }
+            .bringer-header-inner { display: none !important; }
+            .bringer-mobile-header-inner {
+                display: flex !important;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                padding: 12px 0;
+            }
+        }
+    </style>
+
+    <!-- Header -->
+    <header id="bringer-header" class="is-frosted is-sticky"  >
+        <!-- Desktop Header -->
+        <div class="bringer-header-inner">
+            <!-- Logo -->
+            <div class="bringer-header-lp">
+                <a href="/home" class="bringer-logo" style="text-decoration: none;">
+                    <span style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; font-style: italic; letter-spacing: -0.02em; color: #fff;">Mulham<span style="color: var(--bringer-s-accent);">.</span></span>
+                </a>
+            </div>
+            
+            <!-- Main Menu -->
+            <div class="bringer-header-mp">
+                <nav class="bringer-nav">
+                    <ul class="main-menu"  >
+                        <li class="current-menu-item">
+                            <a href="/home">Home</a>
+                        </li>
+                        <li>
+                            <a href="/contact">Contacts</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- Mobile Header -->
+        <div class="bringer-mobile-header-inner" style="display: none;">
+            <a href="/home" class="bringer-logo" style="text-decoration: none;">
+                <span style="font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; font-style: italic; letter-spacing: -0.02em; color: #fff;">Mulham<span style="color: var(--bringer-s-accent);">.</span></span>
+            </a>
+            <a href="#" class="bringer-mobile-menu-toggler">
+                <i class="bringer-menu-toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Page Main -->
+    <main id="bringer-main">
+        <div class="stg-container">
+                            <!-- 10/10 Creative Portfolio Hero Section -->
+    <section class="bringer-hero-section" id="awwwards-hero" style="position: sticky; top: 0; z-index: 1; width: 100vw; height: 100dvh; overflow: hidden; background: #06020A; margin-left: calc(50% - 50vw); margin-top: -120px; margin-bottom: 5vh;">
+
+        <!-- Diagonal Infinite Gallery Background -->
+        <!-- Colorized Line Background -->
+        <!-- Ambient Universe Background -->
+        <div class="ambient-universe-bg" style="position: absolute; inset: 0; overflow: hidden; background: #000000; z-index: 1;">
+            
+            <!-- Subtle Tech Grid -->
+            <div style="position: absolute; inset: 0; background-size: 100px 100px; background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px); z-index: 1;"></div>
+            
+            <!-- Ambient Drifting Orbs -->
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+
+            <!-- Floating Sparkles / Stars -->
+            <div id="hero-particles" style="position: absolute; inset: 0; z-index: 2;"></div>
+
+            <style>
+                .orb {
+                    position: absolute;
+                    border-radius: 50%;
+                    filter: blur(90px);
+                    animation: drift ease-in-out infinite alternate;
+                    pointer-events: none;
+                }
+                .orb-1 {
+                    width: 60vw; height: 60vw;
+                    background: rgba(140, 45, 246, 0.25);
+                    top: -15%; left: -10%;
+                    animation-duration: 20s;
+                }
+                .orb-2 {
+                    width: 50vw; height: 50vw;
+                    background: rgba(80, 20, 150, 0.35);
+                    bottom: -15%; right: -10%;
+                    animation-duration: 25s;
+                    animation-delay: -7s;
+                }
+                .orb-3 {
+                    width: 45vw; height: 45vw;
+                    background: rgba(255, 255, 255, 0.04);
+                    top: 30%; left: 35%;
+                    animation-duration: 22s;
+                    animation-delay: -12s;
+                }
+
+                @keyframes drift {
+                    0% { transform: translate(0, 0) scale(1); }
+                    100% { transform: translate(8vw, 6vh) scale(1.15); }
+                }
+
+                .hero-particle {
+                    position: absolute;
+                    border-radius: 50%;
+                    opacity: 0;
+                    animation: floatUp linear infinite;
+                    pointer-events: none;
+                }
+
+                @keyframes floatUp {
+                    0% { transform: translateY(110vh) scale(0.8); opacity: 0; }
+                    10% { opacity: 0.8; }
+                    80% { opacity: 0.8; }
+                    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+                }
+            </style>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const container = document.getElementById('hero-particles');
+                    if (!container) return;
+                    const particleCount = 20;
+                    for(let i=0; i<particleCount; i++) {
+                        let p = document.createElement('div');
+                        p.className = 'hero-particle';
+                        let size = Math.random() * 2.5 + 0.5; // 0.5px to 3px
+                        p.style.width = size + 'px';
+                        p.style.height = size + 'px';
+                        p.style.left = Math.random() * 100 + 'vw';
+                        p.style.animationDuration = (Math.random() * 20 + 15) + 's'; // 15s to 35s
+                        p.style.animationDelay = -(Math.random() * 35) + 's'; // start already on screen
+                        
+                        // Color variation
+                        if (Math.random() > 0.85) {
+                            p.style.background = '#8C2DF6';
+                            p.style.boxShadow = '0 0 8px #8C2DF6';
+                        } else {
+                            p.style.background = '#ffffff';
+                            p.style.boxShadow = '0 0 6px rgba(255,255,255,0.6)';
+                        }
+                        
+                        container.appendChild(p);
+                    }
+                });
+            </script>
+        </div>
+
+        <!-- Foreground Difference Text Overlay -->
+        <div class="hero-blend-text" style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; pointer-events: none; z-index: 10;">
+            
+            <!-- Rotating Badge (Top Right) -->
+            <div class="hero-badge" style="position: absolute; top: 15vh; right: 8vw; width: 140px; height: 140px; animation: spinBadge 20s linear infinite;">
+                <svg viewBox="0 0 100 100" width="100%" height="100%">
+                    <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" />
+                    <text fill="rgba(255,255,255,0.7)" font-size="10.5" font-family="'Inter', sans-serif" font-weight="600" letter-spacing="0.15em">
+                        <textPath href="#circlePath">CREATIVE DEVELOPER + UI/UX DESIGNER +</textPath>
+                    </text>
+                </svg>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color: #8C2DF6;">+</div>
+            </div>
+
+            <!-- Vertical Editorial Text (Left) -->
+            <div class="vertical-text" style="position: absolute; left: 4vw; top: 50%; transform: translateY(-50%) rotate(-90deg); transform-origin: left center; font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(255,255,255,0.4); white-space: nowrap;">
+                EST. 2026 - Damascus, Syria - Available Worldwide
+            </div>
+
+            <!-- Main Typography -->
+            <div class="hero-main-title" style="text-align: center; position: relative; z-index: 5;">
+                <div style="font-family: 'Inter', sans-serif; font-size: clamp(0.7rem, 1vw, 1rem); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5em; color: #8C2DF6; margin-bottom: 2vh; text-shadow: 0 0 20px rgba(140,45,246,0.5);">
+                    Independent
+                </div>
+                
+                <h1 style="margin: 0; line-height: 1.1; display: flex; flex-direction: column; align-items: center;">
+                    <span style="font-family: 'Inter', sans-serif; font-size: clamp(4rem, 9vw, 8rem); font-weight: 900; letter-spacing: -0.04em; color: #ffffff; text-shadow: 0 10px 40px rgba(0,0,0,0.8);">MULHAM</span>
+                    <span style="font-family: 'Playfair Display', serif; font-size: clamp(4.5rem, 10vw, 9rem); font-weight: 400; font-style: italic; letter-spacing: -0.02em; color: #ffffff; text-shadow: 0 10px 40px rgba(0,0,0,0.8); margin-top: -2vw;">IBRAHIM</span>
+                </h1>
+                
+                <div style="font-family: 'Inter', sans-serif; font-size: clamp(0.8rem, 1.1vw, 1.2rem); font-weight: 400; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(255,255,255,0.8); margin-top: 3vh;">
+                    Digital Experience Architect
+                </div>
+            </div>
+
+            <!-- Floating Glass Pills -->
+            <div class="glass-pill pill-1" style="position: absolute; top: 25%; left: 15%; animation: floatPill1 8s ease-in-out infinite alternate;">
+                [ Front-End Engineering ]
+            </div>
+            <div class="glass-pill pill-2" style="position: absolute; bottom: 35%; right: 12%; animation: floatPill2 10s ease-in-out infinite alternate;">
+                [ Brand Identity ]
+            </div>
+            <div class="glass-pill pill-3" style="position: absolute; bottom: 25%; left: 22%; animation: floatPill3 12s ease-in-out infinite alternate;">
+                [ UI/UX Design ]
+            </div>
+
+            <!-- Editorial Description -->
+            <div class="hero-desc" style="position: absolute; bottom: 15vh; left: 6vw; max-width: 280px; text-align: left; border-left: 2px solid #8C2DF6; padding-left: 20px;">
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 400; line-height: 1.6; color: rgba(255,255,255,0.7); margin: 0; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
+                    Bridging the gap between highly aesthetic design and robust engineering. I build digital products that leave a lasting impression.
+                </p>
+            </div>
+            
+        </div>
+
+        <!-- Interactive Scroll Button -->
+        <a href="#about" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'}); return false;" class="hero-scroll-btn" style="position: absolute; bottom: 8vh; right: 5vw; z-index: 20; width: 100px; height: 100px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(255,255,255,0.03);">
+            Explore
+        </a>
+
+        <!-- CSS Styles -->
+        <style>
+            
+            /* New Hero Elements CSS */
+            @keyframes spinBadge { 100% { transform: rotate(360deg); } }
+            
+            .glass-pill {
+                background: rgba(14, 8, 20, 0.7);
+                border: 1px solid rgba(140, 45, 246, 0.15);
+                padding: 12px 24px;
+                border-radius: 100px;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.75rem;
+                font-weight: 500;
+                color: #fff;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+                will-change: transform;
+            }
+
+            @keyframes floatPill1 { 0% { transform: translateY(0) rotate(-4deg); } 100% { transform: translateY(-25px) rotate(4deg); } }
+            @keyframes floatPill2 { 0% { transform: translateY(0) rotate(3deg); } 100% { transform: translateY(20px) rotate(-3deg); } }
+            @keyframes floatPill3 { 0% { transform: translateY(0) rotate(-2deg); } 100% { transform: translateY(-15px) rotate(5deg); } }
+            
+                        /* Responsive Overrides for new layout */
+            @media (max-width: 900px) {
+                /* Hide things that truly don't fit */
+                .hero-badge { display: none !important; }
+                .vertical-text { display: none !important; }
+                .pill-3 { display: none !important; }
+                
+                /* Keep the pills, but scale them down and arrange them better */
+                .glass-pill { 
+                    font-size: 0.55rem !important; 
+                    padding: 8px 16px !important; 
+                }
+                .pill-1 { top: 12% !important; left: 5% !important; }
+                .pill-2 { top: 18% !important; right: 5% !important; }
+                
+                /* Fix typography scaling */
+                .hero-main-title { transform: translateY(-5vh) !important; }
+                .hero-main-title h1 span { font-size: 16vw !important; }
+                .hero-main-title h1 span:last-child { margin-top: -2vw !important; }
+                .hero-main-title > div:first-child { font-size: 0.6rem !important; margin-bottom: 2vh !important; }
+                .hero-main-title > div:last-child { font-size: 0.65rem !important; margin-top: 2vh !important; }
+                
+                /* Keep the description, but center it at the bottom */
+                .hero-desc { 
+                    display: block !important;
+                    position: absolute !important; 
+                    bottom: 18vh !important; 
+                    left: 5vw !important; 
+                    right: 5vw !important; 
+                    max-width: 100% !important; 
+                    text-align: center !important; 
+                    border-left: none !important; 
+                    border-top: 1px solid rgba(140, 45, 246, 0.5) !important; 
+                    padding-left: 0 !important; 
+                    padding-top: 15px !important; 
+                }
+                .hero-desc p { font-size: 0.75rem !important; }
+                
+                /* Center the scroll button */
+                .hero-scroll-btn { 
+                    width: 70px !important; 
+                    height: 70px !important; 
+                    bottom: 4vh !important; 
+                    right: 50% !important; 
+                    transform: translateX(50%) !important; 
+                    font-size: 0.55rem !important;
+                    backdrop-filter: none !important;
+                    -webkit-backdrop-filter: none !important;
+                    background: rgba(14, 8, 20, 0.8) !important;
+                }
+            }
+/* The image track styles */
+            .marquee {
+                display: flex;
+                gap: 2vw;
+                width: max-content;
+            }
+            .marquee-content {
+                display: flex;
+                gap: 2vw;
+            }
+            .marquee-content img {
+                width: 25vw;
+                height: 38vh;
+                object-fit: cover;
+                border-radius: 4px;
+                /* filters removed, always in color */
+            }
+            
+            
+
+            .marquee-left {
+                animation: scrollL 35s linear infinite;
+            }
+            .marquee-right {
+                animation: scrollR 40s linear infinite;
+            }
+
+            @keyframes scrollL {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-50% - 1vw)); }
+            }
+            @keyframes scrollR {
+                0% { transform: translateX(calc(-50% - 1vw)); }
+                100% { transform: translateX(0); }
+            }
+
+            /* Scroll Button Hover */
+            .hero-scroll-btn:hover {
+                transform: scale(1.05);
+                background: #8C2DF6 !important;
+                border-color: #8C2DF6 !important;
+                box-shadow: 0 10px 30px rgba(140, 45, 246, 0.5);
+            }
+
+            /* Mobile Responsiveness */
+            @media (max-width: 768px) {
+                /* Fix Massive Typography */
+                
+                
+                
+                /* Fix Scroll Button */
+                .hero-scroll-btn { width: 80px !important; height: 80px !important; font-size: 0.6rem !important; bottom: 2vh !important; right: 5vw !important; }
+                
+                /* Stack the Editorial Header perfectly */
+                
+                
+
+                /* Stack the Services Grid */
+                .bringer-grid-2cols {
+                    display: grid !important;
+                    grid-template-columns: 1fr !important;
+                    gap: 20px !important;
+                }
+                
+                /* Adjust CV Editor Code */
+                .editor-window pre {
+                    font-size: 11px !important;
+                    padding: 10px !important;
+                }
+            }
+                
+                .marquee-content img { width: 45vw; height: 25vh; }
+                .diagonal-gallery { width: 250vw; height: 150vh; left: -50%; }
+                .hero-scroll-btn { width: 80px; height: 80px; font-size: 0.6rem; bottom: 2vh; right: 5vw; }
+            }
+        </style>
+    </section>
+
+            <!-- Premium Curtain Transition Wrapper -->
+            <div class="page-content-wrapper" style="position: relative; z-index: 10; background: #06020A; margin-left: calc(50% - 50vw); width: 100vw; padding-top: 12vh; padding-bottom: 8vh; border-top-left-radius: 60px; border-top-right-radius: 60px; box-shadow: 0 -40px 100px rgba(140, 45, 246, 0.15), 0 -10px 40px rgba(0,0,0,0.9); border-top: 1px solid rgba(140, 45, 246, 0.3); transform: translate3d(0,0,0); will-change: transform;">
+                
+                <!-- Animated Connection Line -->
+                <div style="position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 2px; height: 180px; z-index: 11;">
+                    <div style="width: 100%; height: 100%; background: linear-gradient(to bottom, transparent, #8C2DF6, transparent); animation: dropLine 2.5s infinite ease-in-out;"></div>
+                </div>
+                <style>
+                    @keyframes dropLine {
+                        0% { transform: translateY(-100%) scaleY(0); opacity: 0; }
+                        50% { transform: translateY(0) scaleY(1); opacity: 1; }
+                        100% { transform: translateY(100%) scaleY(0); opacity: 0; }
+                    }
+                </style>
+
+                <div class="stg-container">
+
+            <!-- Section: Selected Works temporarily removed per user request -->
+
+            <!-- Section: Services -->
+            <section id="about" style="margin-top: 5vh; position: relative;">
+                <!-- Section Title -->
+                <div class="stg-row bringer-section-title">
+                    <div class="stg-col-8">
+                        <h2  style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 24px;">
+                            Capabilities <span style="font-style: italic; color: var(--bringer-s-text);">&amp;</span> Services
+                        </h2>
+                        <p class="bringer-large-text"   style="color: rgba(255,255,255,0.7); font-weight: 400; text-wrap: balance; line-height: 1.6;">Strategic disciplines to elevate your digital presence.</p>
+                    </div>
+                </div>
+                <div class="bringer-grid-2cols bringer-tp-grid-1col"  
+                     >
+                    
+                    <!-- Service Web Development -->
+                    <div class="bringer-masked-block">
+                        <div class="bringer-block stg-vertical-space-between bringer-masked-media premium-card" data-bg-src="img/home/services_web.jpg" style="position: relative; border: 1px solid rgba(140,45,246,0.15); border-radius: 24px; overflow: hidden; aspect-ratio: 4/5; box-shadow: inset 0 0 50px rgba(140,45,246,0.05);">
+                            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(6,2,10,0.95) 0%, rgba(6,2,10,0.2) 100%); z-index: 0;"></div>
+                            <h5 style="position: relative; z-index: 1; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: -0.03em; font-size: 1.5rem; margin-bottom: 12px;">Service Web Development<span class="bringer-accent">.</span></h5>
+                            <p style="position: relative; z-index: 1; color: rgba(255,255,255,0.6); text-wrap: balance; font-size: 0.95rem; line-height: 1.6;">Modern, responsive websites built with the latest technologies for optimal performance.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service Designs -->
+                    <div class="bringer-masked-block">
+                        <div class="bringer-block stg-vertical-space-between bringer-masked-media premium-card" data-bg-src="img/home/services_branding.jpg" style="position: relative; border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; overflow: hidden; aspect-ratio: 1/1; transform: translateY(10%); box-shadow: inset 0 0 40px rgba(255,255,255,0.02);">
+                            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(6,2,10,0.95) 0%, rgba(6,2,10,0.2) 100%); z-index: 0;"></div>
+                            <h5 style="position: relative; z-index: 1; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: -0.03em; font-size: 1.5rem; margin-bottom: 12px;">Service Designs<span class="bringer-accent">.</span></h5>
+                            <p style="position: relative; z-index: 1; color: rgba(255,255,255,0.6); text-wrap: balance; font-size: 0.95rem; line-height: 1.6;">Creative branding, UI/UX design, and visual identity systems that make your business stand out.</p>
+                        </div>
+                    </div></div>
+            </section>
+
+            <!-- Section: CV Preview -->
+            <section id="cv-preview" class="cv-preview-section" style="margin-top: 20vh; margin-bottom: 15vh;">
+                <div class="stg-row bringer-section-title">
+                    <div class="stg-col-8">
+                        <div class="align-left">
+                            <h2  style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 24px;">
+                                Curriculum <span style="font-style: italic; color: var(--bringer-s-text);">Vitae</span>
+                            </h2>
+                            <!-- Gradient arrow -->
+                            <div   style="margin-top: 16px;">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    style="animation: cvArrowBounce 2s ease-in-out infinite;">
+                                    <defs>
+                                        <linearGradient id="cvArrowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#8C2DF6" />
+                                            <stop offset="100%" style="stop-color:#8C2DF6" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M7 10l5 5 5-5" stroke="url(#cvArrowGrad)" stroke-width="3"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <style>
+                                @keyframes cvArrowBounce {
+
+                                    0%,
+                                    100% {
+                                        transform: translateY(0);
+                                    }
+
+                                    50% {
+                                        transform: translateY(6px);
+                                    }
+                                }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+                <div class="cv-preview-container">
+                    <div class="code-editor">
+                        <div class="editor-header">
+                            <div class="window-buttons">
+                                <div class="window-btn btn-close"></div>
+                                <div class="window-btn btn-minimize"></div>
+                                <div class="window-btn btn-maximize"></div>
+                            </div>
+                            <div class="file-tabs"
+                                style="flex: 1; display: flex; align-items: center; justify-content: space-between;">
+                                <div class="file-tab">
+                                    <span class="file-tab-icon">JS</span>
+                                    mulham_ibrahim_cv.js
+                                </div>
+                            </div>
+                        </div>
+                        <div class="editor-body" id="codeView" style="display: flex;">
+                            <div class="line-numbers" id="lineNumbers"></div>
+                            <div class="code-content" id="codeContent">
+                                <div class="loading">Loading CV...</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+
+                        </div><!-- .inner-stg-container -->
+            </div><!-- .page-content-wrapper -->
+        </div><!-- .outer-stg-container -->
+
+                <!-- Premium 10/10 Footer -->
+        <footer id="bringer-footer" style="background: #06020A; padding-top: 15vh; position: relative; overflow: hidden; border-top: 1px solid rgba(140,45,246,0.1); margin-left: calc(50% - 50vw); width: 100vw;">
+            <div class="stg-container" style="position: relative; z-index: 2; display: flex; flex-direction: column; min-height: 50vh; justify-content: space-between;">
+                
+                <!-- Top row: CTA -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 10vh;">
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.3em; color: #8C2DF6; text-transform: uppercase; margin-bottom: 3vh;">Got a vision?</p>
+                    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 6vh; max-width: 900px; color: #fff;">Let's build something <span style="font-style: italic; color: rgba(255,255,255,0.4);">extraordinary.</span></h2>
+                    
+                    <a href="/contact" class="glass-pill" style="display: inline-flex; align-items: center; gap: 15px; text-decoration: none; font-size: 0.85rem; padding: 20px 40px; background: rgba(140,45,246,0.1); border: 1px solid rgba(140,45,246,0.3); border-radius: 100px; color: #fff; font-family: 'Inter', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(140,45,246,0.15);">
+                        Start a Project
+                        <i class="ph-fill ph-arrow-right" style="font-size: 1.2rem; color: #8C2DF6;"></i>
+                    </a>
+                </div>
+                
+                <!-- Bottom Row: Socials & Info -->
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 4vh; padding-bottom: 4vh; flex-wrap: wrap; gap: 20px;">
+                    <div style="font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.4);">
+                        &copy; 2026 Mulham Ibrahim. All rights reserved.
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <ul class="bringer-socials-list" style="margin: 0; padding: 0; display: flex; gap: 20px; list-style: none;">
+                        <li><a href="https://www.pinterest.com/normal_person_as_trippy/" target="_blank" style="text-decoration: none;"><i class="ph-fill ph-pinterest-logo"></i></a></li>
+                        <li><a href="https://www.instagram.com/creative_mulham/" target="_blank" style="text-decoration: none;"><i class="ph-fill ph-instagram-logo"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/mulham-ibrahim-2021643ab" target="_blank" style="text-decoration: none;"><i class="ph-fill ph-linkedin-logo"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Massive Background Typography -->
+            <div style="text-align: center; overflow: hidden; line-height: 0.75; margin-bottom: -5vw; pointer-events: none; opacity: 0.02; user-select: none;">
+                <span style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 24vw; letter-spacing: -0.05em; color: #fff; white-space: nowrap;">MULHAM</span>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Right Click Protection Block -->
+    <div class="bringer-rcp-wrap">
+        <div class="bringer-rcp-overlay"></div>
+        <div class="bringer-rcp-container">
+            <h2>The context menu is not allowed on this page.</h2>
+        </div>
+    </div>
+
+    <!-- Dynamic Backlight -->
+    <div class="bringer-backlight"></div>
+
+    <!-- JS Scripts -->
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/libs.js" defer></script>
+    <script src="js/contact_form.js" defer></script>
+    <script src="js/st-core.js" defer></script>
+    <script src="js/classes.js" defer></script>
+    <script src="js/main.js" defer></script>
+
+    <!-- CV Preview Script -->
+    <script>
+        let markdownContent = '';
+        let jsCodeContent = '';
+
+        // Convert markdown to styled text with code colors
+        function convertMarkdownToJS(markdown) {
+            // Display the markdown text with code-like syntax highlighting
+            let styledText = '';
+            const lines = markdown.split('\n');
+
+            // Helper to escape HTML special characters
+            function escapeHtml(text) {
+                const map = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                };
+                return text.replace(/[&<>"']/g, m => map[m]);
+            }
+
+            // Helper to process inline markdown (bold, links)
+            function processInlineMarkdown(text) {
+                // First escape HTML
+                let result = escapeHtml(text);
+                // Then apply markdown formatting
+                result = result.replace(/\*\*([^*]+)\*\*/g, '<span class="string">$1</span>');
+                result = result.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<span class="string">$1</span> <span class="comment">// $2</span>');
+                return result;
+            }
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                const trimmed = line.trim();
+
+                // Empty lines
+                if (trimmed === '') {
+                    styledText += '\n';
+                    continue;
+                }
+
+                // Horizontal rules
+                if (trimmed === '---') {
+                    styledText += '<span class="comment">// ' + '?'.repeat(50) + '</span>\n';
+                    continue;
+                }
+
+                // Main title (#)
+                if (trimmed.startsWith('# ')) {
+                    const title = processInlineMarkdown(trimmed.substring(2));
+                    styledText += `<span class="class-name">${title}</span>\n`;
+                }
+                // Section headers (##)
+                else if (trimmed.startsWith('## ')) {
+                    const section = processInlineMarkdown(trimmed.substring(3));
+                    styledText += `\n<span class="keyword">##</span> <span class="function">${section}</span>\n`;
+                }
+                // Subsection headers (###)
+                else if (trimmed.startsWith('### ')) {
+                    const subsection = processInlineMarkdown(trimmed.substring(4));
+                    styledText += `\n<span class="keyword">###</span> <span class="variable">${subsection}</span>\n`;
+                }
+                // List items (-)
+                else if (trimmed.startsWith('- ')) {
+                    const content = processInlineMarkdown(trimmed.substring(2));
+                    styledText += `<span class="operator">-</span> ${content}\n`;
+                }
+                // Bold text line (standalone)
+                else if (trimmed.startsWith('**') && trimmed.endsWith('**')) {
+                    const content = escapeHtml(trimmed.replace(/\*\*/g, ''));
+                    styledText += `<span class="string">${content}</span>\n`;
+                }
+                // Website line
+                else if (trimmed.startsWith('Website:')) {
+                    const websiteMatch = trimmed.match(/Website:\s*\[([^\]]+)\]\(([^\)]+)\)/);
+                    if (websiteMatch) {
+                        styledText += `<span class="property">Website:</span> <span class="string">${escapeHtml(websiteMatch[1])}</span> <span class="comment">// ${websiteMatch[2]}</span>\n`;
+                    } else {
+                        styledText += `${processInlineMarkdown(trimmed)}\n`;
+                    }
+                }
+                // Regular text
+                else {
+                    const content = processInlineMarkdown(line);
+                    styledText += `${content}\n`;
+                }
+            }
+
+            return styledText;
+        }
+
+        // CV Content - Embedded directly
+        const cvMarkdownContent = `# MULHAM IBRAHIM
+Digital Marketing Strategist & Full-Stack Web Designer
+Damascus, Syria | mulhamlol790@gmail.com
+
+---
+
+## PROFESSIONAL SUMMARY
+
+Business Administration student with hands-on experience in digital marketing, AI-generated content creation, full-stack web design, and business operations. Specialized in scaling social media brands for dental clinics, medical centers, and commercial businesses through short-form content strategy, AI-assisted production workflows, and UI/UX optimization.
+
+---
+
+## EDUCATION
+
+**Bachelor of Business Administration**
+Higher Institute of Business Administration (HIBA) - 3rd Year
+Focus: Business Operations, Marketing Principles, Organizational Strategy
+
+---
+
+## CORE SKILLS & TECHNOLOGIES
+
+- **Marketing:** Short-Form Video Production, Social Media Strategy, AI Content Generation, Campaign Optimization, Product Positioning
+- **Development:** UI/UX Design, Full-Stack Web Design, Responsive Design, Database Management
+- **AI Tools:** Cursor, Claude Models, Google AI Studio, Codex, Anthropic Tools
+- **Design Software:** Adobe Illustrator, Adobe Photoshop, Affinity Suite, Canva
+- **Business Tools:** Microsoft Office Suite, Workflow Coordination, Operations Management
+
+---
+
+## PROFESSIONAL EXPERIENCE
+
+**Digital Marketing & Content Strategist | Freelance & Agency Projects**
+- Managed and scaled social media presence for dental clinics, medical centers, and consumer brands.
+- Produced high-engagement short-form video campaigns using AI tools for scripting, visual generation, and editing.
+- Optimized content performance through analytics and audience targeting strategies.
+
+**Head of Design (Marketing Department) | Cureox Medical Applications**
+- Led visual direction and execution for advertising and social media campaigns.
+- Designed high-converting creative assets tailored for medical and corporate audiences.
+- Maintained brand consistency across digital marketing materials.
+
+**Full-Stack Web Designer & Developer | Ghiath Bourhani Trading Co.**
+- Designed and developed full-stack web applications using AI-assisted development workflows.
+- Managed UI/UX systems and database structures for usability and performance.
+- Optimized responsive behavior across multiple devices.
+
+**Pre-Press Designer | Apparel Print Houses & Factories**
+- Prepared vector artwork and executed color separation for textile printing.
+- Collaborated with manufacturing teams to minimize print errors.
+- Supervised pre-production proofing for accurate final output.
+
+---
+
+## LANGUAGES
+
+- Arabic: Native
+- English: Full Professional Proficiency`;
+
+        // Load CV content
+        function loadCV() {
+            const codeContent = document.getElementById('codeContent');
+            const textContent = document.getElementById('textContent');
+            if (!codeContent) {
+                console.error('CV content element not found');
+                return;
+            }
+
+            try {
+                // Use embedded content
+                markdownContent = cvMarkdownContent;
+
+                // Convert markdown to styled text format (code view)
+                jsCodeContent = convertMarkdownToJS(markdownContent);
+                codeContent.innerHTML = jsCodeContent;
+
+                // Convert markdown to readable HTML (text view)
+                if (textContent) {
+                    textContent.innerHTML = convertMarkdownToHTML(markdownContent);
+                }
+
+                // Generate line numbers
+                updateLineNumbers();
+
+                // Enable run button
+                const runBtn = document.getElementById('runBtn');
+                if (runBtn) {
+                    runBtn.disabled = false;
+                }
+
+                console.log('CV loaded successfully');
+            } catch (error) {
+                console.error('Error loading CV:', error);
+                codeContent.innerHTML =
+                    '<span class="comment">// Error processing CV content</span>\n' +
+                    `<span class="comment">// ${error.message}</span>`;
+            }
+        }
+
+        // Convert markdown to readable HTML for text view
+        function convertMarkdownToHTML(markdown) {
+            let html = '';
+            const lines = markdown.split('\n');
+            let inList = false;
+
+            function escapeHtml(text) {
+                const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+                return text.replace(/[&<>"']/g, m => map[m]);
+            }
+
+            function processInline(text) {
+                let result = escapeHtml(text);
+                // Bold
+                result = result.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+                // Links
+                result = result.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2" target="_blank" style="color: rgba(127, 90, 240, 0.9); text-decoration: none;">$1</a>');
+                return result;
+            }
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                const trimmed = line.trim();
+
+                // Close list if not a list item
+                if (inList && !trimmed.startsWith('- ')) {
+                    html += '</ul>';
+                    inList = false;
+                }
+
+                if (trimmed === '') {
+                    continue;
+                }
+
+                if (trimmed === '---') {
+                    html += '<hr>';
+                    continue;
+                }
+
+                if (trimmed.startsWith('# ')) {
+                    html += `<h1>${processInline(trimmed.substring(2))}</h1>`;
+                } else if (trimmed.startsWith('## ')) {
+                    html += `<h2>${processInline(trimmed.substring(3))}</h2>`;
+                } else if (trimmed.startsWith('### ')) {
+                    html += `<h3>${processInline(trimmed.substring(4))}</h3>`;
+                } else if (trimmed.startsWith('- ')) {
+                    if (!inList) {
+                        html += '<ul>';
+                        inList = true;
+                    }
+                    html += `<li>${processInline(trimmed.substring(2))}</li>`;
+                } else {
+                    html += `<p>${processInline(trimmed)}</p>`;
+                }
+            }
+
+            if (inList) html += '</ul>';
+            return html;
+        }
+
+        // Switch between Code and Text views
+        function switchCVView(view) {
+            const codeView = document.getElementById('codeView');
+            const textView = document.getElementById('textView');
+            const btnCode = document.getElementById('btnCodeView');
+            const btnText = document.getElementById('btnTextView');
+
+            if (view === 'code') {
+                codeView.style.display = '';
+                textView.style.display = 'none';
+                btnCode.classList.add('active');
+                btnText.classList.remove('active');
+            } else {
+                codeView.style.display = 'none';
+                textView.style.display = '';
+                btnCode.classList.remove('active');
+                btnText.classList.add('active');
+            }
+        }
+
+        // Update line numbers
+        function updateLineNumbers() {
+            const codeContent = document.getElementById('codeContent');
+            const lineNumbers = document.getElementById('lineNumbers');
+
+            if (!codeContent || !lineNumbers) return;
+
+            lineNumbers.innerHTML = '';
+
+            // Count all lines
+            const text = codeContent.innerText || codeContent.textContent;
+            const lines = text.split('\n');
+
+            // Generate line numbers for all lines
+            for (let i = 1; i <= lines.length; i++) {
+                const lineNum = document.createElement('div');
+                lineNum.className = 'line-number';
+                lineNum.textContent = i;
+                lineNumbers.appendChild(lineNum);
+            }
+        }
+
+        // Convert markdown to formatted text for PDF
+        function formatMarkdownForPDF(markdown) {
+            const lines = markdown.split('\n');
+            const formatted = [];
+
+            for (let line of lines) {
+                const trimmed = line.trim();
+
+                if (trimmed === '---' || trimmed === '') {
+                    formatted.push('');
+                    continue;
+                }
+
+                if (trimmed.startsWith('# ')) {
+                    // Main title
+                    formatted.push(trimmed.substring(2).replace(/\*\*/g, ''));
+                    formatted.push('');
+                } else if (trimmed.startsWith('## ')) {
+                    // Section header
+                    formatted.push('');
+                    formatted.push(trimmed.substring(3).replace(/\*\*/g, ''));
+                    formatted.push('');
+                } else if (trimmed.startsWith('### ')) {
+                    // Subsection
+                    formatted.push(trimmed.substring(4).replace(/\*\*/g, ''));
+                } else if (trimmed.startsWith('- ')) {
+                    // List item
+                    let content = trimmed.substring(2);
+                    content = content.replace(/\*\*/g, '');
+                    content = content.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
+                    formatted.push('  • ' + content);
+                } else if (trimmed) {
+                    // Regular text
+                    let content = trimmed;
+                    content = content.replace(/\*\*/g, '');
+                    content = content.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
+                    formatted.push(content);
+                }
+            }
+
+            return formatted.join('\n');
+        }
+
+        // Download CV as PDF
+        async function downloadCVAsPDF() {
+            if (!markdownContent) {
+                alert('CV content not loaded yet. Please wait...');
+                return;
+            }
+
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                // Set font
+                doc.setFont('helvetica');
+                doc.setFontSize(11);
+
+                // Format markdown for PDF
+                const formattedText = formatMarkdownForPDF(markdownContent);
+
+                // Split text into lines that fit the page
+                const maxWidth = 180; // mm
+                const lines = doc.splitTextToSize(formattedText, maxWidth);
+
+                let y = 20;
+                const lineHeight = 6;
+                const pageHeight = 280;
+                const margin = 15;
+
+                // Process each line
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i];
+
+                    // Check if we need a new page
+                    if (y > pageHeight - 10) {
+                        doc.addPage();
+                        y = 20;
+                    }
+
+                    // Check if this is a header (starts with uppercase and no bullet)
+                    if (line.trim() && !line.trim().startsWith('•') &&
+                        line === line.toUpperCase() && line.length < 50) {
+                        doc.setFontSize(14);
+                        doc.setFont('helvetica', 'bold');
+                        y += 3;
+                    } else if (line.trim().startsWith('•')) {
+                        doc.setFontSize(10);
+                        doc.setFont('helvetica', 'normal');
+                    } else {
+                        doc.setFontSize(11);
+                        doc.setFont('helvetica', 'normal');
+                    }
+
+                    doc.text(line, margin, y);
+                    y += lineHeight;
+                }
+
+                // Save PDF
+                doc.save('Mulham_CV.pdf');
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+            }
+        }
+
+        // Load CV when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if CV section exists
+            const cvSection = document.getElementById('about');
+            const codeContent = document.getElementById('codeContent');
+
+            if (cvSection && codeContent) {
+                // Load CV immediately with small delay to ensure DOM is ready
+                setTimeout(() => {
+                    loadCV();
+                }, 100);
+
+                // Also load when section comes into view (lazy load as backup)
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !markdownContent) {
+                            loadCV();
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                observer.observe(cvSection);
+            } else {
+                console.error('CV section or content element not found');
+            }
+        });
+
+        // Also try to load on window load as backup
+        window.addEventListener('load', function () {
+            const codeContent = document.getElementById('codeContent');
+            if (codeContent && !markdownContent) {
+                setTimeout(() => {
+                    loadCV();
+                }, 200);
+            }
+        });
+    </script>
+
+    
+    <!-- Advanced Scroll Animations Injection -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Create a Premium Scroll Progress Bar
+            const progressBar = document.createElement('div');
+            progressBar.style.position = 'fixed';
+            progressBar.style.top = '0';
+            progressBar.style.left = '0';
+            progressBar.style.height = '4px';
+            progressBar.style.width = '0%';
+            progressBar.style.background = 'linear-gradient(90deg, #8C2DF6, #e0c8ff)';
+            progressBar.style.zIndex = '999999';
+            progressBar.style.boxShadow = '0 0 15px rgba(140, 45, 246, 0.8)';
+            progressBar.style.transition = 'width 0.1s ease-out';
+            document.body.appendChild(progressBar);
+
+            // 2. Select elements for continuous parallax & scroll animations
+            const parallaxBlocks = document.querySelectorAll('.bringer-masked-media, .bringer-parallax-media');
+            const skewBlocks = document.querySelectorAll('h2, .bringer-block');
+            
+            let lastScrollY = window.scrollY;
+            let ticking = false;
+            let scrollTimeout;
+
+            const updateScroll = function() {
+                const currentScrollY = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                
+                // Update Progress Bar
+                if (docHeight > 0) {
+                    const scrollPercent = (currentScrollY / docHeight) * 100;
+                    progressBar.style.width = scrollPercent + '%';
+                }
+
+                // Apply Parallax to background images
+                parallaxBlocks.forEach(function(block) {
+                    const rect = block.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        const offset = (rect.top - window.innerHeight / 2) * 0.15;
+                        if (block.hasAttribute('data-bg-src')) {
+                            block.style.backgroundPositionY = "calc(50% + " + offset + "px)";
+                        }
+                    }
+                });
+
+                ticking = false;
+                
+                };
+
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateScroll);
+                    ticking = true;
+                }
+            });
+            
+            updateScroll();
+        });
+    </script>
+
+    <!-- Two-Way Scroll Reveal Engine -->
+    <style>
+        .two-way-reveal {
+            opacity: 0 !important;
+            transform: translateY(50px) scale(0.98) !important;
+            transition: opacity 0.7s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+            will-change: opacity, transform;
+        }
+        .two-way-reveal.is-visible {
+            opacity: 1 !important;
+            transform: translateY(0) scale(1) !important;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select elements we want to animate (everything outside the hero)
+            const targets = document.querySelectorAll('section:not(#awwwards-hero) h2, section:not(#awwwards-hero) h5, section:not(#awwwards-hero) p, .bringer-block, .bringer-timeline-item, .cv-preview-section');
+            
+            // Add the base class
+            targets.forEach(el => el.classList.add('two-way-reveal'));
+
+            // Setup Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // The magic line that makes it animate when scrolling UP too
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, { 
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            targets.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+
+
+
+
+</html>
+
+
+
+

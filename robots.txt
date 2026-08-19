@@ -1,0 +1,11 @@
+# robots.txt for mulham.design
+User-agent: *
+Allow: /
+
+# Block utility files
+Disallow: /Mulham_CV.pdf
+Disallow: /mulham_ibrahim_cv.md
+Disallow: /cv-preview.html
+
+# Sitemap location
+Sitemap: https://mulham.design/sitemap.xml

@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mulham Ibrahim - CV Preview</title>
+    <!-- jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(18, 18, 18, 0.95) !important;
+            backdrop-filter: blur(20px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            border-radius: 16px !important;
+            padding: 10px 24px !important;
+            position: fixed !important;
+            top: 12px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 112 !important;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 500px !important;
+            min-width: auto !important;
+        }
+
+        /* Logo - Outside navbar, on the left, larger */
+        .navbar-brand {
+            position: fixed !important;
+            left: 40px !important;
+            top: 20px !important;
+            z-index: 113 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .navbar-logo {
+            width: 48px !important;
+            height: 48px !important;
+            font-size: 20px !important;
+        }
+
+        .navbar-title {
+            font-size: 18px !important;
+        }
+
+        .navbar-subtitle {
+            font-size: 13px !important;
+        }
+
+        .navbar-actions {
+            gap: 4px !important;
+        }
+
+        .nav-link {
+            padding: 6px 14px !important;
+            font-size: 13px !important;
+            border-radius: 6px;
+            transition: all 0.2s ease !important;
+        }
+
+        .nav-link:hover {
+            background: rgba(127, 90, 240, 0.12) !important;
+        }
+
+        .nav-btn {
+            padding: 8px 16px !important;
+            font-size: 13px !important;
+            border-radius: 8px;
+        }
+
+        /* Hide logo from navbar brand when it's outside */
+        .navbar .navbar-brand {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                left: 16px !important;
+                top: 12px !important;
+            }
+
+            .navbar-logo {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 16px !important;
+            }
+
+            .navbar-title {
+                font-size: 15px !important;
+            }
+
+            .navbar-subtitle {
+                font-size: 11px !important;
+            }
+
+            .navbar {
+                padding: 8px 16px !important;
+                max-width: fit-content !important;
+                border-radius: 12px !important;
+                left: auto !important;
+                right: 16px !important;
+                transform: none !important;
+                top: 12px !important;
+            }
+
+            .nav-link {
+                padding: 5px 10px !important;
+                font-size: 12px !important;
+            }
+
+            .nav-btn {
+                padding: 6px 12px !important;
+                font-size: 12px !important;
+            }
+
+            .main-content {
+                padding-top: 80px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-brand {
+                left: 16px !important;
+                top: 12px !important;
+            }
+
+            .navbar-logo {
+                width: 32px !important;
+                height: 32px !important;
+                font-size: 14px !important;
+            }
+
+            .navbar {
+                padding: 6px 12px !important;
+                max-width: calc(100% - 60px) !important;
+                border-radius: 10px !important;
+            }
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .navbar-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #8C2DF6 0%, #8C2DF6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .navbar-title {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .navbar-subtitle {
+            color: #8b949e;
+            font-size: 12px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .navbar-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: #c9d1d9;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #8C2DF6 0%, #8C2DF6 100%);
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(127, 90, 240, 0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 24px;
+            padding-bottom: 100px;
+        }
+
+        .code-editor {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            overflow: hidden;
+            box-shadow: 0 16px 70px rgba(0, 0, 0, 0.5);
+        }
+
+        .editor-header {
+            background: #21262d;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .window-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .window-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .btn-close {
+            background: #f85149;
+        }
+
+        .btn-minimize {
+            background: #f0883e;
+        }
+
+        .btn-maximize {
+            background: #3fb950;
+        }
+
+        .file-tabs {
+            display: flex;
+            gap: 4px;
+            margin-left: 16px;
+        }
+
+        .file-tab {
+            background: #161b22;
+            padding: 6px 16px;
+            border-radius: 6px 6px 0 0;
+            color: #c9d1d9;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #30363d;
+            border-bottom: none;
+        }
+
+        .file-tab-icon {
+            color: #f0883e;
+        }
+
+        .editor-body {
+            display: flex;
+            max-height: calc(100vh - 180px);
+            overflow: auto;
+        }
+
+        .line-numbers {
+            background: #161b22;
+            padding: 20px 0;
+            text-align: right;
+            color: #484f58;
+            font-size: 14px;
+            line-height: 1.6;
+            user-select: none;
+            min-width: 50px;
+            border-right: 1px solid #21262d;
+            position: sticky;
+            left: 0;
+        }
+
+        .line-number {
+            padding: 0 12px;
+        }
+
+        .code-content {
+            flex: 1;
+            padding: 20px;
+            overflow-x: auto;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Syntax highlighting */
+        .keyword {
+            color: #ff7b72;
+        }
+
+        .string {
+            color: #a5d6ff;
+        }
+
+        .comment {
+            color: #8b949e;
+            font-style: italic;
+        }
+
+        .function {
+            color: #d2a8ff;
+        }
+
+        .variable {
+            color: #ffa657;
+        }
+
+        .property {
+            color: #79c0ff;
+        }
+
+        .number {
+            color: #79c0ff;
+        }
+
+        .operator {
+            color: #ff7b72;
+        }
+
+        .bracket {
+            color: #c9d1d9;
+        }
+
+        .class-name {
+            color: #7ee787;
+        }
+
+        .punctuation {
+            color: #c9d1d9;
+        }
+
+        /* Loading state */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #8b949e;
+        }
+
+        /* Run Button Section */
+        .run-section {
+            max-width: 1000px;
+            margin: 24px auto 0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .run-btn {
+            background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .run-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(46, 160, 67, 0.4);
+        }
+
+        .run-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .run-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #161b22;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #484f58;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 16px;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .navbar-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-link {
+                display: none;
+            }
+
+            .main-content {
+                padding: 12px;
+                padding-bottom: 100px;
+            }
+
+            .code-content {
+                font-size: 11px;
+                padding: 12px;
+            }
+
+            .line-numbers {
+                min-width: 35px;
+                font-size: 11px;
+            }
+
+            .file-tabs {
+                display: none;
+            }
+
+            .run-section {
+                flex-direction: column;
+            }
+
+            .run-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <!-- Logo - Outside navbar, on the left -->
+    <a href="/home" class="navbar-brand">
+        <div class="navbar-logo">MI</div>
+        <div>
+            <div class="navbar-title">Mulham Ibrahim</div>
+            <div class="navbar-subtitle">CV Preview</div>
+        </div>
+    </a>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-actions">
+            <a href="/home" class="nav-link">Home</a>
+            <a href="/portfolio" class="nav-link">Portfolio</a>
+            <a href="/contact" class="nav-link">Contact</a>
+            <a href="/contact" class="nav-btn">Get in Touch</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="code-editor">
+            <div class="editor-header">
+                <div class="window-buttons">
+                    <div class="window-btn btn-close"></div>
+                    <div class="window-btn btn-minimize"></div>
+                    <div class="window-btn btn-maximize"></div>
+                </div>
+                <div class="file-tabs">
+                    <div class="file-tab">
+                        <span class="file-tab-icon">JS</span>
+                        mulham_ibrahim_cv.js
+                    </div>
+                </div>
+            </div>
+            <div class="editor-body">
+                <div class="line-numbers" id="lineNumbers"></div>
+                <div class="code-content" id="codeContent">
+                    <div class="loading">Loading CV...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Run Button Section -->
+        <div class="run-section">
+            <button class="run-btn" id="runBtn" onclick="downloadCVAsPDF()" disabled>
+                <svg viewBox="0 0 16 16" fill="currentColor">
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+                Run
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let markdownContent = '';
+        let jsCodeContent = '';
+
+        // Convert markdown to JavaScript code format
+        function markdownToJavaScriptCode(markdown) {
+            const lines = markdown.split('\n');
+            let jsCode = '<span class="comment">// ========================================</span>\n';
+            jsCode += '<span class="comment">// MULHAM IBRAHIM - Curriculum Vitae</span>\n';
+            jsCode += '<span class="comment">// Digital Marketing Strategist | Front-End Developer | Founder</span>\n';
+            jsCode += '<span class="comment">// ========================================</span>\n\n';
+
+            jsCode += '<span class="keyword">const</span> <span class="variable">mulhamIbrahim</span> <span class="operator">=</span> <span class="bracket">{</span>\n\n';
+
+            let inSection = false;
+            let currentSection = '';
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+
+                if (line.startsWith('# ')) {
+                    // Main title
+                    const title = line.substring(2);
+                    jsCode += `    <span class="comment">// ${title}</span>\n`;
+                } else if (line.startsWith('## ')) {
+                    // Section header
+                    const section = line.substring(3);
+                    if (currentSection) {
+                        jsCode += `    <span class="bracket">}</span><span class="punctuation">,</span>\n\n`;
+                    }
+                    jsCode += `    <span class="property">${section.toLowerCase().replace(/\s+/g, '')}</span><span class="punctuation">:</span> <span class="bracket">{</span>\n`;
+                    currentSection = section.toLowerCase().replace(/\s+/g, '');
+                } else if (line.startsWith('### ')) {
+                    // Subsection
+                    const subsection = line.substring(4);
+                    jsCode += `        <span class="property">${subsection.toLowerCase().replace(/\s+/g, '')}</span><span class="punctuation">:</span> <span class="string">"${subsection}"</span><span class="punctuation">,</span>\n`;
+                } else if (line.startsWith('- **') || line.startsWith('- ')) {
+                    // List item
+                    let content = line.replace(/^-\s*\*\*/, '').replace(/\*\*:/, ':').replace(/\*\*/g, '');
+                    if (content.includes(':')) {
+                        const [key, value] = content.split(':').map(s => s.trim());
+                        jsCode += `        <span class="property">${key.toLowerCase().replace(/\s+/g, '')}</span><span class="punctuation">:</span> <span class="string">"${value}"</span><span class="punctuation">,</span>\n`;
+                    } else {
+                        content = content.replace(/^-\s*/, '');
+                        jsCode += `        <span class="string">"${content}"</span><span class="punctuation">,</span>\n`;
+                    }
+                } else if (line.startsWith('**') && line.includes('**')) {
+                    // Bold text
+                    const boldText = line.replace(/\*\*/g, '');
+                    jsCode += `        <span class="string">"${boldText}"</span><span class="punctuation">,</span>\n`;
+                } else if (line && !line.startsWith('---')) {
+                    // Regular text
+                    const cleanLine = line.replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
+                    if (cleanLine.trim()) {
+                        jsCode += `        <span class="string">"${cleanLine}"</span><span class="punctuation">,</span>\n`;
+                    }
+                }
+            }
+
+            if (currentSection) {
+                jsCode += `    <span class="bracket">}</span>\n`;
+            }
+
+            jsCode += '<span class="bracket">}</span><span class="punctuation">;</span>\n\n';
+            jsCode += '<span class="comment">// Export for potential use</span>\n';
+            jsCode += '<span class="keyword">export default</span> <span class="variable">mulhamIbrahim</span><span class="punctuation">;</span>';
+
+            return jsCode;
+        }
+
+        // Convert markdown to JavaScript code format
+        function convertMarkdownToJS(markdown) {
+            let jsCode = '<span class="comment">// ========================================</span>\n';
+            jsCode += '<span class="comment">// MULHAM IBRAHIM - Curriculum Vitae</span>\n';
+            jsCode += '<span class="comment">// Digital Marketing Strategist | Front-End Developer | Founder</span>\n';
+            jsCode += '<span class="comment">// ========================================</span>\n\n';
+
+            jsCode += '<span class="keyword">const</span> <span class="variable">mulhamIbrahim</span> <span class="operator">=</span> <span class="bracket">{</span>\n\n';
+
+            const lines = markdown.split('\n');
+            let inSection = false;
+            let currentSection = '';
+            let sectionContent = [];
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                const trimmed = line.trim();
+
+                // Skip horizontal rules
+                if (trimmed === '---' || trimmed === '') {
+                    continue;
+                }
+
+                // Main title
+                if (trimmed.startsWith('# ')) {
+                    const title = trimmed.substring(2);
+                    jsCode += `    <span class="comment">// ${title}</span>\n`;
+                }
+                // Section headers (##)
+                else if (trimmed.startsWith('## ')) {
+                    if (inSection && currentSection) {
+                        // Close previous section
+                        if (sectionContent.length > 0) {
+                            jsCode += `        <span class="property">items</span><span class="punctuation">:</span> <span class="bracket">[</span>\n`;
+                            sectionContent.forEach(item => {
+                                const escaped = item.replace(/"/g, '\\"');
+                                jsCode += `            <span class="string">"${escaped}"</span><span class="punctuation">,</span>\n`;
+                            });
+                            jsCode += `        <span class="bracket">]</span><span class="punctuation">,</span>\n`;
+                        }
+                        jsCode += `    <span class="bracket">}</span><span class="punctuation">,</span>\n\n`;
+                    }
+
+                    currentSection = trimmed.substring(3).trim();
+                    const propName = currentSection.toLowerCase().replace(/[^a-z0-9]/g, '');
+                    jsCode += `    <span class="property">${propName}</span><span class="punctuation">:</span> <span class="bracket">{</span>\n`;
+                    jsCode += `        <span class="property">title</span><span class="punctuation">:</span> <span class="string">"${currentSection}"</span><span class="punctuation">,</span>\n`;
+                    inSection = true;
+                    sectionContent = [];
+                }
+                // Subsection headers (###)
+                else if (trimmed.startsWith('### ')) {
+                    const subsection = trimmed.substring(4).replace(/\*\*/g, '').trim();
+                    jsCode += `        <span class="property">subsection</span><span class="punctuation">:</span> <span class="string">"${subsection.replace(/"/g, '\\"')}"</span><span class="punctuation">,</span>\n`;
+                }
+                // List items
+                else if (trimmed.startsWith('- ')) {
+                    let content = trimmed.substring(2);
+                    // Remove markdown formatting
+                    content = content.replace(/\*\*/g, '').replace(/\*/g, '');
+                    // Handle links
+                    content = content.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
+                    content = content.replace(/"/g, '\\"');
+                    sectionContent.push(content);
+                }
+                // Regular text (not empty)
+                else if (trimmed) {
+                    let content = trimmed;
+                    // Remove markdown formatting
+                    content = content.replace(/\*\*/g, '').replace(/\*/g, '');
+                    content = content.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
+                    content = content.replace(/"/g, '\\"');
+                    sectionContent.push(content);
+                }
+            }
+
+            // Close last section
+            if (inSection && currentSection) {
+                if (sectionContent.length > 0) {
+                    jsCode += `        <span class="property">items</span><span class="punctuation">:</span> <span class="bracket">[</span>\n`;
+                    sectionContent.forEach(item => {
+                        jsCode += `            <span class="string">"${item}"</span><span class="punctuation">,</span>\n`;
+                    });
+                    jsCode += `        <span class="bracket">]</span><span class="punctuation">,</span>\n`;
+                }
+                jsCode += `    <span class="bracket">}</span><span class="punctuation">,</span>\n\n`;
+            }
+
+            jsCode += '<span class="bracket">}</span><span class="punctuation">;</span>\n\n';
+            jsCode += '<span class="comment">// Export for potential use</span>\n';
+            jsCode += '<span class="keyword">export default</span> <span class="variable">mulhamIbrahim</span><span class="punctuation">;</span>';
+
+            return jsCode;
+        }
+
+        // Load markdown file and convert to JavaScript code
+        async function loadCV() {
+            try {
+                const response = await fetch('mulham_ibrahim_cv.md');
+                if (!response.ok) {
+                    throw new Error('Failed to load CV file');
+                }
+                markdownContent = await response.text();
+
+                // Convert markdown to JavaScript code format
+                jsCodeContent = convertMarkdownToJS(markdownContent);
+
+                // Display the code
+                const codeContent = document.getElementById('codeContent');
+                codeContent.innerHTML = jsCodeContent;
+
+                // Generate line numbers
+                updateLineNumbers();
+
+                // Enable run button
+                document.getElementById('runBtn').disabled = false;
+            } catch (error) {
+                console.error('Error loading CV:', error);
+                document.getElementById('codeContent').innerHTML =
+                    '<span class="comment">// Error loading CV file</span>\n' +
+                    `<span class="comment">// ${error.message}</span>`;
+            }
+        }
+
+        // Update line numbers
+        function updateLineNumbers() {
+            const codeContent = document.getElementById('codeContent');
+            const lineNumbers = document.getElementById('lineNumbers');
+            lineNumbers.innerHTML = '';
+
+            // Count lines (approximate)
+            const text = codeContent.innerText || codeContent.textContent;
+            const lines = text.split('\n');
+
+            for (let i = 1; i <= lines.length; i++) {
+                const lineNum = document.createElement('div');
+                lineNum.className = 'line-number';
+                lineNum.textContent = i;
+                lineNumbers.appendChild(lineNum);
+            }
+        }
+
+        // Convert markdown to formatted text for PDF
+        function formatMarkdownForPDF(markdown) {
+            const lines = markdown.split('\n');
+            const formatted = [];
+
+            for (let line of lines) {
+                const trimmed = line.trim();
+
+                if (trimmed === '---' || trimmed === '') {
+                    formatted.push('');
+                    continue;
+                }
+
+                if (trimmed.startsWith('# ')) {
+                    // Main title
+                    formatted.push(trimmed.substring(2).replace(/\*\*/g, ''));
+                    formatted.push('');
+                } else if (trimmed.startsWith('## ')) {
+                    // Section header
+                    formatted.push('');
+                    formatted.push(trimmed.substring(3).replace(/\*\*/g, ''));
+                    formatted.push('');
+                } else if (trimmed.startsWith('### ')) {
+                    // Subsection
+                    formatted.push(trimmed.substring(4).replace(/\*\*/g, ''));
+                } else if (trimmed.startsWith('- ')) {
+                    // List item
+                    let content = trimmed.substring(2);
+                    content = content.replace(/\*\*/g, '');
+                    content = content.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
+                    formatted.push('  • ' + content);
+                } else if (trimmed) {
+                    // Regular text
+                    let content = trimmed;
+                    content = content.replace(/\*\*/g, '');
+                    content = content.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
+                    formatted.push(content);
+                }
+            }
+
+            return formatted.join('\n');
+        }
+
+        // Download CV as PDF
+        async function downloadCVAsPDF() {
+            if (!markdownContent) {
+                alert('CV content not loaded yet. Please wait...');
+                return;
+            }
+
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                // Set font
+                doc.setFont('helvetica');
+                doc.setFontSize(11);
+
+                // Format markdown for PDF
+                const formattedText = formatMarkdownForPDF(markdownContent);
+
+                // Split text into lines that fit the page
+                const maxWidth = 180; // mm
+                const lines = doc.splitTextToSize(formattedText, maxWidth);
+
+                let y = 20;
+                const lineHeight = 6;
+                const pageHeight = 280;
+                const margin = 15;
+
+                // Process each line
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i];
+
+                    // Check if we need a new page
+                    if (y > pageHeight - 10) {
+                        doc.addPage();
+                        y = 20;
+                    }
+
+                    // Check if this is a header (starts with uppercase and no bullet)
+                    if (line.trim() && !line.trim().startsWith('•') &&
+                        line === line.toUpperCase() && line.length < 50) {
+                        doc.setFontSize(14);
+                        doc.setFont('helvetica', 'bold');
+                        y += 3;
+                    } else if (line.trim().startsWith('•')) {
+                        doc.setFontSize(10);
+                        doc.setFont('helvetica', 'normal');
+                    } else {
+                        doc.setFontSize(11);
+                        doc.setFont('helvetica', 'normal');
+                    }
+
+                    doc.text(line, margin, y);
+                    y += lineHeight;
+                }
+
+                // Save PDF
+                doc.save('Mulham_Ibrahim_CV.pdf');
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+            }
+        }
+
+        // Load CV when page loads
+        window.addEventListener('DOMContentLoaded', loadCV);
+    </script>
+</body>
+
+</html>
+

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Projects | Mulham Portfolio</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Web development projects by Mulham Ibrahim — responsive websites, corporate platforms, and digital solutions.">
+    <meta name="author" content="Mulham Ibrahim">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Web Projects | Mulham Ibrahim">
+    <meta property="og:description" content="Web development projects — responsive websites and digital solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mulham.design/web-projects.html">
+    <meta property="og:image" content="img/mulham_icon.png">
+    <meta property="og:site_name" content="Mulham Ibrahim">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Web Projects | Mulham Ibrahim">
+    <meta name="twitter:description" content="Web development projects — responsive websites and digital solutions.">
+    <meta name="twitter:image" content="img/mulham_icon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mulham.design/web-projects.html">
+    <meta name="theme-color" content="#000000">
+    <link rel="icon" href="img\favicon.png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bringer Framework CSS -->
+    <link type="text/css" rel="stylesheet" href="css\config.css">
+    <link type="text/css" rel="stylesheet" href="css\libs.css">
+    <link type="text/css" rel="stylesheet" href="css\style.css">
+    <link type="text/css" rel="stylesheet" href="css\responsive.css">
+    <!-- Accessibility -->
+    <link type="text/css" rel="stylesheet" href="css/a11y.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0d1117;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        /* Preloader */
+        #loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 99999;
+        }
+
+        #loader {
+            display: block;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            width: 60px;
+            height: 60px;
+            margin: -30px 0 0 -30px;
+            z-index: 100001;
+            transition: all 0.3s ease-out;
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #8C2DF6;
+            border-right-color: #8C2DF6;
+            animation: loaderSpin 0.8s linear infinite;
+        }
+
+        @keyframes loaderSpin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #loader-wrapper .loader-section {
+            position: fixed;
+            top: 0;
+            width: 51%;
+            height: 100%;
+            z-index: 100000;
+        }
+
+        #loader-wrapper .loader-section.section-left {
+            left: 0;
+            background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+        }
+
+        #loader-wrapper .loader-section.section-right {
+            right: 0;
+            background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+        }
+
+        .loaded #loader {
+            opacity: 0;
+            transition: all 0.3s ease-out;
+        }
+
+        .loaded #loader-wrapper .loader-section.section-left {
+            transform: translateX(-100%);
+            transition: all 0.5s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .loaded #loader-wrapper .loader-section.section-right {
+            transform: translateX(100%);
+            transition: all 0.5s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .loaded #loader-wrapper {
+            visibility: hidden;
+            transition: all 0.3s 0.8s ease-out;
+            transform: translateY(-100%);
+        }
+
+        /* Header/Navbar Overrides (same as index.html and contacts.html) */
+        .bringer-header-lp {
+            position: fixed !important;
+            left: 40px !important;
+            top: 20px !important;
+            z-index: 112 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        #bringer-header.is-sticky~.bringer-header-lp,
+        body:has(#bringer-header.is-sticky) .bringer-header-lp {
+            top: 15px !important;
+        }
+
+        .bringer-logo {
+            display: block !important;
+        }
+
+        .bringer-logo img {
+            height: 64px !important;
+            width: auto !important;
+            transition: transform 0.3s ease !important;
+        }
+
+        .bringer-logo:hover img {
+            transform: scale(1.1) !important;
+        }
+
+        #bringer-header {
+            background: rgba(18, 18, 18, 0.95) !important;
+            backdrop-filter: blur(20px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            padding: 0 40px !important;
+            border-radius: 16px !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            max-width: 720px !important;
+            min-width: auto !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+        }
+
+        #bringer-header.is-sticky {
+            top: 12px !important;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        .bringer-header-inner {
+            padding: 16px 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100% !important;
+        }
+
+        .bringer-header-inner .bringer-header-lp {
+            display: none !important;
+        }
+
+        .bringer-header-mp {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+        }
+
+        nav.bringer-nav {
+            width: 100% !important;
+        }
+
+        nav.bringer-nav ul.main-menu {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        ul.main-menu li {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        ul.main-menu li a {
+            position: relative;
+            padding: 10px 22px !important;
+            border-radius: 8px;
+            transition: all 0.2s ease !important;
+            font-weight: 400 !important;
+            font-size: 16px !important;
+            color: rgba(224, 224, 224, 0.8) !important;
+            white-space: nowrap !important;
+        }
+
+        ul.main-menu li a:hover {
+            background: rgba(127, 90, 240, 0.12) !important;
+            color: var(--bringer-s-heading) !important;
+        }
+
+        ul.main-menu li.current-menu-item>a {
+            background: rgba(127, 90, 240, 0.18) !important;
+            color: var(--bringer-s-heading) !important;
+            font-weight: 500 !important;
+        }
+
+        .bringer-active-menu-ind {
+            display: none !important;
+        }
+
+        .bringer-active-menu-ind::before {
+            display: none !important;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 120px 32px 48px;
+        }
+
+        /* Page Title */
+        .page-title {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 48px;
+            gap: 24px;
+        }
+
+        .page-title h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .page-title p {
+            color: rgba(224, 224, 224, 0.6);
+            font-size: 15px;
+            max-width: 360px;
+            line-height: 1.6;
+            text-align: right;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        /* Project Card */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            background: rgba(22, 27, 34, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .project-card:hover {
+            border-color: rgba(127, 90, 240, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(127, 90, 240, 0.12), 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Card Image */
+        .project-card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover .project-card-image img {
+            transform: scale(1.05);
+        }
+
+        /* Card Image Placeholder */
+        .project-card-image-placeholder {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, rgba(22, 27, 34, 1), rgba(30, 37, 46, 0.8));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        /* Card Body */
+        .project-card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .project-card-body h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .project-card-body p {
+            font-size: 14px;
+            line-height: 1.65;
+            color: rgba(224, 224, 224, 0.55);
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
+        /* Tag Row */
+        .tag-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(127, 90, 240, 0.15);
+            color: rgba(127, 90, 240, 0.9);
+            border: 1px solid rgba(127, 90, 240, 0.2);
+        }
+
+        /* Visit Link */
+        .visit-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(127, 90, 240, 0.85);
+            transition: all 0.25s ease;
+            margin-top: auto;
+        }
+
+        .project-card:hover .visit-link {
+            color: #8C2DF6;
+        }
+
+        .visit-link svg {
+            transition: transform 0.25s ease;
+        }
+
+        .project-card:hover .visit-link svg {
+            transform: translate(2px, -2px);
+        }
+
+        /* Back Section */
+        .back-section {
+            display: flex;
+            justify-content: center;
+            padding: 56px 0;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(224, 224, 224, 0.7);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(127, 90, 240, 0.12);
+            border-color: rgba(127, 90, 240, 0.3);
+            color: #ffffff;
+        }
+
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            padding: 24px;
+            color: rgba(224, 224, 224, 0.3);
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            .bringer-header-inner {
+                display: none !important;
+            }
+
+            .bringer-mobile-header-inner {
+                display: flex !important;
+            }
+
+            .bringer-header-lp {
+                display: none !important;
+            }
+
+            .bringer-header-lp {
+                left: 20px !important;
+                top: 15px !important;
+            }
+
+            .bringer-logo img {
+                height: 36px !important;
+            }
+
+            #bringer-header {
+                padding: 0 16px !important;
+                max-width: calc(100% - 80px) !important;
+                border-radius: 12px !important;
+            }
+
+            .bringer-header-inner {
+                padding: 8px 0 !important;
+            }
+
+            nav.bringer-nav ul.main-menu {
+                gap: 2px !important;
+            }
+
+            ul.main-menu li a {
+                padding: 5px 10px !important;
+                font-size: 12px !important;
+            }
+
+            body,
+            html {
+                overflow-x: hidden !important;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .page-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                margin-bottom: 36px;
+            }
+
+            .page-title h1 {
+                font-size: 26px;
+            }
+
+            .page-title p {
+                text-align: left;
+                font-size: 14px;
+                max-width: 100%;
+            }
+
+            .main-content {
+                padding: 100px 16px 32px;
+            }
+
+            .project-card-image,
+            .project-card-image-placeholder {
+                height: 160px;
+            }
+
+            .project-card-body {
+                padding: 20px;
+            }
+
+            .project-card-body h3 {
+                font-size: 18px;
+            }
+
+            .project-card-body p {
+                font-size: 13px;
+            }
+
+            .back-section {
+                padding: 40px 0;
+            }
+
+            .back-btn {
+                padding: 12px 24px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bringer-header-lp {
+                left: 16px !important;
+                top: 12px !important;
+            }
+
+            .bringer-logo img {
+                height: 32px !important;
+            }
+
+            #bringer-header {
+                padding: 0 12px !important;
+                max-width: calc(100% - 60px) !important;
+                border-radius: 10px !important;
+            }
+
+            .bringer-header-inner {
+                padding: 6px 0 !important;
+            }
+
+            .page-title h1 {
+                font-size: 22px;
+            }
+
+            .main-content {
+                padding: 90px 12px 24px;
+            }
+
+            .tag-row {
+                gap: 6px;
+            }
+
+            .tag {
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+        }
+    </style>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="loader-wrapper">
+        <div id="loader">
+            <div class="loader-spinner"></div>
+        </div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <script>
+        function hidePreloader() { if (!document.body.classList.contains('loaded')) document.body.classList.add('loaded'); }
+        document.addEventListener('DOMContentLoaded', function () { setTimeout(hidePreloader, 400); });
+        window.addEventListener('load', hidePreloader);
+        setTimeout(hidePreloader, 2000);
+    </script>
+
+    <!-- Logo - Outside navbar, on the left -->
+    <div class="bringer-header-lp">
+        <a href="/home" class="bringer-logo" style="text-decoration: none;"><span style="font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; font-style: italic; letter-spacing: -0.02em; color: #fff;">Mulham<span style="color: var(--bringer-s-accent);">.</span></span></a>
+    </div>
+
+    <!-- Header -->
+    <header id="bringer-header" class="is-frosted is-sticky" data-appear="fade-down" data-unload="fade-up">
+        <!-- Desktop Header -->
+        <div class="bringer-header-inner">
+            <!-- Main Menu -->
+            <div class="bringer-header-mp">
+                <nav class="bringer-nav">
+                    <ul class="main-menu" data-stagger-appear="fade-down" data-stagger-delay="75">
+                        <li>
+                            <a href="/home">Home</a>
+                        </li>
+                        <li>
+                            <a href="/portfolio">Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="/contact">Contacts</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- Mobile Header -->
+        <div class="bringer-mobile-header-inner">
+            <a href="/home" class="bringer-logo" style="text-decoration: none;"><span style="font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; font-style: italic; letter-spacing: -0.02em; color: #fff;">Mulham<span style="color: var(--bringer-s-accent);">.</span></span></a>
+            <a href="#" class="bringer-mobile-menu-toggler">
+                <i class="bringer-menu-toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Page Title -->
+        <div class="page-title">
+            <h1>Web Development<br>Projects</h1>
+            <p>Modern, responsive websites built with the latest technologies for optimal performance and user
+                experience.</p>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+
+
+            <!-- Project 2: Cureox Medical -->
+            <a href="https://cureox.com" target="_blank" class="project-card">
+                <div class="project-card-body">
+                    <div class="tag-row">
+                        <span class="tag">Healthcare</span>
+                    </div>
+                    <h3>Cureox Medical Software</h3>
+                    <p>Digital healthcare solutions platform contributed to website structure, digital presence, and
+                        supported branding alignment and marketing positioning for a medical software company.</p>
+                    <span class="visit-link">
+                        Visit Website
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Project 3: Ghiath Bourhani Trading -->
+            <a href="https://brhani.com" target="_blank" class="project-card">
+                <div class="project-card-body">
+                    <div class="tag-row">
+                        <span class="tag">Corporate</span>
+                    </div>
+                    <h3>Ghiath Bourhani Trading Co</h3>
+                    <p>Professional corporate website for a commercial trading & business services company
+                        strengthened digital visibility and structured their complete online presence.</p>
+                    <span class="visit-link">
+                        Visit Website
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Project 4: MedicalPro -->
+            <a href="https://medicalpro.brhani.com" target="_blank" class="project-card">
+                <div class="project-card-body">
+                    <div class="tag-row">
+                        <span class="tag">Healthcare</span>
+                    </div>
+                    <h3>MedicalPro</h3>
+                    <p>A comprehensive medical platform with modern UI/UX design and advanced functionality built for
+                        healthcare services with optimized performance and seamless patient experience.</p>
+                    <span class="visit-link">
+                        Visit Website
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Project 5: Nassab - Family Trees -->
+            <a href="https://nassab.brhani.com/" target="_blank" rel="noopener noreferrer" class="project-card">
+                <div class="project-card-body">
+                    <div class="tag-row">
+                        <span class="tag">Web App</span>
+                    </div>
+                    <h3>Nassab | Family Trees</h3>
+                    <p>Create your family tree and explore family trees across Syria an interactive platform to connect lineages and families.</p>
+                    <span class="visit-link">
+                        Visit Website
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Back to Portfolio -->
+        <div class="back-section">
+            <a href="/portfolio" class="back-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Portfolio
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2025 Mulham. All rights reserved.</p>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/libs.js" defer></script>
+    <script src="js/contact_form.js" defer></script>
+    <script src="js/st-core.js" defer></script>
+    <script src="js/classes.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+
+</html>
+
+
+

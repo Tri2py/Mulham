@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page Title -->
+    <title>Portfolio | Mulham Portfolio</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Explore Mulham's portfolio of creative design and web development projects. Discover modern web projects that combine outstanding design with high performance.">
+    <meta name="keywords"
+        content="Mulham, Portfolio, Web Design, Graphic Design, UI/UX, Branding, Web Development, Creative Designer, Projects">
+    <meta name="author" content="Mulham">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Mulham Portfolio | My Work">
+    <meta property="og:description" content="Explore my portfolio of creative design and web development projects.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mulham.design/portfolio">
+    <meta property="og:image" content="img/mulham_icon.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Mulham Ibrahim">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio — Branding & Web Projects | Mulham Ibrahim">
+    <meta name="twitter:description" content="Explore my portfolio of creative design and web development projects.">
+    <meta name="twitter:image" content="img/mulham_icon.png">
+    <link rel="canonical" href="https://mulham.design/portfolio.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Config -->
+    <link type="text/css" rel="stylesheet" href="css\config.css">
+    <!-- Libraries -->
+    <link type="text/css" rel="stylesheet" href="css\libs.css">
+    <!-- Template Styles -->
+    <link type="text/css" rel="stylesheet" href="css\style.css">
+    <!-- Responsive -->
+    <link type="text/css" rel="stylesheet" href="css\responsive.css">
+    <!-- Accessibility -->
+    <link type="text/css" rel="stylesheet" href="css/a11y.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img\favicon.png" sizes="32x32">
+
+    <!-- Header/Navbar Styles -->
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    
+
+
+
+    
+    
+    <style>
+        body { overflow-x: hidden !important; }
+    </style>
+</head>
+
+<body>
+    <!-- Skip to Content (Accessibility) -->
+    <a href="#bringer-main" class="skip-to-content" style="position:absolute;top:-100%;left:16px;z-index:99999;padding:12px 24px;background:#8C2DF6;color:#fff;border-radius:0 0 8px 8px;font-weight:600;text-decoration:none;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Skip to main content</a>
+        <!-- Ultra-Premium Monolithic Preloader -->
+    <div id="loader-wrapper">
+        <div id="loader-content">
+            <h2 class="loader-logo">Mulham<span class="loader-dot">.</span></h2>
+            <div class="loader-progress-wrap">
+                <div class="loader-progress-bar"></div>
+            </div>
+        </div>
+        <div class="loader-bg"></div>
+    </div>
+    <style>
+        #loader-wrapper {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader-bg {
+            position: absolute;
+            inset: 0;
+            background: #050505; /* Deep luxury monolithic black */
+            z-index: 100000;
+            transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+            transform-origin: top;
+        }
+
+        #loader-content {
+            position: relative;
+            z-index: 100001;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+
+        .loader-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            font-style: italic;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            animation: loaderFadeIn 0.5s ease forwards;
+        }
+
+        .loader-dot {
+            color: #8C2DF6;
+            display: inline-block;
+            animation: pulseDot 1.5s infinite ease-in-out;
+        }
+
+        .loader-progress-wrap {
+            width: 140px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            overflow: hidden;
+            opacity: 0;
+            animation: loaderFadeIn 0.5s 0.2s ease forwards;
+        }
+
+        .loader-progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #8C2DF6, #b066ff);
+            box-shadow: 0 0 10px rgba(140, 45, 246, 0.5);
+            animation: loaderProgress 1.6s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+        }
+
+        @keyframes loaderFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; text-shadow: 0 0 15px rgba(140, 45, 246, 0.8); }
+            50% { opacity: 0.8; text-shadow: 0 0 5px rgba(140, 45, 246, 0.3); }
+        }
+
+        @keyframes loaderProgress {
+            0% { width: 0%; }
+            40% { width: 60%; }
+            100% { width: 100%; }
+        }
+
+        .loaded #loader-content {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .loaded .loader-bg {
+            transform: scaleY(0);
+        }
+
+        .loaded #loader-wrapper {
+            pointer-events: none;
+            visibility: hidden;
+            transition: visibility 0s 0.8s; 
+        }
+    </style>
+    <script>
+        function hidePreloader() { 
+            if (!document.body.classList.contains('loaded')) {
+                document.body.classList.add('loaded'); 
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function () { 
+            setTimeout(hidePreloader, 1600); 
+        });
+        window.addEventListener('load', function() {
+            setTimeout(hidePreloader, 1600);
+        });
+        setTimeout(hidePreloader, 4000);
+    </script>
+
+    <!-- Premium Glassmorphism Navbar -->
+    <style>
+        /* Elegant Glass Navbar */
+        #bringer-header {
+            background: rgba(255, 255, 255, 0.02) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            border-radius: 100px !important;
+            padding: 0 30px !important;
+            width: auto !important;
+            min-width: 600px;
+            max-width: 90vw !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            top: 30px !important;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+            display: flex;
+            justify-content: center;
+        }
+
+        #bringer-header.is-sticky {
+            top: 20px !important;
+            background: rgba(10, 10, 10, 0.65) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8) !important;
+        }
+
+        .bringer-header-inner {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            width: 100% !important;
+            padding: 12px 0 !important;
+            min-height: 40px;
+        }
+
+        /* Logo inside header */
+        .bringer-header-lp {
+            display: flex !important;
+            align-items: center !important;
+            position: relative !important;
+            left: auto !important;
+            top: auto !important;
+            z-index: 1 !important;
+        }
+
+        .bringer-header-mp {
+            display: flex !important;
+            justify-content: flex-end !important;
+            flex-grow: 1 !important;
+        }
+
+        ul.main-menu {
+            display: flex;
+            align-items: center;
+            gap: 32px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        ul.main-menu li a {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 0.85rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.15em !important;
+            font-weight: 500 !important;
+            color: #fff !important;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        ul.main-menu li a:hover,
+        ul.main-menu li.current-menu-item a {
+            opacity: 1;
+            color: var(--bringer-s-accent) !important;
+        }
+
+        /* Hide the misaligned JS active menu indicator */
+        .bringer-active-menu-ind {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            #bringer-header {
+                min-width: 0;
+                width: calc(100% - 40px) !important;
+                padding: 0 20px !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                background: rgba(14, 8, 20, 0.95) !important;
+            }
+            .bringer-header-inner { display: none !important; }
+            .bringer-mobile-header-inner {
+                display: flex !important;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                padding: 12px 0;
+            }
+        }
+    </style>
+
+    <!-- Header -->
+    <header id="bringer-header" class="is-frosted is-sticky"  >
+        <!-- Desktop Header -->
+        <div class="bringer-header-inner">
+            <!-- Logo -->
+            <div class="bringer-header-lp">
+                <a href="/home" class="bringer-logo" style="text-decoration: none;">
+                    <span style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; font-style: italic; letter-spacing: -0.02em; color: #fff;">Mulham<span style="color: var(--bringer-s-accent);">.</span></span>
+                </a>
+            </div>
+            
+            <!-- Main Menu -->
+            <div class="bringer-header-mp">
+                <nav class="bringer-nav">
+                    <ul class="main-menu"  >
+                        <li>
+                            <a href="/home">Home</a>
+                        </li>
+                        <li>
+                            <a href="/contact">Contacts</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- Mobile Header -->
+        <div class="bringer-mobile-header-inner" style="display: none;">
+            <a href="/home" class="bringer-logo" style="text-decoration: none;">
+                <span style="font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; font-style: italic; letter-spacing: -0.02em; color: #fff;">Mulham<span style="color: var(--bringer-s-accent);">.</span></span>
+            </a>
+            <a href="#" class="bringer-mobile-menu-toggler">
+                <i class="bringer-menu-toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Page Main -->
+    <main id="bringer-main">
+        <div class="stg-container">
+            <!-- Section: Page Title -->
+            <section class="backlight-bottom">
+                <div class="stg-row stg-bottom-gap-l">
+                    <div class="stg-col-8 stg-tp-bottom-gap">
+                        <h2>Portfolio</h2>
+                    </div>
+                    <div class="stg-col-4 stg-tp-col-8 stg-tp-offset-4 tp-align-right stg-m-col-9 stg-m-offset-3"
+                       >
+                        <p>Explore a curated collection of projects , from branding systems and
+                            corporate websites to digital marketing campaigns and front-end development work.</p>
+                    </div>
+                </div>
+
+                <!-- Slider -->
+                <div class="bringer-slider-wrapper bringer-masked-block"
+                   >
+                    <div class="swiper bringer-slider bringer-masked-media" data-autoplay="2000" data-duration="800"
+                        data-effect="slide">
+                        <div class="swiper-wrapper">
+                            <!-- Slider Item -->
+                            <div class="swiper-slide">
+                                <img src="img\PortfolioHero\20260223_170535.png" alt="Portfolio Work" width="1920"
+                                    height="1080">
+                            </div>
+                            <!-- Slider Item -->
+                            <div class="swiper-slide">
+                                <img src="img\PortfolioHero\20260223_170554.jpg" alt="Portfolio Work" width="1920"
+                                    height="1080">
+                            </div>
+                            <!-- Slider Item -->
+                            <div class="swiper-slide">
+                                <img src="img\PortfolioHero\20260223_170607.png" alt="Portfolio Work" width="1920"
+                                    height="1080">
+                            </div>
+                            <!-- Slider Item -->
+                            <div class="swiper-slide">
+                                <img src="img\PortfolioHero\20260223_170626.jpg" alt="Portfolio Work" width="1920"
+                                    height="1080">
+                            </div>
+                            <!-- Slider Item -->
+                            <div class="swiper-slide">
+                                <img src="img\PortfolioHero\20260223_170640.jpg" alt="Portfolio Work" width="1920"
+                                    height="1080">
+                            </div>
+                            <!-- Slider Item -->
+                            <div class="swiper-slide">
+                                <img src="img\PortfolioHero\m.png" alt="Portfolio Work" width="1920" height="1080">
+                            </div>
+                        </div>
+                    </div><!-- .bringer-slider -->
+                    <!-- Masked Navigation -->
+                    <div class="bringer-slider-nav bringer-masked-content at-bottom-right">
+                        <a href="#" class="bringer-slider-prev">
+                            <i class="ph-bold ph-caret-left" style="font-size: 24px;"></i>
+                        </a>
+                        <a href="#" class="bringer-slider-next">
+                            <i class="ph-bold ph-caret-right" style="font-size: 24px;"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Section: The Challenge -->
+            <section>
+                <div class="stg-row">
+                    <div class="stg-col-6 stg-tp-bottom-gap-l">
+                        <div class="bringer-sticky-block">
+                            <h2>The Challenge</h2>
+                        </div>
+                    </div>
+                    <div class="stg-col-6 stg-tp-col-10 stg-tp-offset-2 stg-m-col-11 stg-m-offset-1"
+                       >
+                        <div class="stg-bottom-gap-section stg-tp-bottom-gap-l">
+                            <h4>The Journey</h4>
+                            <p>Founded Plasma Agency in 2022 with a vision to deliver impactful digital solutions.</p>
+                            <p>The digital landscape demanded more than just good design — it required strategic
+                                thinking, business acumen, and technical execution working together.</p>
+                            <p>Building an agency from the ground up meant wearing multiple hats: strategist, designer,
+                                developer, and marketer.</p>
+                        </div>
+                        <div class="stg-bottom-gap-section stg-tp-bottom-gap-l">
+                            <h4>Reaching the Vision</h4>
+                            <p>The goal was clear: help businesses translate their goals into impactful digital
+                                solutions.</p>
+                            <p>From complete branding identity systems to responsive corporate websites, every project
+                                became an opportunity to create measurable business impact.</p>
+                            <p>Key achievements include:</p>
+                            <ul>
+                                <li>30+ complete branding identity systems delivered</li>
+                                <li>5,000+ social media followers grown through strategic campaigns</li>
+                                <li>Multiple corporate websites developed and launched</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Core Approach</h4>
+                            <p class="bringer-large-text">Aligning digital strategies with measurable business growth
+                                outcomes.</p>
+                            <p>My process combines technical execution with business acumen:</p>
+                            <ul>
+                                <li>Translating technical concepts into actionable business value</li>
+                                <li>Defining brand identity, tone, and digital positioning</li>
+                                <li>Managing project timelines, deliverables, and operational workflows</li>
+                                <li>Performance-driven development and optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Programming Works Gallery -->
+            <section id="web-development">
+                <!-- Section Title -->
+                <div class="stg-row bringer-section-title">
+                    <div class="stg-col-8 stg-offset-2">
+                        <div class="align-center">
+                            <h2>My Services</h2>
+                            <p class="bringer-large-text">
+                                Professional digital solutions tailored to your needs</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Services Grid -->
+                <div class="bringer-portfolio-grid">
+                    <div class="stg-row" style="justify-content: center; gap: 40px;">
+                        <!-- Web Development Card -->
+                        <div class="stg-col-5 stg-tp-col-6 stg-m-col-10" style="max-width: 450px;">
+                            <a href="web-projects.html" style="display: block; text-decoration: none; color: inherit;">
+                                <div class="bringer-block bringer-portfolio-card"
+                                    style="text-align: center; padding: 40px 30px; display: flex; flex-direction: column; align-items: center;">
+                                    <div
+                                        style="background: linear-gradient(135deg, rgba(127, 90, 240, 0.15) 0%, rgba(127, 90, 240, 0.05) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; width: 100%; height: 180px; margin-bottom: 24px;">
+                                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none"
+                                            stroke="rgba(127, 90, 240, 0.8)" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="16 18 22 12 16 6"></polyline>
+                                            <polyline points="8 6 2 12 8 18"></polyline>
+                                        </svg>
+                                    </div>
+                                    <span
+                                        style="color: rgba(127, 90, 240, 0.8); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">Service</span>
+                                    <h6 style="font-size: 20px; margin-top: 8px; margin-bottom: 12px;">Web Development
+                                    </h6>
+                                    <p style="color: rgba(224, 224, 224, 0.7); font-size: 14px; line-height: 1.6;">
+                                        Modern, responsive websites built with the latest technologies for optimal
+                                        performance.</p>
+                                    <div
+                                        style="margin-top: 20px; width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #8C2DF6 0%, #8C2DF6 100%); display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Designs Card -->
+                        <div class="stg-col-5 stg-tp-col-6 stg-m-col-10" style="max-width: 450px;">
+                            <a href="https://instagram.com/creative_mulham" target="_blank"
+                                style="display: block; text-decoration: none; color: inherit;">
+                                <div class="bringer-block bringer-portfolio-card"
+                                    style="text-align: center; padding: 40px 30px; display: flex; flex-direction: column; align-items: center;">
+                                    <div
+                                        style="background: linear-gradient(135deg, rgba(127, 90, 240, 0.15) 0%, rgba(127, 90, 240, 0.05) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; width: 100%; height: 180px; margin-bottom: 24px;">
+                                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none"
+                                            stroke="rgba(127, 90, 240, 0.8)" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <circle cx="12" cy="12" r="6"></circle>
+                                            <circle cx="12" cy="12" r="2"></circle>
+                                        </svg>
+                                    </div>
+                                    <span
+                                        style="color: rgba(127, 90, 240, 0.8); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">Service</span>
+                                    <h6 style="font-size: 20px; margin-top: 8px; margin-bottom: 12px;">Designs</h6>
+                                    <p style="color: rgba(224, 224, 224, 0.7); font-size: 14px; line-height: 1.6;">
+                                        Creative branding, UI/UX design, and visual identity systems that make your
+                                        business stand out.</p>
+                                    <div
+                                        style="margin-top: 20px; width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #8C2DF6 0%, #8C2DF6 100%); display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div><!-- .bringer-portfolio-grid -->
+            </section>
+
+            <!-- Portfolio Modal -->
+            <div class="bringer-portfolio-modal" id="portfolioModal">
+                <div class="bringer-modal-overlay"></div>
+                <div class="bringer-modal-content">
+                    <button class="bringer-modal-close" aria-label="Close modal">
+                        <i class="ph-bold ph-x" style="font-size: 24px;"></i>
+                    </button>
+                    <div class="bringer-modal-image">
+                        <img src="" alt="Portfolio Image" id="modalImage">
+                    </div>
+                    <div class="bringer-modal-info">
+                        <span class="bringer-modal-category" id="modalCategory"></span>
+                        <h3 class="bringer-modal-title" id="modalTitle"></h3>
+                        <p class="bringer-modal-description" id="modalDescription"></p>
+                    </div>
+                </div>
+            </div><!-- .bringer-portfolio-modal -->
+
+        </div><!-- .stg-container -->
+
+        <!-- Footer -->
+        <footer id="bringer-footer">
+            <!-- Footer Widgets Area -->
+            <div class="bringer-footer-widgets">
+                <div class="stg-container">
+                    <div class="stg-row">
+                        <div class="stg-col-5 stg-tp-col-12 stg-tp-bottom-gap-l">
+                            <div class="bringer-info-widget">
+                                <a href="/home" class="bringer-logo" style="text-decoration: none;"><span style="font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; font-style: italic; letter-spacing: -0.02em; color: #fff;">Mulham<span style="color: var(--bringer-s-accent);">.</span></span></a>
+                                <div class="bringer-info-description">I’m a passionate designer and web developer who
+                                    believes in the power of creativity. I help creative minds build a strong online
+                                    presence that showcases their work and tells their story.</div>
+                                <span class="bringer-label">Follow me:</span>
+                                <ul class="bringer-socials-list">
+                                    <li>
+                                        <a href="https://www.pinterest.com/normal_person_as_trippy/" target="_blank"
+                                            class="bringer-socials-pinterest"><i class="ph-fill ph-pinterest-logo"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/creative_mulham/" target="_blank"
+                                            class="bringer-socials-instagram"><i class="ph-fill ph-instagram-logo"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/in/mulham-ibrahim-2021643ab?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                                            target="_blank" class="bringer-socials-linkedin"><i class="ph-fill ph-linkedin-logo"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!-- .stg-row -->
+                </div><!-- .stg-container -->
+            </div><!-- .bringer-footer-widgets -->
+
+        </footer>
+    </main>
+
+    <!-- Right Click Protection Block -->
+    <div class="bringer-rcp-wrap">
+        <div class="bringer-rcp-overlay"></div>
+        <div class="bringer-rcp-container">
+            <h2>The context menu is not allowed on this page.</h2>
+        </div>
+    </div>
+
+    <!-- Dynamic Backlight -->
+    <div class="bringer-backlight"></div>
+
+    <!-- JS Scripts -->
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/libs.js" defer></script>
+    <script src="js/contact_form.js" defer></script>
+    <script src="js/st-core.js" defer></script>
+    <script src="js/classes.js" defer></script>
+    <script src="js/main.js" defer></script>
+<!-- Two-Way Scroll Reveal Engine -->
+    <style>
+        .two-way-reveal {
+            opacity: 0 !important;
+            transform: translateY(50px) scale(0.98) !important;
+            transition: opacity 0.7s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+            will-change: opacity, transform;
+        }
+        .two-way-reveal.is-visible {
+            opacity: 1 !important;
+            transform: translateY(0) scale(1) !important;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select elements we want to animate (everything outside the hero)
+            const targets = document.querySelectorAll('section:not(#awwwards-hero) h2, section:not(#awwwards-hero) h5, section:not(#awwwards-hero) p, .bringer-block, .bringer-timeline-item, .cv-preview-section');
+            
+            // Add the base class
+            targets.forEach(el => el.classList.add('two-way-reveal'));
+
+            // Setup Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // The magic line that makes it animate when scrolling UP too
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, { 
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            targets.forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+
+</html>
+
+
+
+

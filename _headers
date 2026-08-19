@@ -1,0 +1,30 @@
+# Security & Cache Headers for Netlify/Cloudflare Pages
+
+# Global security headers
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# CSS & JS — cache for 1 year (use cache busting on updates)
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images — cache for 1 month
+/img/*
+  Cache-Control: public, max-age=2592000
+
+# Video — cache for 1 month
+/video/*
+  Cache-Control: public, max-age=2592000
+
+# HTML — always revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate

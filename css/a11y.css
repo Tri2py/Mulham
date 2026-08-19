@@ -1,0 +1,173 @@
+/**
+ * Accessibility & Reduced Motion Overrides
+ * WCAG 2.1 AA compliance additions
+ * 
+ * This file adds:
+ * - prefers-reduced-motion support
+ * - focus-visible styles for keyboard navigation
+ * - skip-to-content styling
+ * - high contrast mode adjustments
+ */
+
+/* =====================
+   REDUCED MOTION
+   ===================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .bringer-marquee,
+    .bringer-marquee-inner {
+        animation: none !important;
+    }
+
+    .badge-dot {
+        animation: none !important;
+    }
+
+    .loader-spinner {
+        animation: none !important;
+    }
+
+    /* Disable parallax and scroll-based transforms */
+    [data-appear],
+    [data-stagger-appear] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .bringer-hero-media-wrap:hover img {
+        transform: none !important;
+    }
+
+    .bringer-portfolio-card:hover {
+        transform: none !important;
+    }
+
+    .bringer-block:hover {
+        transform: none !important;
+    }
+
+    .bringer-button:hover {
+        transform: none !important;
+    }
+
+    .bringer-logo:hover img {
+        transform: none !important;
+    }
+}
+
+/* =====================
+   FOCUS-VISIBLE STYLES
+   ===================== */
+
+/* Visible focus ring for keyboard navigation */
+*:focus-visible {
+    outline: 2px solid #8C2DF6;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Don't show outline on mouse click */
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Enhanced focus for interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid #8C2DF6;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(127, 90, 240, 0.2);
+}
+
+/* Menu items focus */
+ul.main-menu li a:focus-visible {
+    background: rgba(127, 90, 240, 0.18) !important;
+    color: var(--bringer-s-heading) !important;
+}
+
+/* Button focus */
+.bringer-button:focus-visible {
+    outline: 2px solid #8C2DF6;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(44, 182, 125, 0.3);
+}
+
+/* =====================
+   SKIP-TO-CONTENT
+   ===================== */
+.skip-to-content {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 99999;
+    padding: 12px 24px;
+    background: #8C2DF6;
+    color: #fff;
+    border-radius: 0 0 8px 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.2s ease;
+    font-family: var(--bringer-t-content-ff, 'Inter', sans-serif);
+    font-size: 14px;
+}
+
+.skip-to-content:focus {
+    top: 0;
+    outline: 2px solid #8C2DF6;
+    outline-offset: 2px;
+}
+
+/* =====================
+   FORM ACCESSIBILITY
+   ===================== */
+
+/* Ensure form response messages are accessible */
+.bringer-contact-form__response {
+    /* Screen readers will announce changes */
+}
+
+/* Honeypot field — visually hidden but accessible to bots */
+.honeypot-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+/* Required field indicator */
+.required {
+    color: #f85149;
+    font-weight: 600;
+}
+
+/* =====================
+   HIGH CONTRAST MODE
+   ===================== */
+@media (forced-colors: active) {
+    .bringer-button {
+        border: 2px solid ButtonText;
+    }
+
+    .skip-to-content {
+        border: 2px solid ButtonText;
+    }
+
+    *:focus-visible {
+        outline: 2px solid Highlight;
+    }
+}
+
