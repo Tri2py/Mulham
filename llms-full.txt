@@ -1,0 +1,22 @@
+# Complete Knowledge Bundle for Mulham Ibrahim
+
+## Biography & Profile
+Mulham Ibrahim is a Digital Experience Architect and Creative Developer based in Damascus, Syria, working with international clients across the US, Europe, and the Middle East. As the founder of Plasma Agency, he specializes in the intersection of high-end visual design and rigorous web engineering.
+
+### Philosophy & Design Standards
+- **Aesthetic Precision**: Rejecting cookie-cutter templates in favor of bespoke typographic tension, physical depth, dark-tech palettes, and tactile micro-motion.
+- **Performance-First Architecture**: 60fps rendering, hardware-accelerated transforms, zero layout thrashing, and sub-1-second load times.
+- **Conversion-Driven Thinking**: Marrying artistic innovation with measurable user activation and business outcomes.
+
+## Technical Skills & Capabilities
+- **Languages**: JavaScript, TypeScript, Python, HTML5, CSS3/SCSS, SQL
+- **Animation & Motion**: GSAP (Timeline, ScrollTrigger, Flip), Web Animations API, CSS Keyframes, SVG Morphing
+- **Design & Prototyping**: Figma, Adobe XD, Illustrator, Photoshop, Design Token Systems
+- **SEO & Search Architecture**: Semantic HTML5, Schema.org JSON-LD, Core Web Vitals, Answer Engine Optimization (AEO/GEO)
+- **Deployment & Cloud**: Vercel, Git/GitHub, Netlify, Cloudflare
+
+## Pricing Structure
+- **Design Sprints & Brand Identity**: Starting from ,500
+- **Custom Interactive Web Experiences**: Starting from ,000
+- **Full-Stack Product & Enterprise Platforms**: Custom scoped (,000+)
+- **Consulting & Retainers**: Tailored on a monthly basis

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E051B"/>
+      <stop offset="100%" stop-color="#06020A"/>
+    </linearGradient>
+    <linearGradient id="mGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C084FC"/>
+      <stop offset="50%" stop-color="#8C2DF6"/>
+      <stop offset="100%" stop-color="#6B14D1"/>
+    </linearGradient>
+    <linearGradient id="mGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E9D5FF"/>
+      <stop offset="100%" stop-color="#8C2DF6"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8C2DF6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#C084FC" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="16" y="16" width="480" height="480" rx="120" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="6"/>
+  <circle cx="256" cy="256" r="160" fill="#8C2DF6" opacity="0.15" filter="url(#glow)"/>
+
+  <path d="M120 380 L120 150 L175 150 L200 380 Z" fill="url(#mGrad1)" filter="url(#glow)"/>
+  <path d="M392 380 L392 150 L337 150 L312 380 Z" fill="url(#mGrad1)" filter="url(#glow)"/>
+  <path d="M165 150 L256 315 L220 315 L145 150 Z" fill="url(#mGrad2)"/>
+  <path d="M347 150 L256 315 L292 315 L367 150 Z" fill="url(#mGrad2)"/>
+
+  <polygon points="256,220 280,270 256,310 232,270" fill="#FFFFFF" opacity="0.95"/>
+  <circle cx="256" cy="115" r="14" fill="#C084FC" filter="url(#glow)"/>
+</svg>

@@ -2,10 +2,31 @@
 User-agent: *
 Allow: /
 
-# Block utility files
-Disallow: /Mulham_CV.pdf
-Disallow: /mulham_ibrahim_cv.md
-Disallow: /cv-preview.html
+# Allow AI Search & Citation Crawlers
+User-agent: GPTBot
+Allow: /
 
-# Sitemap location
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Sitemap & LLM context
 Sitemap: https://mulham.design/sitemap.xml
+LLMs-Txt: https://mulham.design/llms.txt

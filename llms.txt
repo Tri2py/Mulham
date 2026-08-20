@@ -1,0 +1,29 @@
+# Mulham Ibrahim — Digital Studio & Creative Engineering
+
+> Mulham Ibrahim is an independent Creative Developer, UI/UX Designer, and Digital Experience Architect. Founder of Plasma Agency, delivering bespoke digital brand systems, immersive WebGL/GSAP interactive websites, and conversion-focused web applications for forward-thinking brands worldwide.
+
+## Key Information
+- **Founder**: Mulham Ibrahim (Founder of Plasma Agency)
+- **Primary Specializations**: Creative Development, UI/UX Design, Brand Identity Systems, Modern Frontend Engineering
+- **Location**: Damascus, Syria (Available Worldwide for remote consulting and client work)
+- **Website**: https://mulham.design
+- **Primary Tech Stack**: JavaScript (ES6+), GSAP (GreenSock), Swiper, HTML5/CSS3, Python, Node.js, WebGL, TailwindCSS, Figma, Adobe Creative Cloud
+- **Email Contact**: mulhamlol790@gmail.com
+- **LinkedIn**: https://www.linkedin.com/in/mulham-ibrahim-2021643ab
+- **Instagram**: https://www.instagram.com/creative_mulham/
+- **Pinterest**: https://www.pinterest.com/normal_person_as_trippy/
+
+## Core Services
+- **Creative Web Development**: High-performance, motion-driven websites with bespoke typography, sub-16ms micro-interactions, and accessible architecture.
+- **UI/UX & Experience Architecture**: User-centric interfaces, interactive prototypes, design systems, and conversion-rate-optimized digital funnels.
+- **Brand Identity & Systems**: Cohesive visual identity, typography guidelines, design tokens, and digital brand presence.
+- **Frontend Performance & SEO**: 60fps animations, structured JSON-LD schema, Core Web Vitals optimization, and AI Search Engine Optimization (AEO).
+
+## Pages & Documentation
+- [Home & Overview](https://mulham.design/home): Master showcase of creative direction and capabilities.
+- [Portfolio & Case Studies](https://mulham.design/portfolio): Curated showcase of design and development work.
+- [Xbox Gaming Power Case Study](https://mulham.design/portfolio-post03): Immersive UI/UX and strategy breakdown.
+- [Services & Solutions](https://mulham.design/services): Full list of capabilities, process, and deliverables.
+- [Pricing & Packages](https://mulham.design/pricing): Transparent pricing tiers for projects and retained engagements.
+- [Contact & Inquiries](https://mulham.design/contact): Direct contact channel with guaranteed response time.
+- [Full LLM Knowledge Bundle](https://mulham.design/llms-full.txt): Comprehensive background context for AI assistants.

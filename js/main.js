@@ -7,7 +7,7 @@
 // Core Options
 const bringer_config = {
     // Smooth Scroll
-    smoothScroll: true,
+    smoothScroll: false,
 
     // Main Logo Size
     logo_size: {
