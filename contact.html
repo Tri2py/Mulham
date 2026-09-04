@@ -260,25 +260,22 @@
         }
 
         /* === Minimalist Studio Footer Styles === */
+        #bringer-footer,
         #bringer-footer.contact-page-footer,
+        #bringer-footer.is-sticky,
         .contact-page-footer {
             position: relative !important;
             width: 100% !important;
             bottom: auto !important;
             left: auto !important;
+            top: auto !important;
             background: #06020A !important;
             border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
             padding: 36px 0 44px !important;
             margin-top: 6vh !important;
             z-index: 5 !important;
-        }
-
-        /* Override template script sticky-footer hijacking */
-        #bringer-footer.is-sticky {
-            position: relative !important;
-            bottom: auto !important;
-            left: auto !important;
-            width: 100% !important;
+            clear: both !important;
+            transform: none !important;
         }
 
         .contact-footer-inner {
@@ -1078,10 +1075,6 @@
                 </div>
             </section>
 
-        </div><!-- .stg-container -->
-
-    </main>
-
         <!-- Minimalist Studio Footer -->
         <footer id="bringer-footer" class="contact-page-footer">
             <div class="stg-container">
@@ -1099,6 +1092,8 @@
                 </div>
             </div>
         </footer>
+
+    </main>
 
     <!-- Right Click Protection Block -->
     <div class="bringer-rcp-wrap">
@@ -1118,6 +1113,30 @@
     <script src="js/st-core.js" defer></script>
     <script src="js/classes.js" defer></script>
     <script src="js/main.js" defer></script>
+    <script>
+        // Neutralize any sticky footer behavior permanently
+        (function() {
+            function unstickFooter() {
+                var f = document.getElementById('bringer-footer');
+                if (f && f.classList.contains('is-sticky')) {
+                    f.classList.remove('is-sticky');
+                }
+            }
+            window.addEventListener('DOMContentLoaded', unstickFooter);
+            window.addEventListener('load', unstickFooter);
+            window.addEventListener('resize', unstickFooter);
+            var obs = new MutationObserver(function(mutations) {
+                var f = document.getElementById('bringer-footer');
+                if (f && f.classList.contains('is-sticky')) {
+                    f.classList.remove('is-sticky');
+                }
+            });
+            window.addEventListener('DOMContentLoaded', function() {
+                var f = document.getElementById('bringer-footer');
+                if (f) obs.observe(f, { attributes: true, attributeFilter: ['class'] });
+            });
+        })();
+    </script>
 
         <!-- Discord Webhook Message Script -->
     <style>

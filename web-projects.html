@@ -701,13 +701,22 @@
         }
 
         /* === Sleek Low-Profile Studio Footer === */
+        #bringer-footer,
+        #bringer-footer.contact-page-footer,
+        #bringer-footer.is-sticky,
         .contact-page-footer {
-            background: #06020A;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 36px 0 44px;
-            margin-top: 6vh;
-            position: relative;
-            z-index: 5;
+            background: #06020A !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+            padding: 36px 0 44px !important;
+            margin-top: 6vh !important;
+            position: relative !important;
+            bottom: auto !important;
+            left: auto !important;
+            top: auto !important;
+            width: 100% !important;
+            clear: both !important;
+            transform: none !important;
+            z-index: 5 !important;
         }
 
         .contact-footer-inner {
@@ -1453,23 +1462,22 @@
                 <i class="ph-bold ph-arrow-up-right"></i>
             </a>
         </div>
-    </main>
-
-    <!-- Minimalist Studio Footer -->
-    <footer id="bringer-footer" class="contact-page-footer">
-        <div class="contact-footer-inner">
-            <div class="contact-footer-copy">
-                <span class="contact-footer-brand">MULHAM IBRAHIM</span> &copy; 2026. All rights reserved.
+        <!-- Minimalist Studio Footer -->
+        <footer id="bringer-footer" class="contact-page-footer">
+            <div class="contact-footer-inner">
+                <div class="contact-footer-copy">
+                    <span class="contact-footer-brand">MULHAM IBRAHIM</span> &copy; 2026. All rights reserved.
+                </div>
+                
+                <!-- Social Links -->
+                <ul class="contact-footer-socials">
+                    <li><a href="https://www.instagram.com/creative_mulham/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-instagram" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/mulham-ibrahim-2021643ab" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-linkedin" title="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a></li>
+                    <li><a href="https://www.pinterest.com/normal_person_as_trippy/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" class="footer-social-pinterest" title="Pinterest"><i class="ph-fill ph-pinterest-logo"></i></a></li>
+                </ul>
             </div>
-            
-            <!-- Social Links -->
-            <ul class="contact-footer-socials">
-                <li><a href="https://www.instagram.com/creative_mulham/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-instagram" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/mulham-ibrahim-2021643ab" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-linkedin" title="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a></li>
-                <li><a href="https://www.pinterest.com/normal_person_as_trippy/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" class="footer-social-pinterest" title="Pinterest"><i class="ph-fill ph-pinterest-logo"></i></a></li>
-            </ul>
-        </div>
-    </footer>
+        </footer>
+    </main>
     
     <!-- Filter interactivity script -->
     <script>
@@ -1501,6 +1509,30 @@
     <script src="js/st-core.js" defer></script>
     <script src="js/classes.js" defer></script>
     <script src="js/main.js" defer></script>
+    <script>
+        // Neutralize any sticky footer behavior permanently
+        (function() {
+            function unstickFooter() {
+                var f = document.getElementById('bringer-footer');
+                if (f && f.classList.contains('is-sticky')) {
+                    f.classList.remove('is-sticky');
+                }
+            }
+            window.addEventListener('DOMContentLoaded', unstickFooter);
+            window.addEventListener('load', unstickFooter);
+            window.addEventListener('resize', unstickFooter);
+            var obs = new MutationObserver(function(mutations) {
+                var f = document.getElementById('bringer-footer');
+                if (f && f.classList.contains('is-sticky')) {
+                    f.classList.remove('is-sticky');
+                }
+            });
+            window.addEventListener('DOMContentLoaded', function() {
+                var f = document.getElementById('bringer-footer');
+                if (f) obs.observe(f, { attributes: true, attributeFilter: ['class'] });
+            });
+        })();
+    </script>
     <!-- High-Performance Reveal -->
     <style>
         .reveal-on-scroll {
