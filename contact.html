@@ -162,34 +162,53 @@
 
         /* Mobile View (<= 768px) */
         @media (max-width: 768px) {
-            /* Fix container side padding so nothing clips */
+            /* Container edge breathing room */
             .stg-container {
                 padding-left: 20px !important;
                 padding-right: 20px !important;
             }
 
-            /* Remove rigid square aspect ratios so text never overflows */
+            /* Top spacing below floating mobile header */
+            main#bringer-main {
+                padding-top: 24px !important;
+            }
+
+            /* Section title tightening */
+            .bringer-section-title h1 {
+                font-size: clamp(2.3rem, 9vw, 3.2rem) !important;
+                line-height: 1.08 !important;
+                margin-bottom: 16px !important;
+            }
+
+            .bringer-section-title .bringer-large-text {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+            }
+
+            /* Remove rigid square aspect ratios */
             .contact-card-inner,
             .stg-aspect-square,
             .stg-tp-aspect-rectangle {
                 aspect-ratio: auto !important;
                 min-height: auto !important;
-                padding: 28px 22px !important;
+                padding: 26px 20px !important;
             }
 
             /* Spacing between vertical cards */
             .contact-main-grid > div {
-                margin-bottom: 20px !important;
+                margin-bottom: 16px !important;
             }
 
-            /* Buttons inside direct line card stretch comfortably */
+            /* Action Buttons inside cards */
             .inquiry-btn,
             .copy-btn {
-                padding: 14px 18px !important;
-                font-size: 0.86rem !important;
+                padding: 13px 16px !important;
+                font-size: 0.84rem !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
             }
 
-            /* Social chips wrap cleanly in full rows or even blocks */
+            /* Social chips wrap cleanly */
             .social-chips-wrap {
                 gap: 8px !important;
             }
@@ -197,49 +216,184 @@
                 flex: 1 1 calc(50% - 8px);
                 justify-content: center;
                 padding: 10px 12px !important;
+                font-size: 0.8rem !important;
             }
 
-            /* Protocol grid stacked */
+            /* Collaboration protocol grid stacked with clean spacing */
+            .collaboration-protocol-wrap {
+                margin-top: 6vh !important;
+                margin-bottom: 5vh !important;
+            }
+
+            .collaboration-protocol-wrap h3 {
+                font-size: 2rem !important;
+            }
+
             .protocol-cards-grid {
                 grid-template-columns: 1fr !important;
                 gap: 14px !important;
             }
+
             .protocol-card {
                 padding: 24px 20px !important;
-            }
-
-            /* Footer CTA sizing on mobile */
-            #bringer-footer {
-                padding-top: 8vh !important;
-                padding-bottom: 4vh !important;
-            }
-            #bringer-footer h2 {
-                font-size: 2.2rem !important;
-                line-height: 1.15 !important;
-            }
-            #bringer-footer .glass-pill {
-                padding: 14px 24px !important;
-                font-size: 0.78rem !important;
-                max-width: 90vw;
-                justify-content: center;
-            }
-
-            /* Giant watermark typography hidden on narrow mobile to prevent scroll hitch */
-            #bringer-footer > div:last-child {
-                display: none !important;
             }
         }
 
         /* Small Phones (<= 480px) */
         @media (max-width: 480px) {
-            .bringer-section-title h1 {
-                font-size: 2.3rem !important;
+            .stg-container {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
             }
+
+            .bringer-section-title h1 {
+                font-size: 2.1rem !important;
+            }
+
             .social-chip {
                 flex: 1 1 100% !important;
             }
+
+            .contact-card-inner {
+                padding: 22px 16px !important;
+            }
+        }
+
+        /* === Minimalist Studio Footer Styles === */
+        #bringer-footer.contact-page-footer,
+        .contact-page-footer {
+            position: relative !important;
+            width: 100% !important;
+            bottom: auto !important;
+            left: auto !important;
+            background: #06020A !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+            padding: 36px 0 44px !important;
+            margin-top: 6vh !important;
+            z-index: 5 !important;
+        }
+
+        /* Override template script sticky-footer hijacking */
+        #bringer-footer.is-sticky {
+            position: relative !important;
+            bottom: auto !important;
+            left: auto !important;
+            width: 100% !important;
+        }
+
+        .contact-footer-inner {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            gap: 16px !important;
+            width: 100% !important;
+        }
+
+        .contact-footer-copy {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 0.82rem !important;
+            color: rgba(255, 255, 255, 0.45) !important;
+            letter-spacing: 0.03em !important;
+        }
+
+        .contact-footer-brand {
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.1em !important;
+        }
+
+        .contact-footer-socials {
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            gap: 20px !important;
+            list-style: none !important;
+            list-style-type: none !important;
+            align-items: center !important;
+        }
+
+        .contact-footer-socials li {
+            margin: 0 !important;
+            padding: 0 !important;
+            list-style: none !important;
+            list-style-type: none !important;
+            display: inline-flex !important;
+            align-items: center !important;
+        }
+
+        .contact-footer-socials li::before,
+        .contact-footer-socials li::after,
+        .contact-footer-socials a::before,
+        .contact-footer-socials a::after {
+            display: none !important;
+            content: none !important;
+        }
+
+        .contact-footer-socials a {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+            font-size: 1.3rem !important;
+            text-decoration: none !important;
+            transform: none !important;
+            transition: none !important;
+            cursor: pointer !important;
+        }
+
+        .contact-footer-socials a i {
+            font-size: 1.3rem !important;
+            line-height: 1 !important;
+            display: inline-block !important;
+            transform: none !important;
+            transition: none !important;
+        }
+
+        /* Absolutely NO hover transformations, boxes, glows or effects */
+        .contact-footer-socials a:hover,
+        .contact-footer-socials a:focus,
+        .contact-footer-socials a:active,
+        .contact-footer-socials a.footer-social-instagram:hover,
+        .contact-footer-socials a.footer-social-linkedin:hover,
+        .contact-footer-socials a.footer-social-pinterest:hover {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            transform: none !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .contact-footer-socials a:hover i {
+            transform: none !important;
+        }
+
+        @media (max-width: 768px) {
+            #bringer-footer.contact-page-footer,
+            .contact-page-footer {
+                padding: 28px 0 36px !important;
+                margin-top: 4vh !important;
+            }
+            .contact-footer-inner {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 14px !important;
+            }
+            .contact-footer-socials {
+                justify-content: center !important;
+            }
         }
     </style>
+    <!-- Vercel Web Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body>
@@ -903,7 +1057,7 @@
                         </div>
 
                         <!-- Card 04 -->
-                        <div class="protocol-card" style="background: rgba(140, 8, 20, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(140, 45, 246, 0.16); border-radius: 20px; padding: 32px 24px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+                        <div class="protocol-card" style="background: rgba(14, 8, 20, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(140, 45, 246, 0.16); border-radius: 20px; padding: 32px 24px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
                             <div>
                                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
                                     <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(140, 45, 246, 0.12); border: 1px solid rgba(140, 45, 246, 0.25); display: flex; align-items: center; justify-content: center;">
@@ -928,41 +1082,21 @@
 
     </main>
 
-        <!-- Premium 10/10 Footer -->
-        <footer id="bringer-footer" style="background: #06020A; padding-top: 12vh; position: relative; overflow: hidden; border-top: 1px solid rgba(140,45,246,0.1); margin-left: calc(50% - 50vw); width: 100vw;">
-            <div class="stg-container" style="position: relative; z-index: 2; display: flex; flex-direction: column; min-height: 40vh; justify-content: space-between;">
-                
-                <!-- Top row: CTA -->
-                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 8vh;">
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.3em; color: #8C2DF6; text-transform: uppercase; margin-bottom: 2vh;">Ready to start?</p>
-                    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 4vh; max-width: 800px; color: #fff;">
-                        Transforming concepts into <span style="font-style: italic; color: rgba(255,255,255,0.4);">living experiences.</span>
-                    </h2>
-                    
-                    <a href="mailto:mulhamlol790@gmail.com" class="glass-pill" style="display: inline-flex; align-items: center; gap: 15px; text-decoration: none; font-size: 0.85rem; padding: 18px 38px; background: rgba(140,45,246,0.1); border: 1px solid rgba(140,45,246,0.3); border-radius: 100px; color: #fff; font-family: 'Inter', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(140,45,246,0.15);" onmouseover="this.style.background='rgba(140,45,246,0.2)'; this.style.borderColor='rgba(140,45,246,0.6)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(140,45,246,0.1)'; this.style.borderColor='rgba(140,45,246,0.3)'; this.style.transform='none';">
-                        mulhamlol790@gmail.com
-                        <i class="ph-fill ph-paper-plane-tilt" style="font-size: 1.1rem; color: #8C2DF6;"></i>
-                    </a>
-                </div>
-                
-                <!-- Bottom Row: Socials & Info -->
-                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 4vh; padding-bottom: 4vh; flex-wrap: wrap; gap: 20px;">
-                    <div style="font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.4);">
-                        &copy; 2026 Mulham Ibrahim. All rights reserved.
+        <!-- Minimalist Studio Footer -->
+        <footer id="bringer-footer" class="contact-page-footer">
+            <div class="stg-container">
+                <div class="contact-footer-inner">
+                    <div class="contact-footer-copy">
+                        <span class="contact-footer-brand">MULHAM IBRAHIM</span> &copy; 2026. All rights reserved.
                     </div>
                     
                     <!-- Social Links -->
-                    <ul class="bringer-socials-list" style="margin: 0; padding: 0; display: flex; gap: 20px; list-style: none;">
-                        <li><a href="https://www.pinterest.com/normal_person_as_trippy/" target="_blank" style="text-decoration: none;"><i class="ph-fill ph-pinterest-logo"></i></a></li>
-                        <li><a href="https://www.instagram.com/creative_mulham/" target="_blank" style="text-decoration: none;"><i class="ph-fill ph-instagram-logo"></i></a></li>
-                        <li><a href="https://www.linkedin.com/in/mulham-ibrahim-2021643ab" target="_blank" style="text-decoration: none;"><i class="ph-fill ph-linkedin-logo"></i></a></li>
+                    <ul class="contact-footer-socials">
+                        <li><a href="https://www.instagram.com/creative_mulham/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-instagram" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/mulham-ibrahim-2021643ab" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-linkedin" title="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a></li>
+                        <li><a href="https://www.pinterest.com/normal_person_as_trippy/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" class="footer-social-pinterest" title="Pinterest"><i class="ph-fill ph-pinterest-logo"></i></a></li>
                     </ul>
                 </div>
-            </div>
-            
-            <!-- Massive Background Typography -->
-            <div style="text-align: center; overflow: hidden; line-height: 0.75; margin-bottom: -5vw; pointer-events: none; opacity: 0.02; user-select: none;">
-                <span style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 24vw; letter-spacing: -0.05em; color: #fff; white-space: nowrap;">MULHAM</span>
             </div>
         </footer>
 
