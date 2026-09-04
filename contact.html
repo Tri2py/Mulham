@@ -71,9 +71,14 @@
     <link type="text/css" rel="stylesheet" href="css/a11y.css">
 
     <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <!-- Structured Data: Schema.org JSON-LD -->
+    <!-- Universal Phosphor Icons (Cross-Browser Compatible) -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1"></script>
+<!-- Structured Data: Schema.org JSON-LD -->
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -111,133 +116,448 @@
     <style>
         body { overflow-x: hidden !important; }
     </style>
+
+    
+    <!-- Mobile & Responsive Refinements -->
+    <style>
+        /* Base touch & layout stability */
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw;
+        }
+
+        /* Hover states for desktop */
+        .contact-feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(140, 45, 246, 0.35) !important;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), inset 0 0 40px rgba(140, 45, 246, 0.05) !important;
+        }
+        .contact-pill-btn:hover {
+            background: rgba(140, 45, 246, 0.2) !important;
+            border-color: rgba(140, 45, 246, 0.5) !important;
+            transform: translateY(-2px);
+        }
+        .social-chip:hover {
+            background: rgba(140, 45, 246, 0.15) !important;
+            border-color: rgba(140, 45, 246, 0.4) !important;
+            transform: translateY(-2px);
+        }
+        .protocol-card {
+            background: rgba(14, 8, 20, 0.6) !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 25px rgba(140, 45, 246, 0.03);
+        }
+        .protocol-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(140, 45, 246, 0.45) !important;
+            box-shadow: 0 25px 60px rgba(140, 45, 246, 0.12), inset 0 0 35px rgba(140, 45, 246, 0.08) !important;
+        }
+
+        /* Tablet Responsive (<= 1024px) */
+        @media (max-width: 1024px) {
+            .protocol-cards-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 16px !important;
+            }
+        }
+
+        /* Mobile View (<= 768px) */
+        @media (max-width: 768px) {
+            /* Fix container side padding so nothing clips */
+            .stg-container {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+
+            /* Remove rigid square aspect ratios so text never overflows */
+            .contact-card-inner,
+            .stg-aspect-square,
+            .stg-tp-aspect-rectangle {
+                aspect-ratio: auto !important;
+                min-height: auto !important;
+                padding: 28px 22px !important;
+            }
+
+            /* Spacing between vertical cards */
+            .contact-main-grid > div {
+                margin-bottom: 20px !important;
+            }
+
+            /* Buttons inside direct line card stretch comfortably */
+            .inquiry-btn,
+            .copy-btn {
+                padding: 14px 18px !important;
+                font-size: 0.86rem !important;
+            }
+
+            /* Social chips wrap cleanly in full rows or even blocks */
+            .social-chips-wrap {
+                gap: 8px !important;
+            }
+            .social-chip {
+                flex: 1 1 calc(50% - 8px);
+                justify-content: center;
+                padding: 10px 12px !important;
+            }
+
+            /* Protocol grid stacked */
+            .protocol-cards-grid {
+                grid-template-columns: 1fr !important;
+                gap: 14px !important;
+            }
+            .protocol-card {
+                padding: 24px 20px !important;
+            }
+
+            /* Footer CTA sizing on mobile */
+            #bringer-footer {
+                padding-top: 8vh !important;
+                padding-bottom: 4vh !important;
+            }
+            #bringer-footer h2 {
+                font-size: 2.2rem !important;
+                line-height: 1.15 !important;
+            }
+            #bringer-footer .glass-pill {
+                padding: 14px 24px !important;
+                font-size: 0.78rem !important;
+                max-width: 90vw;
+                justify-content: center;
+            }
+
+            /* Giant watermark typography hidden on narrow mobile to prevent scroll hitch */
+            #bringer-footer > div:last-child {
+                display: none !important;
+            }
+        }
+
+        /* Small Phones (<= 480px) */
+        @media (max-width: 480px) {
+            .bringer-section-title h1 {
+                font-size: 2.3rem !important;
+            }
+            .social-chip {
+                flex: 1 1 100% !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <!-- Skip to Content (Accessibility) -->
     <a href="#bringer-main" class="skip-to-content" style="position:absolute;top:-100%;left:16px;z-index:99999;padding:12px 24px;background:#8C2DF6;color:#fff;border-radius:0 0 8px 8px;font-weight:600;text-decoration:none;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Skip to main content</a>
-        <!-- Ultra-Premium Monolithic Preloader -->
-    <div id="loader-wrapper">
+<!-- Hyper-Minimalist Geometric Monogram Preloader -->
+    <div id="loader-wrapper" aria-hidden="true">
+        <!-- Dual theatrical sliding curtains -->
+        <div class="loader-curtain loader-curtain--left"></div>
+        <div class="loader-curtain loader-curtain--right"></div>
+        
+        <!-- Ambient radial glow behind monogram -->
+        <div class="loader-ambient-glow"></div>
+
+        <!-- Center Stage Monogram & Counter -->
         <div id="loader-content">
-            <h2 class="loader-logo">Mulham<span class="loader-dot">.</span></h2>
+            <!-- Animated Self-Drawing Geometric 'M' SVG -->
+            <div class="loader-svg-wrap">
+                <svg width="74" height="64" viewBox="0 0 74 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="loader-monogram-svg">
+                    <defs>
+                        <linearGradient id="monogramStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#8C2DF6" />
+                            <stop offset="50%" stop-color="#c084fc" />
+                            <stop offset="100%" stop-color="#ffffff" />
+                        </linearGradient>
+                        <filter id="monogramGlow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <!-- Precision architectural paths for 'M' -->
+                    <path class="m-path m-path-1" d="M12 56V12L37 42L62 12V56" stroke="url(#monogramStroke)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#monogramGlow)" />
+                    <!-- Geometric accent dot -->
+                    <circle class="m-dot" cx="37" cy="54" r="3" fill="#8C2DF6" />
+                </svg>
+            </div>
+
+            <!-- Typography Brand Line -->
+            <div class="loader-brand">
+                <span class="loader-brand-name">MULHAM</span>
+                <span class="loader-brand-dot"></span>
+                <span class="loader-brand-role">STUDIO</span>
+            </div>
+
+            <!-- Precision Percentage Counter -->
+            <div class="loader-counter-wrap">
+                <span id="loaderCounterNumber" class="loader-counter-number">00</span><span class="loader-counter-pct">%</span>
+            </div>
+
+            <!-- Hairline Progress Bar -->
             <div class="loader-progress-wrap">
-                <div class="loader-progress-bar"></div>
+                <div id="loaderProgressFill" class="loader-progress-fill"></div>
             </div>
         </div>
-        <div class="loader-bg"></div>
     </div>
+
     <style>
+        /* === Root Wrapper === */
         #loader-wrapper {
             position: fixed;
             inset: 0;
-            z-index: 99999;
+            z-index: 9999999;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            pointer-events: all;
+            user-select: none;
+            background: transparent;
         }
 
-        .loader-bg {
+        /* === Theatrical Curtains === */
+        .loader-curtain {
             position: absolute;
-            inset: 0;
-            background: #050505; /* Deep luxury monolithic black */
+            top: 0;
+            width: 50.5%;
+            height: 100%;
+            background: #06020A;
             z-index: 100000;
-            transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
-            transform-origin: top;
+            transition: transform 0.85s cubic-bezier(0.77, 0, 0.175, 1);
+            will-change: transform;
+        }
+        .loader-curtain--left {
+            left: 0;
+            border-right: 1px solid rgba(140, 45, 246, 0.18);
+        }
+        .loader-curtain--right {
+            right: 0;
+            border-left: 1px solid rgba(140, 45, 246, 0.18);
+        }
+        .loaded .loader-curtain--left {
+            transform: translateX(-101%);
+        }
+        .loaded .loader-curtain--right {
+            transform: translateX(101%);
         }
 
+        /* Ambient Glow */
+        .loader-ambient-glow {
+            position: absolute;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(140, 45, 246, 0.22) 0%, rgba(140, 45, 246, 0.04) 50%, transparent 70%);
+            z-index: 100001;
+            pointer-events: none;
+            filter: blur(50px);
+            animation: monogramGlowPulse 2s ease-in-out infinite alternate;
+        }
+
+        /* === Center Brand Stage === */
         #loader-content {
             position: relative;
-            z-index: 100001;
+            z-index: 100002;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
-            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+            text-align: center;
+            gap: 14px;
+            transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .loader-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 500;
-            font-style: italic;
-            color: #ffffff;
-            margin: 0;
-            letter-spacing: -0.02em;
-            opacity: 0;
-            animation: loaderFadeIn 0.5s ease forwards;
-        }
-
-        .loader-dot {
-            color: #8C2DF6;
-            display: inline-block;
-            animation: pulseDot 1.5s infinite ease-in-out;
-        }
-
-        .loader-progress-wrap {
-            width: 140px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 2px;
-            overflow: hidden;
-            opacity: 0;
-            animation: loaderFadeIn 0.5s 0.2s ease forwards;
-        }
-
-        .loader-progress-bar {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #8C2DF6, #b066ff);
-            box-shadow: 0 0 10px rgba(140, 45, 246, 0.5);
-            animation: loaderProgress 1.6s cubic-bezier(0.7, 0, 0.3, 1) forwards;
-        }
-
-        @keyframes loaderFadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulseDot {
-            0%, 100% { opacity: 1; text-shadow: 0 0 15px rgba(140, 45, 246, 0.8); }
-            50% { opacity: 0.8; text-shadow: 0 0 5px rgba(140, 45, 246, 0.3); }
-        }
-
-        @keyframes loaderProgress {
-            0% { width: 0%; }
-            40% { width: 60%; }
-            100% { width: 100%; }
-        }
-
         .loaded #loader-content {
             opacity: 0;
-            transform: translateY(-20px);
+            transform: scale(0.92) translateY(-14px);
         }
 
-        .loaded .loader-bg {
-            transform: scaleY(0);
+        /* === SVG Monogram Stroke Animation === */
+        .loader-svg-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2px;
+        }
+        .loader-monogram-svg {
+            display: block;
+            overflow: visible;
+        }
+        .m-path-1 {
+            stroke-dasharray: 220;
+            stroke-dashoffset: 220;
+            animation: drawMonogramPath 1.3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+        .m-dot {
+            opacity: 0;
+            transform: scale(0);
+            transform-origin: 37px 54px;
+            animation: dotPopIn 0.4s 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
+        /* === Typography Line === */
+        .loader-brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.28em;
+            color: rgba(255, 255, 255, 0.75);
+            opacity: 0;
+            transform: translateY(8px);
+            animation: brandFadeUp 0.6s 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .loader-brand-name {
+            color: #ffffff;
+        }
+        .loader-brand-dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #8C2DF6;
+            display: inline-block;
+        }
+        .loader-brand-role {
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 400;
+        }
+
+        /* === Numeric Counter === */
+        .loader-counter-wrap {
+            font-family: 'Inter', -apple-system, monospace;
+            font-size: 1.05rem;
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            color: #ffffff;
+            margin-top: 2px;
+            display: flex;
+            align-items: baseline;
+            gap: 1px;
+            font-variant-numeric: tabular-nums;
+        }
+        .loader-counter-number {
+            font-weight: 500;
+            color: #ffffff;
+        }
+        .loader-counter-pct {
+            font-size: 0.68rem;
+            font-weight: 400;
+            color: #8C2DF6;
+        }
+
+        /* === Progress Hairline === */
+        .loader-progress-wrap {
+            width: 120px;
+            height: 1.5px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 99px;
+            overflow: hidden;
+            position: relative;
+        }
+        .loader-progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #8C2DF6, #c084fc, #ffffff);
+            box-shadow: 0 0 10px rgba(140, 45, 246, 0.8);
+            border-radius: 99px;
+            transition: width 0.08s linear;
+        }
+
+        /* Keyframes */
+        @keyframes drawMonogramPath {
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes dotPopIn {
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes brandFadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes monogramGlowPulse {
+            0% { transform: scale(0.9); opacity: 0.55; }
+            100% { transform: scale(1.18); opacity: 1; }
+        }
+
+        /* Dismissed */
         .loaded #loader-wrapper {
             pointer-events: none;
             visibility: hidden;
-            transition: visibility 0s 0.8s; 
+            transition: visibility 0s 0.95s;
         }
     </style>
-    <script>
-        function hidePreloader() { 
-            if (!document.body.classList.contains('loaded')) {
-                document.body.classList.add('loaded'); 
-            }
-        }
-        document.addEventListener('DOMContentLoaded', function () { 
-            setTimeout(hidePreloader, 1600); 
-        });
-        window.addEventListener('load', function() {
-            setTimeout(hidePreloader, 1600);
-        });
-        setTimeout(hidePreloader, 4000);
-    </script>
 
-    <!-- Premium Glassmorphism Navbar -->
+    <script>
+        (function() {
+            var counterElem = document.getElementById('loaderCounterNumber');
+            var progressElem = document.getElementById('loaderProgressFill');
+            var currentPercent = 0;
+            var targetPercent = 100;
+            var isFinished = false;
+
+            // Smooth numeric counter animation
+            var counterInterval = setInterval(function() {
+                if (currentPercent < 90) {
+                    currentPercent += Math.floor(Math.random() * 6) + 3;
+                    if (currentPercent > 90) currentPercent = 90;
+                } else if (isFinished && currentPercent < 100) {
+                    currentPercent += 2;
+                }
+
+                if (currentPercent > 100) currentPercent = 100;
+
+                if (counterElem) {
+                    counterElem.textContent = currentPercent < 10 ? '0' + currentPercent : currentPercent;
+                }
+                if (progressElem) {
+                    progressElem.style.width = currentPercent + '%';
+                }
+
+                if (currentPercent >= 100) {
+                    clearInterval(counterInterval);
+                    setTimeout(dismissPreloader, 180);
+                }
+            }, 32);
+
+            function dismissPreloader() {
+                if (!document.body.classList.contains('loaded')) {
+                    document.body.classList.add('loaded');
+                }
+            }
+
+            function triggerFinish() {
+                isFinished = true;
+                // Rapidly complete counter to 100%
+                var finishFast = setInterval(function() {
+                    currentPercent += 5;
+                    if (currentPercent >= 100) {
+                        currentPercent = 100;
+                        clearInterval(finishFast);
+                        if (counterElem) counterElem.textContent = '100';
+                        if (progressElem) progressElem.style.width = '100%';
+                        setTimeout(dismissPreloader, 200);
+                    } else {
+                        if (counterElem) counterElem.textContent = currentPercent < 10 ? '0' + currentPercent : currentPercent;
+                        if (progressElem) progressElem.style.width = currentPercent + '%';
+                    }
+                }, 20);
+            }
+
+            if (document.readyState === 'complete') {
+                setTimeout(triggerFinish, 600);
+            } else {
+                window.addEventListener('load', function() {
+                    setTimeout(triggerFinish, 600);
+                });
+            }
+
+            // Fallback safety timeout so user is never stalled
+            setTimeout(triggerFinish, 2800);
+        })();
+    </script>
+<!-- Premium Glassmorphism Navbar -->
     <style>
         /* Elegant Glass Navbar */
         #bringer-header {
@@ -385,93 +705,221 @@
     <!-- Page Main -->
     <main id="bringer-main">
         <div class="stg-container">
-            <!-- Section: Let's Talk -->
-            <section>
-                <!-- Section Title -->
-                <div class="stg-row bringer-section-title">
-                    <div class="stg-col-8 stg-offset-2">
+            <!-- Section: Let's Connect -->
+            <section style="padding-top: 4vh; margin-bottom: 6vh;">
+                <!-- Section Title: Luxury Architectural Heading -->
+                <div class="stg-row bringer-section-title" style="margin-bottom: 40px;">
+                    <div class="stg-col-10 stg-offset-1">
                         <div class="align-center">
-                            <h2>Contact!</h2>
-                            <p class="bringer-large-text">
-                                Get My Links</p>
+                            <span style="display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: #8C2DF6; margin-bottom: 16px;">Direct Channels</span>
+                            <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 20px 0; color: #ffffff;">
+                                Let's build something <span style="font-style: italic; color: #8C2DF6;">extraordinary.</span>
+                            </h1>
+                            <p class="bringer-large-text" style="color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; font-size: clamp(1rem, 2vw, 1.2rem); line-height: 1.6; max-width: 620px; margin: 0 auto; text-wrap: balance;">
+                                Have a project in mind, a design inquiry, or simply want to connect? Choose your preferred channel below.
+                            </p>
                         </div>
                     </div>
                 </div>
-                <!-- Contacts Grid -->
-                <div class="stg-row">
-                    <div class="stg-col-4 stg-tp-col-6 stg-tp-bottom-gap">
-                        <!-- Send Message -->
-                        <div class="bringer-block stg-vertical-space-between"
-                            style="position: relative; overflow: hidden;">
+                <!-- Contacts Grid: Adaptive Mobile & Tablet Flow -->
+                <div class="stg-row contact-main-grid">
+                    <div class="stg-col-4 stg-tp-col-6 stg-m-col-12 stg-tp-bottom-gap">
+                        <!-- Direct Line Card -->
+                        <div class="bringer-block stg-aspect-square stg-vertical-space-between direct-line-card contact-card-inner"
+                            style="position: relative; overflow: hidden; border: 1px solid rgba(140, 45, 246, 0.22); box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 0 35px rgba(140, 45, 246, 0.06); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+                            
+                            <!-- Ambient Background Pulse Glow -->
+                            <div style="position: absolute; -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%); mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%); top: -40px; right: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(140,45,246,0.3) 0%, transparent 70%); filter: blur(25px); pointer-events: none;"></div>
+
                             <div>
-                                <h5>Send Message<span class="bringer-accent">.</span></h5>
+                                <!-- Top Tag -->
+                                <div style="display: flex; align-items: center; margin-bottom: 16px;">
+                                    <span style="font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #8C2DF6;">Direct Line</span>
+                                </div>
+                                
+                                <h5 style="margin-bottom: 8px;">Studio Status<span class="bringer-accent">.</span></h5>
+                                <p style="color: rgba(255,255,255,0.6); font-size: 0.92rem; line-height: 1.6; margin: 0;">Accepting select commissions for digital experiences, brand architecture, and bespoke web design.</p>
                             </div>
-                            <form id="discordMessageForm" onsubmit="sendDiscordMessage(event)"
-                                style="display: flex; flex-direction: column; gap: 8px; flex: 1; margin-top: 8px;">
-                                <input type="text" id="msgName" placeholder="Your Name" required
-                                    style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 12px; color: #e0e0e0; font-size: 13px; font-family: inherit; outline: none; transition: border-color 0.2s;">
-                                <input type="email" id="msgEmail" placeholder="Your Email (optional)"
-                                    style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 12px; color: #e0e0e0; font-size: 13px; font-family: inherit; outline: none; transition: border-color 0.2s;">
-                                <textarea id="msgContent" placeholder="Your Message..." required rows="3"
-                                    style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 12px; color: #e0e0e0; font-size: 13px; font-family: inherit; outline: none; resize: none; flex: 1; transition: border-color 0.2s;"></textarea>
-                                <button type="submit" id="msgSendBtn"
-                                    style="background: linear-gradient(135deg, #8C2DF6 0%, #8C2DF6 100%); color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 6px;">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                                    </svg>
-                                    Send
+
+                            <!-- Interactive Quick Action Buttons -->
+                            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px; position: relative; z-index: 2;">
+                                <!-- Primary Action: Send Inquiry via Email -->
+                                <a href="mailto:mulhamlol790@gmail.com?subject=Project%20Inquiry%20-%20Mulham%20Studio"
+                                   class="inquiry-btn"
+                                   style="display: flex; align-items: center; justify-content: space-between; padding: 13px 18px; background: linear-gradient(135deg, rgba(140,45,246,0.3) 0%, rgba(140,45,246,0.12) 100%); border: 1px solid rgba(140,45,246,0.45); border-radius: 12px; color: #ffffff; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.84rem; font-weight: 600; letter-spacing: 0.02em; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(140,45,246,0.18);">
+                                    <span style="display: flex; align-items: center; gap: 10px;">
+                                        <i class="ph-fill ph-paper-plane-tilt" style="font-size: 1.1rem; color: #b066ff;"></i>
+                                        Send Project Inquiry
+                                    </span>
+                                    <i class="ph-bold ph-arrow-up-right" style="font-size: 0.9rem; color: rgba(255,255,255,0.7);"></i>
+                                </a>
+
+                                <!-- Secondary Action: Instant Email Copy button -->
+                                <button onclick="copyEmailAddress(this)"
+                                        class="copy-btn"
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: 11px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; color: rgba(255,255,255,0.75); font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.25s ease;">
+                                    <span style="display: flex; align-items: center; gap: 9px;">
+                                        <i class="ph-fill ph-copy" style="font-size: 1rem; color: #8C2DF6;"></i>
+                                        <span class="copy-label">Copy Direct Email</span>
+                                    </span>
+                                    <span style="font-size: 0.72rem; color: rgba(255,255,255,0.35); font-family: monospace;">1-CLICK</span>
                                 </button>
-                            </form>
-                            <div id="msgStatus"
-                                style="display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(13,17,23,0.95); display: none; align-items: center; justify-content: center; flex-direction: column; gap: 12px; border-radius: inherit; z-index: 2;">
-                                <span id="msgStatusIcon" style="font-size: 32px;">✓</span>
-                                <span id="msgStatusText"
-                                    style="font-size: 14px; color: #e0e0e0; text-align: center; padding: 0 20px;"></span>
-                                <span id="msgCooldown" style="font-size: 12px; color: rgba(127, 90, 240, 0.8);"></span>
                             </div>
                         </div>
                     </div>
-                    <div class="stg-col-4 stg-tp-col-6 stg-tp-bottom-gap">
-                        <!-- Email -->
-                        <div class="bringer-block stg-aspect-square stg-vertical-space-between">
-                            <a href="mailto:mulhamlol790@gmail.com" class="bringer-grid-item-link"></a>
+                    
+                    <div class="stg-col-4 stg-tp-col-6 stg-m-col-12 stg-tp-bottom-gap">
+                        <!-- Email Card -->
+                        <div class="bringer-block stg-aspect-square stg-vertical-space-between contact-feature-card contact-card-inner"
+                            style="position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
                             <div>
-                                <h5>Email<span class="bringer-accent">.</span></h5>
-                                <h6>mulhamlol790@gmail.com</h6>
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                                    <span style="font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #8C2DF6;">Direct Inbox</span>
+                                    <i class="ph-bold ph-envelope-simple" style="font-size: 1.25rem; color: rgba(255,255,255,0.3);"></i>
+                                </div>
+                                <h5 style="margin-bottom: 8px;">Electronic Mail<span class="bringer-accent">.</span></h5>
+                                <a href="mailto:mulhamlol790@gmail.com" class="email-address-link" style="display: inline-block; font-family: 'Inter', monospace, sans-serif; font-size: 0.88rem; color: #ffffff; text-decoration: none; word-break: break-all; margin-bottom: 12px; transition: color 0.2s;">
+                                    mulhamlol790@gmail.com
+                                </a>
                             </div>
-                            <p>Send us a detailed message. I'll get back to you as soon as possible to discuss your
-                                creative project further.</p>
+                            <div>
+                                <p style="color: rgba(255,255,255,0.55); font-size: 0.9rem; line-height: 1.6; margin: 0 0 16px 0;">Send detailed project briefs, RFP specifications, or collaboration proposals.</p>
+                                <a href="mailto:mulhamlol790@gmail.com" class="contact-pill-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 99px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: #fff; text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; transition: all 0.3s ease;">
+                                    Write an Email
+                                    <i class="ph-bold ph-arrow-up-right" style="font-size: 0.8rem; color: #8C2DF6;"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="stg-col-4 stg-tp-col-12">
-                        <!-- Social Media -->
-                        <div class="bringer-block stg-aspect-square stg-tp-aspect-rectangle stg-vertical-space-between">
+
+                    <div class="stg-col-4 stg-tp-col-12 stg-m-col-12">
+                        <!-- Social Media Card -->
+                        <div class="bringer-block stg-aspect-square stg-tp-aspect-rectangle stg-vertical-space-between contact-feature-card contact-card-inner"
+                            style="position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
                             <div>
-                                <h5>Social Media<span class="bringer-accent">.</span></h5>
-                                <ul class="bringer-socials-list stg-small-gap"
-                                   >
-                                    <li>
-                                        <a href="https://www.pinterest.com/normal_person_as_trippy/" target="_blank"
-                                            class="bringer-socials-pinterest"><i class="ph-fill ph-pinterest-logo"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.instagram.com/creative_mulham/" target="_blank"
-                                            class="bringer-socials-instagram"><i class="ph-fill ph-instagram-logo"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.linkedin.com/in/mulham-ibrahim-2021643ab?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                                            target="_blank" class="bringer-socials-linkedin"><i class="ph-fill ph-linkedin-logo"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                                    <span style="font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #8C2DF6;">Broadcasts</span>
+                                    <i class="ph-bold ph-share-network" style="font-size: 1.25rem; color: rgba(255,255,255,0.3);"></i>
+                                </div>
+                                <h5 style="margin-bottom: 8px;">Social Ecosphere<span class="bringer-accent">.</span></h5>
+                                <p style="color: rgba(255,255,255,0.55); font-size: 0.9rem; line-height: 1.6; margin: 0;">Follow daily design explorations, behind-the-scenes engineering, and ongoing creative releases.</p>
                             </div>
-                            <p>Follow Me on Social Media Platforms for a glimpse into our creative world, industry
-                                insights, and projects.</p>
+                            
+                            <!-- Custom Social Phosphor Chips -->
+                            <div class="social-chips-wrap" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px;">
+                                <!-- Instagram -->
+                                <a href="https://www.instagram.com/creative_mulham/" target="_blank" class="social-chip" style="display: inline-flex; align-items: center; gap: 9px; padding: 10px 16px; background: rgba(225, 48, 108, 0.08); border: 1px solid rgba(225, 48, 108, 0.25); border-radius: 12px; color: #ffffff; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500; transition: all 0.3s ease;">
+                                    <i class="ph-fill ph-instagram-logo" style="font-size: 1.2rem; color: #f04276; display: inline-block; vertical-align: middle;"></i>
+                                    <span>Instagram</span>
+                                    <i class="ph-bold ph-arrow-up-right" style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-left: 2px;"></i>
+                                </a>
+                                
+                                <!-- LinkedIn -->
+                                <a href="https://www.linkedin.com/in/mulham-ibrahim-2021643ab?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-chip" style="display: inline-flex; align-items: center; gap: 9px; padding: 10px 16px; background: rgba(10, 102, 194, 0.08); border: 1px solid rgba(10, 102, 194, 0.25); border-radius: 12px; color: #ffffff; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500; transition: all 0.3s ease;">
+                                    <i class="ph-fill ph-linkedin-logo" style="font-size: 1.2rem; color: #2884e0; display: inline-block; vertical-align: middle;"></i>
+                                    <span>LinkedIn</span>
+                                    <i class="ph-bold ph-arrow-up-right" style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-left: 2px;"></i>
+                                </a>
+                                
+                                <!-- Pinterest -->
+                                <a href="https://www.pinterest.com/normal_person_as_trippy/" target="_blank" class="social-chip" style="display: inline-flex; align-items: center; gap: 9px; padding: 10px 16px; background: rgba(230, 0, 35, 0.08); border: 1px solid rgba(230, 0, 35, 0.25); border-radius: 12px; color: #ffffff; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500; transition: all 0.3s ease;">
+                                    <i class="ph-fill ph-pinterest-logo" style="font-size: 1.2rem; color: #ff334b; display: inline-block; vertical-align: middle;"></i>
+                                    <span>Pinterest</span>
+                                    <i class="ph-bold ph-arrow-up-right" style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-left: 2px;"></i>
+                                </a>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            
+                <!-- Client Collaboration Protocol: High-End Bento Grid -->
+                <div class="collaboration-protocol-wrap" style="margin-top: 10vh; margin-bottom: 8vh; position: relative;">
+                    <!-- Section Header -->
+                    <div style="text-align: center; margin-bottom: 40px;">
+                        <span style="display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: #8C2DF6; margin-bottom: 12px;">Collaboration Protocol</span>
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 400; color: #ffffff; letter-spacing: -0.02em; margin: 0 0 14px 0;">
+                            What to expect when reaching out<span style="color: #8C2DF6;">.</span>
+                        </h3>
+                        <p style="color: rgba(255,255,255,0.5); font-family: 'Inter', sans-serif; font-size: 0.95rem; max-width: 560px; margin: 0 auto; line-height: 1.6;">
+                            A refined studio workflow engineered for transparency, rapid momentum, and zero friction.
+                        </p>
+                    </div>
+
+                    <!-- 4-Pillar Architectural Bento Grid -->
+                    <div class="protocol-cards-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                        
+                        <!-- Card 01 -->
+                        <div class="protocol-card" style="background: rgba(14, 8, 20, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(140, 45, 246, 0.16); border-radius: 20px; padding: 32px 24px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+                            <div>
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+                                    <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(140, 45, 246, 0.12); border: 1px solid rgba(140, 45, 246, 0.25); display: flex; align-items: center; justify-content: center;">
+                                        <i class="ph-fill ph-lightning" style="font-size: 1.3rem; color: #b066ff;"></i>
+                                    </div>
+                                    <span style="font-family: 'Inter', monospace, sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; color: rgba(255,255,255,0.3);">01</span>
+                                </div>
+                                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 500; color: #ffffff; margin: 0 0 10px 0; letter-spacing: -0.01em;">Rapid Scoping</h4>
+                                <p style="color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; font-size: 0.86rem; line-height: 1.6; margin: 0;">Inquiries receive an initial review and scoping framework within 24 business hours.</p>
+                            </div>
+                            <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 8px;">
+                                <i class="ph-bold ph-clock" style="font-size: 0.85rem; color: #8C2DF6;"></i>
+                                <span style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4);">Sub-24h Response</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 02 -->
+                        <div class="protocol-card" style="background: rgba(14, 8, 20, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(140, 45, 246, 0.16); border-radius: 20px; padding: 32px 24px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+                            <div>
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+                                    <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(140, 45, 246, 0.12); border: 1px solid rgba(140, 45, 246, 0.25); display: flex; align-items: center; justify-content: center;">
+                                        <i class="ph-fill ph-user-focus" style="font-size: 1.3rem; color: #b066ff;"></i>
+                                    </div>
+                                    <span style="font-family: 'Inter', monospace, sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; color: rgba(255,255,255,0.3);">02</span>
+                                </div>
+                                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 500; color: #ffffff; margin: 0 0 10px 0; letter-spacing: -0.01em;">Direct Access</h4>
+                                <p style="color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; font-size: 0.86rem; line-height: 1.6; margin: 0;">Work directly with Mulham throughout ideation and execution &mdash; no middle layers or agency fluff.</p>
+                            </div>
+                            <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 8px;">
+                                <i class="ph-bold ph-shield-check" style="font-size: 0.85rem; color: #8C2DF6;"></i>
+                                <span style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4);">Principal Lead</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 03 -->
+                        <div class="protocol-card" style="background: rgba(14, 8, 20, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(140, 45, 246, 0.16); border-radius: 20px; padding: 32px 24px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+                            <div>
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+                                    <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(140, 45, 246, 0.12); border: 1px solid rgba(140, 45, 246, 0.25); display: flex; align-items: center; justify-content: center;">
+                                        <i class="ph-fill ph-sketch-logo" style="font-size: 1.3rem; color: #b066ff;"></i>
+                                    </div>
+                                    <span style="font-family: 'Inter', monospace, sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; color: rgba(255,255,255,0.3);">03</span>
+                                </div>
+                                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 500; color: #ffffff; margin: 0 0 10px 0; letter-spacing: -0.01em;">Tailored Systems</h4>
+                                <p style="color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; font-size: 0.86rem; line-height: 1.6; margin: 0;">Bespoke aesthetics and high-performance engineering tailored to distinct brand identity.</p>
+                            </div>
+                            <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 8px;">
+                                <i class="ph-bold ph-diamond" style="font-size: 0.85rem; color: #8C2DF6;"></i>
+                                <span style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4);">Zero Templates</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 04 -->
+                        <div class="protocol-card" style="background: rgba(140, 8, 20, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(140, 45, 246, 0.16); border-radius: 20px; padding: 32px 24px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+                            <div>
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+                                    <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(140, 45, 246, 0.12); border: 1px solid rgba(140, 45, 246, 0.25); display: flex; align-items: center; justify-content: center;">
+                                        <i class="ph-fill ph-globe-hemisphere-east" style="font-size: 1.3rem; color: #b066ff;"></i>
+                                    </div>
+                                    <span style="font-family: 'Inter', monospace, sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; color: rgba(255,255,255,0.3);">04</span>
+                                </div>
+                                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 500; color: #ffffff; margin: 0 0 10px 0; letter-spacing: -0.01em;">Global Cadence</h4>
+                                <p style="color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; font-size: 0.86rem; line-height: 1.6; margin: 0;">Seamless async-first communication loops optimized for international clients and partners.</p>
+                            </div>
+                            <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 8px;">
+                                <i class="ph-bold ph-globe-stand" style="font-size: 0.85rem; color: #8C2DF6;"></i>
+                                <span style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4);">Worldwide Sync</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </section>
@@ -479,6 +927,44 @@
         </div><!-- .stg-container -->
 
     </main>
+
+        <!-- Premium 10/10 Footer -->
+        <footer id="bringer-footer" style="background: #06020A; padding-top: 12vh; position: relative; overflow: hidden; border-top: 1px solid rgba(140,45,246,0.1); margin-left: calc(50% - 50vw); width: 100vw;">
+            <div class="stg-container" style="position: relative; z-index: 2; display: flex; flex-direction: column; min-height: 40vh; justify-content: space-between;">
+                
+                <!-- Top row: CTA -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 8vh;">
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.3em; color: #8C2DF6; text-transform: uppercase; margin-bottom: 2vh;">Ready to start?</p>
+                    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 4vh; max-width: 800px; color: #fff;">
+                        Transforming concepts into <span style="font-style: italic; color: rgba(255,255,255,0.4);">living experiences.</span>
+                    </h2>
+                    
+                    <a href="mailto:mulhamlol790@gmail.com" class="glass-pill" style="display: inline-flex; align-items: center; gap: 15px; text-decoration: none; font-size: 0.85rem; padding: 18px 38px; background: rgba(140,45,246,0.1); border: 1px solid rgba(140,45,246,0.3); border-radius: 100px; color: #fff; font-family: 'Inter', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(140,45,246,0.15);" onmouseover="this.style.background='rgba(140,45,246,0.2)'; this.style.borderColor='rgba(140,45,246,0.6)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(140,45,246,0.1)'; this.style.borderColor='rgba(140,45,246,0.3)'; this.style.transform='none';">
+                        mulhamlol790@gmail.com
+                        <i class="ph-fill ph-paper-plane-tilt" style="font-size: 1.1rem; color: #8C2DF6;"></i>
+                    </a>
+                </div>
+                
+                <!-- Bottom Row: Socials & Info -->
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 4vh; padding-bottom: 4vh; flex-wrap: wrap; gap: 20px;">
+                    <div style="font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.4);">
+                        &copy; 2026 Mulham Ibrahim. All rights reserved.
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <ul class="bringer-socials-list" style="margin: 0; padding: 0; display: flex; gap: 20px; list-style: none;">
+                        <li><a href="https://www.pinterest.com/normal_person_as_trippy/" target="_blank" style="text-decoration: none;"><i class="ph-fill ph-pinterest-logo"></i></a></li>
+                        <li><a href="https://www.instagram.com/creative_mulham/" target="_blank" style="text-decoration: none;"><i class="ph-fill ph-instagram-logo"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/mulham-ibrahim-2021643ab" target="_blank" style="text-decoration: none;"><i class="ph-fill ph-linkedin-logo"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Massive Background Typography -->
+            <div style="text-align: center; overflow: hidden; line-height: 0.75; margin-bottom: -5vw; pointer-events: none; opacity: 0.02; user-select: none;">
+                <span style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 24vw; letter-spacing: -0.05em; color: #fff; white-space: nowrap;">MULHAM</span>
+            </div>
+        </footer>
 
     <!-- Right Click Protection Block -->
     <div class="bringer-rcp-wrap">
@@ -500,141 +986,32 @@
     <script src="js/main.js" defer></script>
 
         <!-- Discord Webhook Message Script -->
+    <style>
+        @keyframes statusPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.55; }
+        }
+        .direct-line-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(140, 45, 246, 0.45) !important;
+            box-shadow: 0 25px 60px rgba(140, 45, 246, 0.15), inset 0 0 45px rgba(140, 45, 246, 0.09) !important;
+        }
+    </style>
     <script>
-        let msgCooldownActive = false;
-        let msgCooldownTimer = null;
-        let msgSentCount = parseInt(localStorage.getItem('msgSentCount') || '0');
-
-        // Check on load if we are in a cooldown
-        document.addEventListener('DOMContentLoaded', () => {
-            const cooldownEnd = parseInt(localStorage.getItem('msgCooldownEnd') || '0');
-            const now = Date.now();
-            if (cooldownEnd > now) {
-                const remaining = Math.ceil((cooldownEnd - now) / 1000);
-                const btn = document.getElementById('msgSendBtn');
-                const statusDiv = document.getElementById('msgStatus');
-                const cooldownText = document.getElementById('msgCooldown');
-                const statusIcon = document.getElementById('msgStatusIcon');
-                const statusText = document.getElementById('msgStatusText');
-                
-                statusIcon.textContent = '?';
-                statusIcon.style.color = '#8C2DF6';
-                statusText.textContent = 'You are on cooldown.';
-                
-                startCooldown(statusDiv, cooldownText, btn, remaining);
-            }
-        });
-
-        async function sendDiscordMessage(e) {
-            e.preventDefault();
-
-            if (msgCooldownActive) return;
-
-            const name = document.getElementById('msgName').value.trim();
-            const email = document.getElementById('msgEmail').value.trim();
-            const message = document.getElementById('msgContent').value.trim();
-            const btn = document.getElementById('msgSendBtn');
-            const statusDiv = document.getElementById('msgStatus');
-            const statusIcon = document.getElementById('msgStatusIcon');
-            const statusText = document.getElementById('msgStatusText');
-            const cooldownText = document.getElementById('msgCooldown');
-
-            if (!name || !message) return;
-
-            btn.disabled = true;
-            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg> Sending...';
-
-            // Build embed fields
-            const fields = [
-                { name: '?? Name', value: name, inline: true }
-            ];
-            if (email) {
-                fields.push({ name: '?? Email', value: email, inline: true });
-            }
-            fields.push({ name: '?? Message', value: message });
-
-            try {
-                const response = await fetch('https://discord.com/api/webhooks/1475587623358828704/jm2_P1PHBQu-fOzmwBuNyNdObie8VQq7DXYhpJXdMKJQrFPIhnzDiPMjgvTqred27D6E', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        embeds: [{
-                            title: 'New Contact Form Submission',
-                            color: 9186806, // #8C2DF6 in decimal
-                            fields: fields,
-                            timestamp: new Date().toISOString()
-                        }]
-                    })
-                });
-
-                if (response.ok) {
-                    msgSentCount++;
-                    localStorage.setItem('msgSentCount', msgSentCount);
-
-                    statusIcon.textContent = '?';
-                    statusIcon.style.color = '#8C2DF6';
-                    statusText.textContent = 'Message sent successfully!';
-                    document.getElementById('discordMessageForm').reset();
-
-                    if (msgSentCount >= 2) {
-                        // Set cooldown end time in localStorage (120 seconds)
-                        const cooldownEnd = Date.now() + 120 * 1000;
-                        localStorage.setItem('msgCooldownEnd', cooldownEnd.toString());
-                        startCooldown(statusDiv, cooldownText, btn, 120);
-                    } else {
-                        // First message: just show success briefly
-                        statusDiv.style.display = 'flex';
-                        cooldownText.textContent = '';
-                        setTimeout(() => {
-                            statusDiv.style.display = 'none';
-                            btn.disabled = false;
-                            resetBtnText(btn);
-                        }, 2000);
-                    }
-                } else {
-                    statusIcon.textContent = '?';
-                    statusIcon.style.color = '#f85149';
-                    statusText.textContent = 'Failed to send. Try again later.';
-                    statusDiv.style.display = 'flex';
-                    setTimeout(() => { statusDiv.style.display = 'none'; btn.disabled = false; resetBtnText(btn); }, 3000);
-                }
-            } catch (err) {
-                statusIcon.textContent = '?';
-                statusIcon.style.color = '#f85149';
-                statusText.textContent = 'Network error. Please try again.';
-                statusDiv.style.display = 'flex';
-                setTimeout(() => { statusDiv.style.display = 'none'; btn.disabled = false; resetBtnText(btn); }, 3000);
-            }
-        }
-
-        function startCooldown(statusDiv, cooldownText, btn, initialRemaining) {
-            msgCooldownActive = true;
-            btn.disabled = true;
-            statusDiv.style.display = 'flex';
-            let remaining = initialRemaining;
-
-            function updateTimer() {
-                const mins = Math.floor(remaining / 60);
-                const secs = remaining % 60;
-                cooldownText.textContent = You can send again in :;
-                
-                if (remaining <= 0) {
-                    msgCooldownActive = false;
-                    statusDiv.style.display = 'none';
-                    cooldownText.textContent = '';
-                    btn.disabled = false;
-                    resetBtnText(btn);
-                    localStorage.removeItem('msgCooldownEnd');
-                    return;
-                }
-                remaining--;
-                msgCooldownTimer = setTimeout(updateTimer, 1000);
-            }
-            updateTimer();
-        }
-
-        function resetBtnText(btn) {
-            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Send';
+        function copyEmailAddress(btn) {
+            const email = 'mulhamlol790@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                const label = btn.querySelector('.copy-label');
+                const prevText = label.textContent;
+                label.textContent = 'Copied to Clipboard!';
+                btn.style.borderColor = 'rgba(63, 185, 80, 0.6)';
+                btn.style.color = '#7ee787';
+                setTimeout(() => {
+                    label.textContent = prevText;
+                    btn.style.borderColor = '';
+                    btn.style.color = '';
+                }, 2200);
+            });
         }
     </script>
     <!-- High-Performance Reveal & Progress Bar -->
