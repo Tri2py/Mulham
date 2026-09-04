@@ -104,331 +104,716 @@
 }
     </script>
     <style>
+        /* === Deep Luxury Studio Canvas === */
+        :root {
+            --bringer-s-accent: #8C2DF6;
+            --bringer-s-accent-glow: rgba(140, 45, 246, 0.35);
+            --bringer-s-heading: #FFFFFF;
+            --bringer-s-text: rgba(255, 255, 255, 0.65);
+            --bringer-s-card-bg: rgba(14, 8, 20, 0.72);
+            --bringer-s-card-border: rgba(255, 255, 255, 0.08);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0d1117;
+            font-family: 'Inter', sans-serif !important;
+            background-color: #06020A !important;
             color: #e0e0e0;
             min-height: 100vh;
+            overflow-x: hidden !important;
+            position: relative;
         }
 
-        /* Header/Navbar Overrides (same as index.html and contacts.html) */
-        .bringer-header-lp {
-            position: fixed !important;
-            left: 40px !important;
-            top: 20px !important;
-            z-index: 112 !important;
-            transition: all 0.3s ease !important;
+        /* Ambient Studio Light Blooms */
+        .ambient-glow {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.38;
+        }
+        .ambient-glow--top {
+            width: 580px;
+            height: 580px;
+            top: -160px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, rgba(140, 45, 246, 0.45) 0%, rgba(140, 45, 246, 0.08) 60%, transparent 100%);
+        }
+        .ambient-glow--bottom {
+            width: 450px;
+            height: 450px;
+            bottom: 10%;
+            right: -100px;
+            background: radial-gradient(circle, rgba(140, 45, 246, 0.22) 0%, transparent 70%);
         }
 
-        #bringer-header.is-sticky~.bringer-header-lp,
-        body:has(#bringer-header.is-sticky) .bringer-header-lp {
-            top: 15px !important;
+        /* Ambient Subtle Grid Texture */
+        .ambient-grid {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(circle at 50% 30%, black 35%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at 50% 30%, black 35%, transparent 80%);
         }
 
-        .bringer-logo {
-            display: block !important;
-        }
-
-        .bringer-logo img {
-            height: 64px !important;
-            width: auto !important;
-            transition: transform 0.3s ease !important;
-        }
-
-        .bringer-logo:hover img {
-            transform: scale(1.1) !important;
-        }
-
+        /* === Elegant Floating Glass Navbar === */
         #bringer-header {
-            background: rgba(18, 18, 18, 0.95) !important;
-            backdrop-filter: blur(20px) saturate(180%) !important;
-            -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+            position: fixed !important;
+            background: rgba(255, 255, 255, 0.02) !important;
             border: 1px solid rgba(255, 255, 255, 0.08) !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-            padding: 0 40px !important;
-            border-radius: 16px !important;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            max-width: 720px !important;
-            min-width: auto !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            border-radius: 100px !important;
+            padding: 0 30px !important;
+            width: auto !important;
+            min-width: 540px;
+            max-width: 90vw !important;
             left: 50% !important;
             transform: translateX(-50%) !important;
+            top: 26px !important;
+            z-index: 1000 !important;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+            display: flex;
+            justify-content: center;
         }
 
         #bringer-header.is-sticky {
-            top: 12px !important;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4) !important;
+            top: 18px !important;
+            background: rgba(10, 6, 16, 0.78) !important;
+            border: 1px solid rgba(140, 45, 246, 0.22) !important;
+            box-shadow: 0 14px 45px rgba(0, 0, 0, 0.85) !important;
         }
 
         .bringer-header-inner {
-            padding: 16px 0 !important;
             display: flex !important;
+            justify-content: space-between !important;
             align-items: center !important;
-            justify-content: center !important;
             width: 100% !important;
+            padding: 12px 0 !important;
+            min-height: 40px;
         }
 
-        .bringer-header-inner .bringer-header-lp {
-            display: none !important;
+        .bringer-header-lp {
+            display: flex !important;
+            align-items: center !important;
+            position: relative !important;
+            left: auto !important;
+            top: auto !important;
+            z-index: 1 !important;
         }
 
         .bringer-header-mp {
-            width: 100% !important;
             display: flex !important;
-            justify-content: center !important;
+            justify-content: flex-end !important;
+            flex-grow: 1 !important;
         }
 
-        nav.bringer-nav {
-            width: 100% !important;
-        }
-
-        nav.bringer-nav ul.main-menu {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 8px !important;
+        ul.main-menu {
+            display: flex;
+            align-items: center;
+            gap: 28px !important;
             margin: 0 !important;
             padding: 0 !important;
-        }
-
-        ul.main-menu li {
-            margin: 0 !important;
-            padding: 0 !important;
+            list-style: none;
         }
 
         ul.main-menu li a {
-            position: relative;
-            padding: 10px 22px !important;
-            border-radius: 8px;
-            transition: all 0.2s ease !important;
-            font-weight: 400 !important;
-            font-size: 16px !important;
-            color: rgba(224, 224, 224, 0.8) !important;
-            white-space: nowrap !important;
-        }
-
-        ul.main-menu li a:hover {
-            background: rgba(127, 90, 240, 0.12) !important;
-            color: var(--bringer-s-heading) !important;
-        }
-
-        ul.main-menu li.current-menu-item>a {
-            background: rgba(127, 90, 240, 0.18) !important;
-            color: var(--bringer-s-heading) !important;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 0.82rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.15em !important;
             font-weight: 500 !important;
+            color: #fff !important;
+            opacity: 0.7;
+            text-decoration: none;
+            transition: opacity 0.3s ease, color 0.3s ease;
+            position: relative;
+            padding: 6px 0;
+        }
+
+        ul.main-menu li a:hover,
+        ul.main-menu li.current-menu-item a {
+            opacity: 1;
+            color: #c084fc !important;
         }
 
         .bringer-active-menu-ind {
             display: none !important;
         }
 
-        .bringer-active-menu-ind::before {
-            display: none !important;
+        .bringer-mobile-header-inner {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 12px 0;
         }
 
-        /* Main Content */
+        /* === Main Content Architecture === */
         .main-content {
-            max-width: 1100px;
+            position: relative;
+            z-index: 2;
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 120px 32px 48px;
+            padding: 140px 32px 60px;
         }
 
-        /* Page Title */
-        .page-title {
+        /* === Editorial Hero Header === */
+        .web-projects-hero {
+            margin-bottom: 56px;
+            text-align: left;
+            position: relative;
+        }
+
+        .hero-pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(140, 45, 246, 0.12);
+            border: 1px solid rgba(140, 45, 246, 0.28);
+            border-radius: 100px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: #c084fc;
+            margin-bottom: 22px;
+        }
+
+        .hero-pill-badge .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #8C2DF6;
+            box-shadow: 0 0 10px #8C2DF6;
+            animation: statusPulse 2s infinite ease-in-out;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.45; transform: scale(1.3); }
+        }
+
+        .hero-layout-split {
             display: flex;
             align-items: flex-end;
             justify-content: space-between;
-            margin-bottom: 48px;
-            gap: 24px;
+            gap: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 36px;
         }
 
-        .page-title h1 {
-            font-size: 36px;
-            font-weight: 800;
+        .hero-headline {
+            font-family: 'Playfair Display', serif !important;
+            font-size: clamp(2.8rem, 6vw, 4.8rem);
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            line-height: 1.08;
             color: #ffffff;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
+            margin: 0;
         }
 
-        .page-title p {
-            color: rgba(224, 224, 224, 0.6);
-            font-size: 15px;
-            max-width: 360px;
-            line-height: 1.6;
-            text-align: right;
+        .hero-headline em {
+            font-style: italic;
+            background: linear-gradient(135deg, #ffffff 30%, rgba(255, 255, 255, 0.5) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Projects Grid */
+        .hero-lead-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 420px;
+            margin: 0;
+        }
+
+        /* === Filter / Quick Stats Rail === */
+        .projects-filter-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 36px;
+            padding: 8px 0;
+        }
+
+        .filter-counter {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.45);
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .filter-counter strong {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .filter-pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.65);
+            padding: 7px 16px;
+            border-radius: 100px;
+            font-size: 0.76rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            user-select: none;
+        }
+
+        .filter-pill:hover,
+        .filter-pill.active {
+            background: rgba(140, 45, 246, 0.16);
+            border-color: rgba(140, 45, 246, 0.4);
+            color: #ffffff;
+        }
+
+        /* === Architectural Project Cards Grid === */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 28px;
+            margin-bottom: 56px;
         }
 
-        /* Project Card */
         .project-card {
+            position: relative;
             display: flex;
             flex-direction: column;
-            background: rgba(22, 27, 34, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
+            background: rgba(16, 9, 24, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
             overflow: hidden;
             text-decoration: none;
             color: inherit;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            isolation: isolate;
         }
 
         .project-card:hover {
-            border-color: rgba(127, 90, 240, 0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(127, 90, 240, 0.12), 0 4px 16px rgba(0, 0, 0, 0.3);
+            transform: translateY(-6px);
+            border-color: rgba(140, 45, 246, 0.45);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(140, 45, 246, 0.14);
         }
 
-        /* Card Image */
-        .project-card-image {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
+        /* Card Header Graphic with Abstract Visual Identity */
+        .project-card-header {
             position: relative;
-        }
-
-        .project-card-image img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .project-card:hover .project-card-image img {
-            transform: scale(1.05);
-        }
-
-        /* Card Image Placeholder */
-        .project-card-image-placeholder {
-            width: 100%;
-            height: 200px;
+            height: 190px;
+            background: linear-gradient(135deg, rgba(22, 12, 34, 0.95) 0%, rgba(12, 6, 20, 0.95) 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(145deg, rgba(22, 27, 34, 1), rgba(30, 37, 46, 0.8));
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .project-card-pattern {
+            position: absolute;
+            inset: 0;
+            background-size: 24px 24px;
+            opacity: 0.18;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+
+        .project-card:hover .project-card-pattern {
+            transform: scale(1.08);
+            opacity: 0.3;
+        }
+
+        .pattern-grid {
+            background-image: radial-gradient(rgba(140, 45, 246, 0.85) 1px, transparent 1px);
+        }
+        .pattern-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(140, 45, 246, 0.3) 0, rgba(140, 45, 246, 0.3) 1px, transparent 0, transparent 50%);
+            background-size: 16px 16px;
+        }
+        .pattern-dots {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1px);
+        }
+        .pattern-waves {
+            background-image: radial-gradient(circle at 100% 150%, rgba(140, 45, 246, 0.4) 24px, transparent 25px);
+            background-size: 28px 28px;
+        }
+
+        /* Animated Icon Badge */
+        .card-icon-badge {
+            position: relative;
+            z-index: 3;
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c084fc;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card-icon-badge svg,
+        .card-icon-badge i {
+            font-size: 32px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-card:hover .card-icon-badge {
+            background: rgba(140, 45, 246, 0.22);
+            border-color: rgba(140, 45, 246, 0.6);
+            color: #ffffff;
+            box-shadow: 0 12px 35px rgba(140, 45, 246, 0.35);
+            transform: scale(1.08);
+        }
+
+        .project-card:hover .card-icon-badge svg,
+        .project-card:hover .card-icon-badge i {
+            transform: scale(1.1);
+        }
+
+        /* Index badge in top right of graphic */
+        .card-index-indicator {
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            color: rgba(255, 255, 255, 0.25);
+            z-index: 3;
         }
 
         /* Card Body */
         .project-card-body {
-            padding: 24px;
+            position: relative;
+            z-index: 2;
+            padding: 26px 28px 24px;
             display: flex;
             flex-direction: column;
             flex: 1;
         }
 
-        .project-card-body h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 10px;
-            letter-spacing: -0.01em;
+        .card-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            gap: 12px;
         }
 
-        .project-card-body p {
-            font-size: 14px;
-            line-height: 1.65;
-            color: rgba(224, 224, 224, 0.55);
-            margin-bottom: 16px;
-            flex: 1;
-        }
-
-        /* Tag Row */
         .tag-row {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 14px;
             flex-wrap: wrap;
         }
 
         .tag {
-            display: inline-block;
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            background: rgba(127, 90, 240, 0.15);
-            color: rgba(127, 90, 240, 0.9);
-            border: 1px solid rgba(127, 90, 240, 0.2);
-        }
-
-        /* Visit Link */
-        .visit-link {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 13px;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.68rem;
             font-weight: 600;
-            color: rgba(127, 90, 240, 0.85);
-            transition: all 0.25s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: rgba(140, 45, 246, 0.12);
+            color: #c084fc;
+            border: 1px solid rgba(140, 45, 246, 0.25);
+        }
+
+        .project-type-label {
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.35);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        .project-card-body h3 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.45rem;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover .project-card-body h3 {
+            color: #e5ccff;
+        }
+
+        .project-card-body p {
+            font-size: 0.88rem;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.58);
+            margin-bottom: 22px;
+            flex: 1;
+        }
+
+        /* Tech stack pills inside card body */
+        .tech-stack-row {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .tech-tag {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        /* Card Action Row */
+        .card-action-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .visit-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #c084fc;
+            transition: all 0.25s ease;
         }
 
         .project-card:hover .visit-link {
-            color: #8C2DF6;
+            color: #ffffff;
         }
 
-        .visit-link svg {
-            transition: transform 0.25s ease;
+        .action-arrow-wrap {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(140, 45, 246, 0.12);
+            border: 1px solid rgba(140, 45, 246, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c084fc;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .project-card:hover .visit-link svg {
-            transform: translate(2px, -2px);
+        .project-card:hover .action-arrow-wrap {
+            background: #8C2DF6;
+            border-color: #8C2DF6;
+            color: #ffffff;
+            transform: translate(3px, -3px) rotate(-45deg);
+            box-shadow: 0 0 16px rgba(140, 45, 246, 0.5);
         }
 
-        /* Back Section */
+        /* === Navigation / Back Action Section === */
         .back-section {
             display: flex;
             justify-content: center;
-            padding: 56px 0;
+            align-items: center;
+            gap: 16px;
+            padding: 44px 0 20px;
+            flex-wrap: wrap;
         }
 
         .back-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            color: rgba(224, 224, 224, 0.7);
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 14px 30px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .back-btn:hover {
-            background: rgba(127, 90, 240, 0.12);
-            border-color: rgba(127, 90, 240, 0.3);
+            background: rgba(140, 45, 246, 0.18);
+            border-color: rgba(140, 45, 246, 0.4);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(140, 45, 246, 0.15);
+        }
+
+        .back-btn-primary {
+            background: rgba(140, 45, 246, 0.15);
+            border-color: rgba(140, 45, 246, 0.35);
             color: #ffffff;
         }
 
-        /* Footer */
-        .site-footer {
-            text-align: center;
-            padding: 24px;
-            color: rgba(224, 224, 224, 0.3);
-            font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        /* === Sleek Low-Profile Studio Footer === */
+        .contact-page-footer {
+            background: #06020A;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 36px 0 44px;
+            margin-top: 6vh;
+            position: relative;
+            z-index: 5;
         }
 
-        /* Responsive */
+        .contact-footer-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .contact-footer-copy {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.03em;
+        }
+
+        .contact-footer-brand {
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+
+        .contact-footer-socials {
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            gap: 20px !important;
+            list-style: none !important;
+            list-style-type: none !important;
+            align-items: center !important;
+        }
+
+        .contact-footer-socials li {
+            margin: 0 !important;
+            padding: 0 !important;
+            list-style: none !important;
+            list-style-type: none !important;
+            display: inline-flex !important;
+            align-items: center !important;
+        }
+
+        .contact-footer-socials li::before,
+        .contact-footer-socials li::after,
+        .contact-footer-socials a::before,
+        .contact-footer-socials a::after {
+            display: none !important;
+            content: none !important;
+        }
+
+        .contact-footer-socials a {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+            font-size: 1.3rem !important;
+            text-decoration: none !important;
+            transform: none !important;
+            transition: none !important;
+            cursor: pointer !important;
+        }
+
+        .contact-footer-socials a i {
+            font-size: 1.3rem !important;
+            line-height: 1 !important;
+            display: inline-block !important;
+            transform: none !important;
+            transition: none !important;
+        }
+
+        /* Absolutely NO hover transformations, boxes, glows or effects */
+        .contact-footer-socials a:hover,
+        .contact-footer-socials a:focus,
+        .contact-footer-socials a:active,
+        .contact-footer-socials a.footer-social-instagram:hover,
+        .contact-footer-socials a.footer-social-linkedin:hover,
+        .contact-footer-socials a.footer-social-pinterest:hover {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            transform: none !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .contact-footer-socials a:hover i {
+            transform: none !important;
+        }
+
         @media (max-width: 768px) {
+            #bringer-header {
+                min-width: 0;
+                width: calc(100% - 40px) !important;
+                padding: 0 20px !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                background: rgba(14, 8, 20, 0.95) !important;
+                top: 16px !important;
+            }
 
             .bringer-header-inner {
                 display: none !important;
@@ -438,72 +823,27 @@
                 display: flex !important;
             }
 
-            .bringer-header-lp {
-                display: none !important;
-            }
-
-            .bringer-header-lp {
-                left: 20px !important;
-                top: 15px !important;
-            }
-
-            .bringer-logo img {
-                height: 36px !important;
-            }
-
-            #bringer-header {
-                padding: 0 16px !important;
-                max-width: calc(100% - 80px) !important;
-                border-radius: 12px !important;
-            }
-
-            .bringer-header-inner {
-                padding: 8px 0 !important;
-            }
-
-            nav.bringer-nav ul.main-menu {
-                gap: 2px !important;
-            }
-
-            ul.main-menu li a {
-                padding: 5px 10px !important;
-                font-size: 12px !important;
-            }
-
-            body,
-            html {
-                overflow-x: hidden !important;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .page-title {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-                margin-bottom: 36px;
-            }
-
-            .page-title h1 {
-                font-size: 26px;
-            }
-
-            .page-title p {
-                text-align: left;
-                font-size: 14px;
-                max-width: 100%;
-            }
-
             .main-content {
-                padding: 100px 16px 32px;
+                padding: 105px 20px 40px;
             }
 
-            .project-card-image,
-            .project-card-image-placeholder {
+            .hero-headline {
+                font-size: 2.2rem;
+            }
+
+            .project-card-header {
                 height: 160px;
+            }
+
+            .card-icon-badge {
+                width: 60px;
+                height: 60px;
+                border-radius: 14px;
+            }
+
+            .card-icon-badge svg,
+            .card-icon-badge i {
+                font-size: 26px;
             }
 
             .project-card-body {
@@ -511,61 +851,52 @@
             }
 
             .project-card-body h3 {
-                font-size: 18px;
+                font-size: 1.25rem;
             }
 
-            .project-card-body p {
-                font-size: 13px;
+            .contact-page-footer {
+                padding: 28px 0 36px;
+                margin-top: 4vh;
             }
 
-            .back-section {
-                padding: 40px 0;
+            .contact-footer-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 14px;
+                padding: 0 20px;
             }
 
-            .back-btn {
-                padding: 12px 24px;
-                font-size: 13px;
+            .contact-footer-socials {
+                justify-content: center;
             }
         }
 
         @media (max-width: 480px) {
-            .bringer-header-lp {
-                left: 16px !important;
-                top: 12px !important;
-            }
-
-            .bringer-logo img {
-                height: 32px !important;
-            }
-
             #bringer-header {
-                padding: 0 12px !important;
-                max-width: calc(100% - 60px) !important;
-                border-radius: 10px !important;
+                width: calc(100% - 24px) !important;
+                padding: 0 16px !important;
             }
-
-            .bringer-header-inner {
-                padding: 6px 0 !important;
+            .hero-headline {
+                font-size: 1.9rem;
             }
-
-            .page-title h1 {
-                font-size: 22px;
-            }
-
             .main-content {
-                padding: 90px 12px 24px;
+                padding: 95px 14px 32px;
             }
-
-            .tag-row {
-                gap: 6px;
+            .projects-filter-bar {
+                flex-direction: column;
+                align-items: flex-start;
             }
-
-            .tag {
-                font-size: 10px;
-                padding: 4px 10px;
+            .back-btn {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
+    <!-- Vercel Web Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body>
@@ -881,24 +1212,28 @@
             setTimeout(triggerFinish, 2800);
         })();
     </script>
-<!-- Logo - Outside navbar, on the left -->
-    <div class="bringer-header-lp">
-        <a href="/home" class="bringer-logo" style="text-decoration: none;"><span style="font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; font-style: italic; letter-spacing: -0.02em; color: #fff;">Mulham<span style="color: var(--bringer-s-accent);">.</span></span></a>
-    </div>
+<!-- Ambient Lighting & Atmospheric Grid -->
+    <div class="ambient-glow ambient-glow--top"></div>
+    <div class="ambient-glow ambient-glow--bottom"></div>
+    <div class="ambient-grid"></div>
 
-    <!-- Header -->
-    <header id="bringer-header" class="is-frosted is-sticky" data-appear="fade-down" data-unload="fade-up">
+    <!-- Floating Glass Navbar (Seamless across all studio pages) -->
+    <header id="bringer-header" class="is-frosted is-sticky">
         <!-- Desktop Header -->
         <div class="bringer-header-inner">
+            <!-- Logo -->
+            <div class="bringer-header-lp">
+                <a href="/home" class="bringer-logo" style="text-decoration: none;">
+                    <span style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; font-style: italic; letter-spacing: -0.02em; color: #fff;">Mulham<span style="color: var(--bringer-s-accent);">.</span></span>
+                </a>
+            </div>
+            
             <!-- Main Menu -->
             <div class="bringer-header-mp">
                 <nav class="bringer-nav">
-                    <ul class="main-menu" data-stagger-appear="fade-down" data-stagger-delay="75">
+                    <ul class="main-menu">
                         <li>
                             <a href="/home">Home</a>
-                        </li>
-                        <li>
-                            <a href="/portfolio">Portfolio</a>
                         </li>
                         <li>
                             <a href="/contact">Contacts</a>
@@ -907,9 +1242,12 @@
                 </nav>
             </div>
         </div>
+        
         <!-- Mobile Header -->
         <div class="bringer-mobile-header-inner">
-            <a href="/home" class="bringer-logo" style="text-decoration: none;"><span style="font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; font-style: italic; letter-spacing: -0.02em; color: #fff;">Mulham<span style="color: var(--bringer-s-accent);">.</span></span></a>
+            <a href="/home" class="bringer-logo" style="text-decoration: none;">
+                <span style="font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; font-style: italic; letter-spacing: -0.02em; color: #fff;">Mulham<span style="color: var(--bringer-s-accent);">.</span></span>
+            </a>
             <a href="#" class="bringer-mobile-menu-toggler">
                 <i class="bringer-menu-toggler-icon">
                     <span></span>
@@ -921,118 +1259,242 @@
     </header>
 
     <!-- Main Content -->
-    <div class="main-content">
-        <!-- Page Title -->
-        <div class="page-title">
-            <h1>Web Development<br>Projects</h1>
-            <p>Modern, responsive websites built with the latest technologies for optimal performance and user
-                experience.</p>
+    <main class="main-content" id="bringer-main">
+        <!-- Editorial Hero Header -->
+        <section class="web-projects-hero">
+            <div class="hero-pill-badge">
+                <span class="status-dot"></span>
+                <span>Web Engineering & Interactive Architectures</span>
+            </div>
+            <div class="hero-layout-split">
+                <div>
+                    <h1 class="hero-headline">
+                        Selected <em>Web Works</em><br>& Digital Systems
+                    </h1>
+                </div>
+                <div>
+                    <p class="hero-lead-text">
+                        A curated archive of production web applications, bespoke digital platforms, and corporate web systems engineered for performance, aesthetic integrity, and measurable business growth.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter / Stats Bar -->
+        <div class="projects-filter-bar">
+            <div class="filter-counter">
+                Showing <strong>4</strong> Featured Engineering Deployments
+            </div>
+            <div class="filter-pills">
+                <span class="filter-pill active" data-filter="all">All Platforms</span>
+                <span class="filter-pill" data-filter="Healthcare">Healthcare</span>
+                <span class="filter-pill" data-filter="Corporate">Corporate</span>
+                <span class="filter-pill" data-filter="Web App">Web Apps</span>
+            </div>
         </div>
 
         <!-- Projects Grid -->
         <div class="projects-grid">
 
-
-            <!-- Project 2: Cureox Medical -->
-            <a href="https://cureox.com" target="_blank" class="project-card">
+            <!-- Project 1: Cureox Medical Software -->
+            <a href="https://cureox.com" target="_blank" rel="noopener noreferrer" class="project-card" data-category="Healthcare">
+                <div class="project-card-header">
+                    <div class="project-card-pattern pattern-lines"></div>
+                    <div class="card-icon-badge">
+                        <i class="ph-bold ph-heartbeat"></i>
+                    </div>
+                    <span class="card-index-indicator">01 / ARCH</span>
+                </div>
                 <div class="project-card-body">
-                    <div class="tag-row">
-                        <span class="tag">Healthcare</span>
+                    <div class="card-meta-row">
+                        <div class="tag-row">
+                            <span class="tag">Healthcare</span>
+                        </div>
+                        <span class="project-type-label">Enterprise Platform</span>
                     </div>
                     <h3>Cureox Medical Software</h3>
-                    <p>Digital healthcare solutions platform contributed to website structure, digital presence, and
-                        supported branding alignment and marketing positioning for a medical software company.</p>
-                    <span class="visit-link">
-                        Visit Website
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-                    </span>
+                    <p>Digital healthcare solutions platform. Structured the foundational digital presence, engineered performance-first web pages, and aligned corporate branding to establish medical software market leadership.</p>
+                    <div class="tech-stack-row">
+                        <span class="tech-tag">Next.js / React</span>
+                        <span class="tech-tag">UI/UX Architecture</span>
+                        <span class="tech-tag">Brand Strategy</span>
+                        <span class="tech-tag">Core Web Vitals</span>
+                    </div>
+                    <div class="card-action-row">
+                        <span class="visit-link">
+                            Explore Platform
+                            <i class="ph-bold ph-arrow-up-right"></i>
+                        </span>
+                        <div class="action-arrow-wrap">
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </div>
+                    </div>
                 </div>
             </a>
 
-            <!-- Project 3: Ghiath Bourhani Trading -->
-            <a href="https://brhani.com" target="_blank" class="project-card">
+            <!-- Project 2: Ghiath Bourhani Trading -->
+            <a href="https://brhani.com" target="_blank" rel="noopener noreferrer" class="project-card" data-category="Corporate">
+                <div class="project-card-header">
+                    <div class="project-card-pattern pattern-grid"></div>
+                    <div class="card-icon-badge">
+                        <i class="ph-bold ph-buildings"></i>
+                    </div>
+                    <span class="card-index-indicator">02 / CORP</span>
+                </div>
                 <div class="project-card-body">
-                    <div class="tag-row">
-                        <span class="tag">Corporate</span>
+                    <div class="card-meta-row">
+                        <div class="tag-row">
+                            <span class="tag">Corporate</span>
+                        </div>
+                        <span class="project-type-label">Commercial Trading</span>
                     </div>
                     <h3>Ghiath Bourhani Trading Co</h3>
-                    <p>Professional corporate website for a commercial trading & business services company
-                        strengthened digital visibility and structured their complete online presence.</p>
-                    <span class="visit-link">
-                        Visit Website
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-                    </span>
+                    <p>High-credibility corporate digital ecosystem for a regional commercial trading and business services powerhouse. Built structured information architecture and international client trust touchpoints.</p>
+                    <div class="tech-stack-row">
+                        <span class="tech-tag">Responsive Engineering</span>
+                        <span class="tech-tag">Corporate Identity</span>
+                        <span class="tech-tag">Performance</span>
+                        <span class="tech-tag">SEO Architecture</span>
+                    </div>
+                    <div class="card-action-row">
+                        <span class="visit-link">
+                            Explore Platform
+                            <i class="ph-bold ph-arrow-up-right"></i>
+                        </span>
+                        <div class="action-arrow-wrap">
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </div>
+                    </div>
                 </div>
             </a>
 
-            <!-- Project 4: MedicalPro -->
-            <a href="https://medicalpro.brhani.com" target="_blank" class="project-card">
-                <div class="project-card-body">
-                    <div class="tag-row">
-                        <span class="tag">Healthcare</span>
+            <!-- Project 3: MedicalPro Platform -->
+            <a href="https://medicalpro.brhani.com" target="_blank" rel="noopener noreferrer" class="project-card" data-category="Healthcare">
+                <div class="project-card-header">
+                    <div class="project-card-pattern pattern-waves"></div>
+                    <div class="card-icon-badge">
+                        <i class="ph-bold ph-first-aid-kit"></i>
                     </div>
-                    <h3>MedicalPro</h3>
-                    <p>A comprehensive medical platform with modern UI/UX design and advanced functionality built for
-                        healthcare services with optimized performance and seamless patient experience.</p>
-                    <span class="visit-link">
-                        Visit Website
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-                    </span>
+                    <span class="card-index-indicator">03 / MED</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="card-meta-row">
+                        <div class="tag-row">
+                            <span class="tag">Healthcare</span>
+                        </div>
+                        <span class="project-type-label">Clinical Workflow</span>
+                    </div>
+                    <h3>MedicalPro Clinical Platform</h3>
+                    <p>Comprehensive patient care and clinical services platform with contemporary dark/light UI balance, high-fidelity scheduling touchpoints, and ultra-fluid patient onboarding experience.</p>
+                    <div class="tech-stack-row">
+                        <span class="tech-tag">Interactive UX</span>
+                        <span class="tech-tag">Modular Componentry</span>
+                        <span class="tech-tag">Accessibility</span>
+                        <span class="tech-tag">Tailored CMS</span>
+                    </div>
+                    <div class="card-action-row">
+                        <span class="visit-link">
+                            Explore Platform
+                            <i class="ph-bold ph-arrow-up-right"></i>
+                        </span>
+                        <div class="action-arrow-wrap">
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </div>
+                    </div>
                 </div>
             </a>
 
-            <!-- Project 5: Nassab - Family Trees -->
-            <a href="https://nassab.brhani.com/" target="_blank" rel="noopener noreferrer" class="project-card">
-                <div class="project-card-body">
-                    <div class="tag-row">
-                        <span class="tag">Web App</span>
+            <!-- Project 4: Nassab Family Trees -->
+            <a href="https://nassab.brhani.com/" target="_blank" rel="noopener noreferrer" class="project-card" data-category="Web App">
+                <div class="project-card-header">
+                    <div class="project-card-pattern pattern-dots"></div>
+                    <div class="card-icon-badge">
+                        <i class="ph-bold ph-tree-structure"></i>
                     </div>
-                    <h3>Nassab | Family Trees</h3>
-                    <p>Create your family tree and explore family trees across Syria an interactive platform to connect lineages and families.</p>
-                    <span class="visit-link">
-                        Visit Website
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-                    </span>
+                    <span class="card-index-indicator">04 / APP</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="card-meta-row">
+                        <div class="tag-row">
+                            <span class="tag">Web App</span>
+                        </div>
+                        <span class="project-type-label">Interactive Platform</span>
+                    </div>
+                    <h3>Nassab | Family Trees System</h3>
+                    <p>Sophisticated genealogical web application enabling families to chart hierarchical lineages, interact with relational node graphs, and document historical heritage across regional families.</p>
+                    <div class="tech-stack-row">
+                        <span class="tech-tag">Graph Visualization</span>
+                        <span class="tech-tag">Dynamic State</span>
+                        <span class="tech-tag">Interactive Nodes</span>
+                        <span class="tech-tag">Full-Stack UX</span>
+                    </div>
+                    <div class="card-action-row">
+                        <span class="visit-link">
+                            Explore Platform
+                            <i class="ph-bold ph-arrow-up-right"></i>
+                        </span>
+                        <div class="action-arrow-wrap">
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </div>
+                    </div>
                 </div>
             </a>
 
         </div>
 
-        <!-- Back to Portfolio -->
+        <!-- Back to Portfolio / Contact Call -->
         <div class="back-section">
             <a href="/portfolio" class="back-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-                Back to Portfolio
+                <i class="ph-bold ph-arrow-left"></i>
+                Return to Portfolio
+            </a>
+            <a href="/contact" class="back-btn back-btn-primary">
+                Start a Web Project
+                <i class="ph-bold ph-arrow-up-right"></i>
             </a>
         </div>
-    </div>
+    </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <p>&copy; 2025 Mulham. All rights reserved.</p>
+    <!-- Minimalist Studio Footer -->
+    <footer id="bringer-footer" class="contact-page-footer">
+        <div class="contact-footer-inner">
+            <div class="contact-footer-copy">
+                <span class="contact-footer-brand">MULHAM IBRAHIM</span> &copy; 2026. All rights reserved.
+            </div>
+            
+            <!-- Social Links -->
+            <ul class="contact-footer-socials">
+                <li><a href="https://www.instagram.com/creative_mulham/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-instagram" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/mulham-ibrahim-2021643ab" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-linkedin" title="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a></li>
+                <li><a href="https://www.pinterest.com/normal_person_as_trippy/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" class="footer-social-pinterest" title="Pinterest"><i class="ph-fill ph-pinterest-logo"></i></a></li>
+            </ul>
+        </div>
     </footer>
-
-    <!-- JS Scripts -->
+    
+    <!-- Filter interactivity script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var filterPills = document.querySelectorAll(".filter-pill");
+            var projectCards = document.querySelectorAll(".project-card");
+            
+            filterPills.forEach(function(pill) {
+                pill.addEventListener("click", function() {
+                    filterPills.forEach(function(p) { p.classList.remove("active"); });
+                    this.classList.add("active");
+                    
+                    var filterValue = this.getAttribute("data-filter");
+                    projectCards.forEach(function(card) {
+                        if (filterValue === "all" || card.getAttribute("data-category") === filterValue) {
+                            card.style.display = "flex";
+                        } else {
+                            card.style.display = "none";
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+<!-- JS Scripts -->
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/libs.js" defer></script>
     <script src="js/contact_form.js" defer></script>
